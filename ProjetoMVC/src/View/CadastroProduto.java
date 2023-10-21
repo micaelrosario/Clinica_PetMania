@@ -59,19 +59,19 @@ public class CadastroProduto extends javax.swing.JFrame {
         btn_excluir.setContentAreaFilled(false);
         getContentPane().add(btn_excluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 90, 40));
 
-        tf_nome.setBackground(new java.awt.Color(255, 255, 255));
+        tf_nome.setBorder(null);
         getContentPane().add(tf_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 180, -1));
 
-        tf_id.setBackground(new java.awt.Color(255, 255, 255));
+        tf_id.setBorder(null);
         getContentPane().add(tf_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 190, -1));
 
-        tf_fornecedor.setBackground(new java.awt.Color(255, 255, 255));
+        tf_fornecedor.setBorder(null);
         getContentPane().add(tf_fornecedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 180, -1));
 
-        tf_valor.setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(tf_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, 140, -1));
+        tf_valor.setBorder(null);
+        getContentPane().add(tf_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, 140, 30));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.setBorder(null);
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 286, 190, 30));
 
         Fundo_CadastroProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/CadastroProduto.png"))); // NOI18N

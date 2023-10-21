@@ -52,16 +52,16 @@ public class CadastroCliente extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 40, 50));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.setBorder(null);
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 126, 220, 30));
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField2.setBorder(null);
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 126, 200, 30));
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField3.setBorder(null);
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 220, 30));
 
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField4.setBorder(null);
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);

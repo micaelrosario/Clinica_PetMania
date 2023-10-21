@@ -62,7 +62,7 @@ public class CadastroServiço extends javax.swing.JFrame {
         });
         getContentPane().add(btn_voltar_servico, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 40, 50));
 
-        tf_id.setBackground(new java.awt.Color(255, 255, 255));
+        tf_id.setBorder(null);
         tf_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_idActionPerformed(evt);
@@ -70,29 +70,29 @@ public class CadastroServiço extends javax.swing.JFrame {
         });
         getContentPane().add(tf_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, 190, 30));
 
-        tf_funcionario.setBackground(new java.awt.Color(255, 255, 255));
+        tf_funcionario.setBorder(null);
         tf_funcionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_funcionarioActionPerformed(evt);
             }
         });
-        getContentPane().add(tf_funcionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 200, 30));
+        getContentPane().add(tf_funcionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 190, 30));
 
-        tf_valor.setBackground(new java.awt.Color(255, 255, 255));
+        tf_valor.setBorder(null);
         tf_valor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_valorActionPerformed(evt);
             }
         });
-        getContentPane().add(tf_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 200, 30));
+        getContentPane().add(tf_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, 150, 30));
 
-        tf_nome.setBackground(new java.awt.Color(255, 255, 255));
+        tf_nome.setBorder(null);
         tf_nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_nomeActionPerformed(evt);
             }
         });
-        getContentPane().add(tf_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 200, 30));
+        getContentPane().add(tf_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 190, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/CadastroServiço.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 760, 540));

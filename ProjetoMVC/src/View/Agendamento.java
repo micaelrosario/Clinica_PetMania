@@ -15,6 +15,16 @@ public class Agendamento extends javax.swing.JFrame {
      */
     public Agendamento() {
         initComponents();
+        cb_cliente.setOpaque(false);
+        cb_cliente.setBackground(new java.awt.Color(0,0,0,0));
+        cb_pet.setOpaque(false);
+        cb_pet.setBackground(new java.awt.Color(0,0,0,0));
+        tf_data.setOpaque(false);
+        tf_data.setBackground(new java.awt.Color(0,0,0,0));
+        cb_produto.setOpaque(false);
+        cb_produto.setBackground(new java.awt.Color(0,0,0,0));
+        cb_proced.setOpaque(false);
+        cb_proced.setBackground(new java.awt.Color(0,0,0,0));
     }
 
     /**
@@ -26,52 +36,17 @@ public class Agendamento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tf_nome = new javax.swing.JTextField();
-        tf_data = new javax.swing.JTextField();
-        tf_proced = new javax.swing.JTextField();
-        tf_valor = new javax.swing.JTextField();
         btn_cancelar = new javax.swing.JButton();
         btn_agendar = new javax.swing.JButton();
+        cb_cliente = new javax.swing.JComboBox<>();
+        cb_proced = new javax.swing.JComboBox<>();
+        cb_produto = new javax.swing.JComboBox<>();
+        cb_pet = new javax.swing.JComboBox<>();
+        tf_data = new javax.swing.JTextField();
         Agendamento = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tf_nome.setBackground(new java.awt.Color(255, 255, 255));
-        tf_nome.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 141, 185), 2, true));
-        tf_nome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_nomeActionPerformed(evt);
-            }
-        });
-        getContentPane().add(tf_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 300, 40));
-
-        tf_data.setBackground(new java.awt.Color(255, 255, 255));
-        tf_data.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 141, 185), 2, true));
-        tf_data.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_dataActionPerformed(evt);
-            }
-        });
-        getContentPane().add(tf_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 300, 40));
-
-        tf_proced.setBackground(new java.awt.Color(255, 255, 255));
-        tf_proced.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 141, 185), 2, true));
-        tf_proced.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_procedActionPerformed(evt);
-            }
-        });
-        getContentPane().add(tf_proced, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 300, 40));
-
-        tf_valor.setBackground(new java.awt.Color(255, 255, 255));
-        tf_valor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 141, 185), 2, true));
-        tf_valor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_valorActionPerformed(evt);
-            }
-        });
-        getContentPane().add(tf_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 300, 40));
 
         btn_cancelar.setContentAreaFilled(false);
         btn_cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -80,40 +55,86 @@ public class Agendamento extends javax.swing.JFrame {
                 btn_cancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 430, 140, 40));
+        getContentPane().add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, 140, 40));
 
         btn_agendar.setContentAreaFilled(false);
         btn_agendar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(btn_agendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 140, 40));
+        getContentPane().add(btn_agendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 480, 140, 40));
+
+        cb_cliente.setForeground(new java.awt.Color(0, 0, 0,0));
+        cb_cliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_cliente.setBorder(null);
+        cb_cliente.setOpaque(false);
+        cb_cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_clienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cb_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 500, 40));
+
+        cb_proced.setForeground(new java.awt.Color(0, 0, 0,0));
+        cb_proced.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_proced.setBorder(null);
+        cb_proced.setOpaque(false);
+        cb_proced.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_procedActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cb_proced, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 440, 40));
+
+        cb_produto.setForeground(new java.awt.Color(0, 0, 0,0));
+        cb_produto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_produto.setBorder(null);
+        cb_produto.setOpaque(false);
+        cb_produto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_produtoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cb_produto, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 220, 40));
+
+        cb_pet.setForeground(new java.awt.Color(0, 0, 0,0));
+        cb_pet.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_pet.setBorder(null);
+        cb_pet.setOpaque(false);
+        cb_pet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_petActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cb_pet, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 500, 40));
+
+        tf_data.setBorder(null);
+        getContentPane().add(tf_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 302, 160, 40));
 
         Agendamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Agendamento.png"))); // NOI18N
-        Agendamento.setText("jLabel2");
-        getContentPane().add(Agendamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -20, 800, 590));
+        getContentPane().add(Agendamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 850, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tf_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_nomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_nomeActionPerformed
-
-    private void tf_dataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_dataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_dataActionPerformed
-
-    private void tf_procedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_procedActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_procedActionPerformed
-
-    private void tf_valorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_valorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_valorActionPerformed
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
         // Ação após clicar no Botão Cancelar
         MenuPrincipal novoFrame = new MenuPrincipal();
         novoFrame.setVisible(true);
     }//GEN-LAST:event_btn_cancelarActionPerformed
+
+    private void cb_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_clienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_clienteActionPerformed
+
+    private void cb_procedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_procedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_procedActionPerformed
+
+    private void cb_produtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_produtoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_produtoActionPerformed
+
+    private void cb_petActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_petActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_petActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,9 +175,10 @@ public class Agendamento extends javax.swing.JFrame {
     private javax.swing.JLabel Agendamento;
     private javax.swing.JButton btn_agendar;
     private javax.swing.JButton btn_cancelar;
+    private javax.swing.JComboBox<String> cb_cliente;
+    private javax.swing.JComboBox<String> cb_pet;
+    private javax.swing.JComboBox<String> cb_proced;
+    private javax.swing.JComboBox<String> cb_produto;
     private javax.swing.JTextField tf_data;
-    private javax.swing.JTextField tf_nome;
-    private javax.swing.JTextField tf_proced;
-    private javax.swing.JTextField tf_valor;
     // End of variables declaration//GEN-END:variables
 }
