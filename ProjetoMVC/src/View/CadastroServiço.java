@@ -84,7 +84,7 @@ public class CadastroServiço extends javax.swing.JFrame {
                 tf_valorActionPerformed(evt);
             }
         });
-        getContentPane().add(tf_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, 150, 30));
+        getContentPane().add(tf_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, 160, 30));
 
         tf_nome.setBorder(null);
         tf_nome.addActionListener(new java.awt.event.ActionListener() {

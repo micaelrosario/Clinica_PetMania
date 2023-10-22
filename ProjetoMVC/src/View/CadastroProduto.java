@@ -60,16 +60,16 @@ public class CadastroProduto extends javax.swing.JFrame {
         getContentPane().add(btn_excluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 90, 40));
 
         tf_nome.setBorder(null);
-        getContentPane().add(tf_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 180, -1));
+        getContentPane().add(tf_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 180, 30));
 
         tf_id.setBorder(null);
-        getContentPane().add(tf_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 190, -1));
+        getContentPane().add(tf_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 190, 30));
 
         tf_fornecedor.setBorder(null);
-        getContentPane().add(tf_fornecedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 180, -1));
+        getContentPane().add(tf_fornecedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 180, 30));
 
         tf_valor.setBorder(null);
-        getContentPane().add(tf_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, 140, 30));
+        getContentPane().add(tf_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, 160, 30));
 
         jTextField1.setBorder(null);
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 286, 190, 30));
