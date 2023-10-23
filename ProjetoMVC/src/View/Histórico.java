@@ -15,6 +15,8 @@ public class Histórico extends javax.swing.JFrame {
      */
     public Histórico() {
         initComponents();
+        cb_cliente.setOpaque(false);
+        cb_cliente.setBackground(new java.awt.Color(0,0,0,0));
     }
 
     /**
@@ -26,25 +28,21 @@ public class Histórico extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tableHistorico = new javax.swing.JTable();
+        cb_cliente = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tableHistorico.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nome Pet", "Serviço", "Valor", "ID"
+        cb_cliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_cliente.setOpaque(true);
+        cb_cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_clienteActionPerformed(evt);
             }
-        ));
-        jScrollPane2.setViewportView(tableHistorico);
-
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 540, 190));
+        });
+        getContentPane().add(cb_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 280, 50));
 
         jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -52,16 +50,20 @@ public class Histórico extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, 90, 30));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 40, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Historico.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 650, 470));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Historico.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 810, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cb_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_clienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_clienteActionPerformed
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         // Ação após clicar no Botão Voltar
+        // Ação após clicar no Botão Voltar
         MenuPrincipal novoFrame = new MenuPrincipal();
         novoFrame.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -102,9 +104,8 @@ public class Histórico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cb_cliente;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tableHistorico;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

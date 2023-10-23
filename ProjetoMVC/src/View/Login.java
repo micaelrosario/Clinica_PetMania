@@ -117,7 +117,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_senhaActionPerformed
 
     private void btn_EsqueceuSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EsqueceuSenhaActionPerformed
-        // TODO add your handling code here:
+        // Ação após clicar no Botão Voltar
+        EsqueceuSenha novoFrame = new EsqueceuSenha();
+        novoFrame.setVisible(true);
     }//GEN-LAST:event_btn_EsqueceuSenhaActionPerformed
 
     private void btn_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EntrarActionPerformed
