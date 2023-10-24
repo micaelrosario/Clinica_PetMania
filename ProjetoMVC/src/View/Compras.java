@@ -4,8 +4,6 @@
  */
 package View;
 
-import java.awt.Dimension;
-
 /**
  *
  * @author frede
@@ -17,8 +15,7 @@ public class Compras extends javax.swing.JFrame {
      */
     public Compras() {
         initComponents();
-        cb_shampoo.setPreferredSize(new Dimension(100, 30));
-    } 
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,146 +26,21 @@ public class Compras extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        cb_shampoo = new javax.swing.JCheckBox();
-        cb_racao = new javax.swing.JCheckBox();
-        cb_coleira = new javax.swing.JCheckBox();
-        cb_repelente = new javax.swing.JCheckBox();
-        cb_fantasia = new javax.swing.JCheckBox();
-        cb_livro = new javax.swing.JCheckBox();
-        Carrinho = new javax.swing.JLabel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setContentAreaFilled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 470, 160, 40));
-
-        jButton2.setContentAreaFilled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 50, 40));
-
-        cb_shampoo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cb_shampoo.setContentAreaFilled(false);
-        cb_shampoo.setMaximumSize(new java.awt.Dimension(60, 60));
-        cb_shampoo.setMinimumSize(new java.awt.Dimension(60, 60));
-        cb_shampoo.setPreferredSize(new java.awt.Dimension(100, 40));
-        cb_shampoo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_shampooActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cb_shampoo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 30, 30));
-
-        cb_racao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cb_racao.setContentAreaFilled(false);
-        cb_racao.setMaximumSize(new java.awt.Dimension(60, 60));
-        cb_racao.setMinimumSize(new java.awt.Dimension(60, 60));
-        cb_racao.setPreferredSize(new java.awt.Dimension(100, 40));
-        cb_racao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_racaoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cb_racao, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 30, 30));
-
-        cb_coleira.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cb_coleira.setContentAreaFilled(false);
-        cb_coleira.setMaximumSize(new java.awt.Dimension(60, 60));
-        cb_coleira.setMinimumSize(new java.awt.Dimension(60, 60));
-        cb_coleira.setPreferredSize(new java.awt.Dimension(100, 40));
-        cb_coleira.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_coleiraActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cb_coleira, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 30, 30));
-
-        cb_repelente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cb_repelente.setContentAreaFilled(false);
-        cb_repelente.setMaximumSize(new java.awt.Dimension(60, 60));
-        cb_repelente.setMinimumSize(new java.awt.Dimension(60, 60));
-        cb_repelente.setPreferredSize(new java.awt.Dimension(100, 40));
-        cb_repelente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_repelenteActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cb_repelente, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, 30, 30));
-
-        cb_fantasia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cb_fantasia.setContentAreaFilled(false);
-        cb_fantasia.setMaximumSize(new java.awt.Dimension(60, 60));
-        cb_fantasia.setMinimumSize(new java.awt.Dimension(60, 60));
-        cb_fantasia.setPreferredSize(new java.awt.Dimension(100, 40));
-        cb_fantasia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_fantasiaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cb_fantasia, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 380, 30, 30));
-
-        cb_livro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cb_livro.setContentAreaFilled(false);
-        cb_livro.setMaximumSize(new java.awt.Dimension(60, 60));
-        cb_livro.setMinimumSize(new java.awt.Dimension(60, 60));
-        cb_livro.setPreferredSize(new java.awt.Dimension(100, 40));
-        cb_livro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_livroActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cb_livro, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 30, 30));
-
-        Carrinho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Compras.png"))); // NOI18N
-        getContentPane().add(Carrinho, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 550));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cb_shampooActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_shampooActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cb_shampooActionPerformed
-
-    private void cb_racaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_racaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cb_racaoActionPerformed
-
-    private void cb_coleiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_coleiraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cb_coleiraActionPerformed
-
-    private void cb_repelenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_repelenteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cb_repelenteActionPerformed
-
-    private void cb_fantasiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_fantasiaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cb_fantasiaActionPerformed
-
-    private void cb_livroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_livroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cb_livroActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // Ação após clicar no Botão Voltar
-        MenuPrincipal novoFrame = new MenuPrincipal();
-        novoFrame.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,14 +78,5 @@ public class Compras extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Carrinho;
-    private javax.swing.JCheckBox cb_coleira;
-    private javax.swing.JCheckBox cb_fantasia;
-    private javax.swing.JCheckBox cb_livro;
-    private javax.swing.JCheckBox cb_racao;
-    private javax.swing.JCheckBox cb_repelente;
-    private javax.swing.JCheckBox cb_shampoo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 }

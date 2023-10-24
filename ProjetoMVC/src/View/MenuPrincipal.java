@@ -41,20 +41,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         carrinho.setContentAreaFilled(false);
         carrinho.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        carrinho.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                carrinhoActionPerformed(evt);
-            }
-        });
         getContentPane().add(carrinho, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 40, 60, 50));
 
         menuLateral.setContentAreaFilled(false);
         menuLateral.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuLateral.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuLateralActionPerformed(evt);
-            }
-        });
         getContentPane().add(menuLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 40, 30));
 
         cadastroMenu.setContentAreaFilled(false);
@@ -68,11 +58,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         compraMenu.setContentAreaFilled(false);
         compraMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        compraMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                compraMenuActionPerformed(evt);
-            }
-        });
         getContentPane().add(compraMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 430, 60));
 
         agendamentoMenu.setContentAreaFilled(false);
@@ -86,11 +71,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         clienteMenu.setContentAreaFilled(false);
         clienteMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        clienteMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clienteMenuActionPerformed(evt);
-            }
-        });
         getContentPane().add(clienteMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, 430, 60));
 
         MenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/MenuPrincipal.png"))); // NOI18N
@@ -110,30 +90,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         SubMenuCadastro novoFrame = new SubMenuCadastro();
         novoFrame.setVisible(true);
     }//GEN-LAST:event_cadastroMenuActionPerformed
-
-    private void clienteMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteMenuActionPerformed
-        // Ação após clicar no Botão Voltar
-        Histórico novoFrame = new Histórico();
-        novoFrame.setVisible(true);
-    }//GEN-LAST:event_clienteMenuActionPerformed
-
-    private void compraMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compraMenuActionPerformed
-         // Ação após clicar no Botão Voltar
-        Compras novoFrame = new Compras();
-        novoFrame.setVisible(true);
-    }//GEN-LAST:event_compraMenuActionPerformed
-
-    private void carrinhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carrinhoActionPerformed
-       // Ação após clicar no Botão Voltar
-        Compras novoFrame = new Compras();
-        novoFrame.setVisible(true);
-    }//GEN-LAST:event_carrinhoActionPerformed
-
-    private void menuLateralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLateralActionPerformed
-       // Ação após clicar no Botão Voltar
-        MenuLateral novoFrame = new MenuLateral();
-        novoFrame.setVisible(true);
-    }//GEN-LAST:event_menuLateralActionPerformed
 
     /**
      * @param args the command line arguments

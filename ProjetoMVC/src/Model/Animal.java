@@ -1,6 +1,6 @@
 package Model;
 
-public abstract class Animal {
+public class Animal {
      //ATRIBUTOS 
     String nome;
     String especie;
