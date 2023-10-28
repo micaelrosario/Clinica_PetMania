@@ -55,6 +55,7 @@ public class CadastroServiço extends javax.swing.JFrame {
         getContentPane().add(btn_cadastrar_servico, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 110, 40));
 
         btn_voltar_servico.setContentAreaFilled(false);
+        btn_voltar_servico.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_voltar_servico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_voltar_servicoActionPerformed(evt);

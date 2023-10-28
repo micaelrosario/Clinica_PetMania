@@ -52,6 +52,11 @@ public class EsqueceuSenha extends javax.swing.JFrame {
         cancelar.setBorderPainted(false);
         cancelar.setContentAreaFilled(false);
         cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
         getContentPane().add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 80, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Tela_EsqueceuSenha.png"))); // NOI18N
@@ -62,8 +67,14 @@ public class EsqueceuSenha extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarActionPerformed
-        // TODO add your handling code here:
+        Login novoFrame = new Login();
+        novoFrame.setVisible(true);
     }//GEN-LAST:event_enviarActionPerformed
+
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        Login novoFrame = new Login();
+        novoFrame.setVisible(true);
+    }//GEN-LAST:event_cancelarActionPerformed
 
     /**
      * @param args the command line arguments

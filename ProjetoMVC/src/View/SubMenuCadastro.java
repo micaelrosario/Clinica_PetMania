@@ -45,6 +45,7 @@ public class SubMenuCadastro extends javax.swing.JFrame {
         getContentPane().add(btn_voltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 50, 50));
 
         btn_Pet.setContentAreaFilled(false);
+        btn_Pet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_Pet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_PetActionPerformed(evt);
@@ -53,6 +54,7 @@ public class SubMenuCadastro extends javax.swing.JFrame {
         getContentPane().add(btn_Pet, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 150, 200, 140));
 
         btn_Cliente.setContentAreaFilled(false);
+        btn_Cliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_Cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_ClienteActionPerformed(evt);
@@ -61,6 +63,7 @@ public class SubMenuCadastro extends javax.swing.JFrame {
         getContentPane().add(btn_Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(436, 150, 210, 130));
 
         btn_Serviço.setContentAreaFilled(false);
+        btn_Serviço.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_Serviço.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_ServiçoActionPerformed(evt);
@@ -69,6 +72,7 @@ public class SubMenuCadastro extends javax.swing.JFrame {
         getContentPane().add(btn_Serviço, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 210, 130));
 
         btn_Produto.setContentAreaFilled(false);
+        btn_Produto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_Produto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_ProdutoActionPerformed(evt);

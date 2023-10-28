@@ -54,7 +54,6 @@ public class AdicionarPet extends javax.swing.JFrame {
         lb_idade.setText("Idade:");
         getContentPane().add(lb_idade, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, -1, -1));
 
-        jTextField10.setBackground(new java.awt.Color(255, 255, 255));
         jTextField10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 141, 185), 2, true));
         jTextField10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,7 +62,6 @@ public class AdicionarPet extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 320, 40));
 
-        jTextField9.setBackground(new java.awt.Color(255, 255, 255));
         jTextField9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 141, 185), 2, true));
         jTextField9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,7 +70,6 @@ public class AdicionarPet extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 160, 40));
 
-        jTextField8.setBackground(new java.awt.Color(255, 255, 255));
         jTextField8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 141, 185), 2, true));
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +79,7 @@ public class AdicionarPet extends javax.swing.JFrame {
         getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, 80, 40));
 
         jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
                 jButton1CaretPositionChanged(evt);
