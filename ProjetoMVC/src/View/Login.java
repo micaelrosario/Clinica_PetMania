@@ -4,17 +4,24 @@
  */
 package View;
 
+import Controller.LoginController;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Usuário
  */
 public class Login extends javax.swing.JFrame {
-
+    
+    private final LoginController controller;
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
+        controller = new LoginController(this);
     }
 
     /**
@@ -33,8 +40,8 @@ public class Login extends javax.swing.JFrame {
         btn_Entrar = new javax.swing.JButton();
         btn_Cadastre1 = new javax.swing.JButton();
         btn_EsqueceuSenha = new javax.swing.JButton();
-        c_usuario = new javax.swing.JTextField();
-        c_senha = new javax.swing.JTextField();
+        text_usuario = new javax.swing.JTextField();
+        text_senha = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
 
         tf_senha.setBackground(new java.awt.Color(255, 255, 255));
@@ -85,29 +92,24 @@ public class Login extends javax.swing.JFrame {
                 btn_EsqueceuSenhaActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_EsqueceuSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 120, 20));
+        getContentPane().add(btn_EsqueceuSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, 120, 20));
 
-        c_usuario.setBackground(new java.awt.Color(255, 255, 255));
-        c_usuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 141, 185), 2, true));
-        c_usuario.addActionListener(new java.awt.event.ActionListener() {
+        text_usuario.setBackground(new java.awt.Color(255, 255, 255));
+        text_usuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 141, 185), 2, true));
+        text_usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_usuarioActionPerformed(evt);
+                text_usuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(c_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 240, 40));
+        getContentPane().add(text_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 240, 40));
 
-        c_senha.setBackground(new java.awt.Color(255, 255, 255));
-        c_senha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 141, 185), 2, true));
-        c_senha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_senhaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(c_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 240, 40));
+        text_senha.setBackground(new java.awt.Color(255, 255, 255));
+        text_senha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(1, 141, 185), 2));
+        getContentPane().add(text_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 240, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Login.png"))); // NOI18N
         jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, 580));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, -1, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -121,9 +123,12 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_EsqueceuSenhaActionPerformed
 
     private void btn_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EntrarActionPerformed
-         // Ação após clicar no Botão Entrar
-        MenuPrincipal novoFrame = new MenuPrincipal();
-        novoFrame.setVisible(true);
+        // Ação após clicar no Botão Entrar
+        this.controller.fizTarefa();
+        System.out.println(text_usuario.getText()); //usuário
+        System.out.println(text_senha.getText()); // senha
+        /*MenuPrincipal novoFrame = new MenuPrincipal();
+        novoFrame.setVisible(true);*/
     }//GEN-LAST:event_btn_EntrarActionPerformed
 
     private void btn_Cadastre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Cadastre1ActionPerformed
@@ -132,13 +137,9 @@ public class Login extends javax.swing.JFrame {
         novoFrame.setVisible(true);
     }//GEN-LAST:event_btn_Cadastre1ActionPerformed
 
-    private void c_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_usuarioActionPerformed
+    private void text_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_usuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_c_usuarioActionPerformed
-
-    private void c_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_senhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_c_senhaActionPerformed
+    }//GEN-LAST:event_text_usuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,12 +180,34 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton btn_Cadastre1;
     private javax.swing.JButton btn_Entrar;
     private javax.swing.JButton btn_EsqueceuSenha;
-    private javax.swing.JTextField c_senha;
-    private javax.swing.JTextField c_usuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JLabel senha;
+    private javax.swing.JPasswordField text_senha;
+    private javax.swing.JTextField text_usuario;
     private javax.swing.JPasswordField tf_senha;
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
+
+    public void exibeMensagem(String mensagem) {
+        JOptionPane.showMessageDialog(null, mensagem);
+    }
+
+    public JPasswordField getText_senha() {
+        return text_senha;
+    }
+
+    public void setText_senha(JPasswordField text_senha) {
+        this.text_senha = text_senha;
+    }
+
+    public JTextField getText_usuario() {
+        return text_usuario;
+    }
+
+    public void setText_usuario(JTextField text_usuario) {
+        this.text_usuario = text_usuario;
+    }
+    
+     
 }
