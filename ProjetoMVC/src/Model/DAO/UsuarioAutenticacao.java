@@ -7,26 +7,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioAutenticacao {
-    private List<Usuario> usuarios = new ArrayList<>();
+    // ARRAYLIST DE USUÁRIOS PARA LOGAR NO SISTEMA
+    public static ArrayList<Usuario> usuarios = new ArrayList<>();
 
-    public void cadastrarUsuario(String nome, String senha) {
-        Usuario novoUsuario = new Usuario(nome, senha);
-        usuarios.add(novoUsuario);
+    public void cadastrarUsuario(Usuario usuario) {
+        usuarios.add(usuario);
 
         // Serializar a lista de usuários em um arquivo
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("usuarios.txt"))) {
-            out.writeObject(usuarios);
+        try{
+            FileOutputStream outFile = new FileOutputStream("usuarios_lista.txt");
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outFile);
+            objectOutputStream.writeObject(UsuarioAutenticacao.usuarios);
+            objectOutputStream.flush();
+            objectOutputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public boolean autenticarUsuario(String nome, String senha) {
-    // Verificar se o usuário e a senha coincidem
-        for (Usuario usuario : usuarios) {
-            if (usuario.getNome().equals(nome) && usuario.getSenha().equals(senha)) {
+    public Boolean autenticarUsuario(Usuario usuario) {
+    // Verificar se o usuário e a senha 
+        String nome = usuario.getNome();
+        String senha = usuario.getSenha();
+        for (Usuario user : usuarios)
+            if (user.getNome().equals(nome) && user.getSenha().equals(senha)) {
                 return true;
             }
-        }
         return false;
+        }
+        
     }
-}
+

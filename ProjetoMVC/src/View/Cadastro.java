@@ -4,17 +4,21 @@
  */
 package View;
 
+import Controller.CadastroController;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Usuário
  */
 public class Cadastro extends javax.swing.JFrame {
-
+    private final CadastroController controller;
     /**
      * Creates new form Cadastro
      */
     public Cadastro() {
         initComponents();
+        this.controller = new CadastroController(this);
     }
 
     /**
@@ -28,11 +32,11 @@ public class Cadastro extends javax.swing.JFrame {
 
         jTextField1 = new javax.swing.JTextField();
         lb_nome = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        tf_nome = new javax.swing.JTextField();
         lb_email = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         lb_senha = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        tf_senha = new javax.swing.JTextField();
         lb_repetirSenha = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
         btn_cadastrar = new javax.swing.JButton();
@@ -48,14 +52,14 @@ public class Cadastro extends javax.swing.JFrame {
         lb_nome.setText("Nome:");
         getContentPane().add(lb_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, -1, -1));
 
-        jTextField8.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 141, 185), 2, true));
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        tf_nome.setBackground(new java.awt.Color(255, 255, 255));
+        tf_nome.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 141, 185), 2, true));
+        tf_nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                tf_nomeActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 330, 40));
+        getContentPane().add(tf_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 330, 40));
 
         lb_email.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         lb_email.setForeground(new java.awt.Color(1, 141, 185));
@@ -76,14 +80,14 @@ public class Cadastro extends javax.swing.JFrame {
         lb_senha.setText("Senha:");
         getContentPane().add(lb_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 60, -1));
 
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 141, 185), 2, true));
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        tf_senha.setBackground(new java.awt.Color(255, 255, 255));
+        tf_senha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 141, 185), 2, true));
+        tf_senha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                tf_senhaActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 330, 40));
+        getContentPane().add(tf_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 330, 40));
 
         lb_repetirSenha.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         lb_repetirSenha.setForeground(new java.awt.Color(1, 141, 185));
@@ -91,7 +95,6 @@ public class Cadastro extends javax.swing.JFrame {
         getContentPane().add(lb_repetirSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, -1, -1));
 
         jTextField7.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField7.setForeground(new java.awt.Color(0, 102, 204));
         jTextField7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 141, 185), 2, true));
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,22 +121,21 @@ public class Cadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void tf_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_senhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_tf_senhaActionPerformed
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void tf_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_nomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_tf_nomeActionPerformed
 
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
-         // Ação após clicar no Botão Cadastrar
-        MenuPrincipal novoFrame = new MenuPrincipal();
-        novoFrame.setVisible(true);
+        this.controller.cadastrarNoSistema();
+        this.controller.navegarParaLogin();
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     /**
@@ -176,12 +178,33 @@ public class Cadastro extends javax.swing.JFrame {
     private javax.swing.JButton btn_cadastrar;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JLabel lb_email;
     private javax.swing.JLabel lb_nome;
     private javax.swing.JLabel lb_repetirSenha;
     private javax.swing.JLabel lb_senha;
+    private javax.swing.JTextField tf_nome;
+    private javax.swing.JTextField tf_senha;
     // End of variables declaration//GEN-END:variables
+
+    public JTextField getTf_nome() {
+        return tf_nome;
+    }
+
+    public void setTf_nome(JTextField tf_nome) {
+        this.tf_nome = tf_nome;
+    }
+
+    public JTextField getTf_senha() {
+        return tf_senha;
+    }
+
+    public void setTf_senha(JTextField tf_senha) {
+        this.tf_senha = tf_senha;
+    }
+
+    
+
 }
+
+

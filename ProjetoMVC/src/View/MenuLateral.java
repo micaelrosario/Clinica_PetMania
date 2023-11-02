@@ -84,6 +84,11 @@ public class MenuLateral extends javax.swing.JFrame {
 
         jButton6.setContentAreaFilled(false);
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 480, 100, 30));
 
         MenuLateral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/MenuLateral.png"))); // NOI18N
@@ -117,6 +122,11 @@ public class MenuLateral extends javax.swing.JFrame {
         HistoricoCliente novoFrame = new HistoricoCliente();
         novoFrame.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        Login novoFrame = new Login();
+        novoFrame.setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments

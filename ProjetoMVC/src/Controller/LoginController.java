@@ -3,7 +3,10 @@ package Controller;
 
 import View.Login;
 import Controller.Helper.LoginHelper;
+import Model.DAO.UsuarioAutenticacao;
+import static Model.DAO.UsuarioAutenticacao.usuarios;
 import Model.Usuario;
+import View.MenuPrincipal;
 
 
 public class LoginController {
@@ -20,8 +23,19 @@ public class LoginController {
         //Pegar Usuário da view
         Usuario usuario = helper.obterModelo();
         
+        //Pesquisar Usuário no Banco e Comparar 
+        UsuarioAutenticacao usuarioBanco = new UsuarioAutenticacao();
+        Boolean usuarioAutenticado = usuarioBanco.autenticarUsuario(usuario);
+                
         
-        //Pesquisar Usuário no Banco e Comparar se são os mesmo
+        // Verifique se as credenciais do usuário correspondem a algum usuário no ArrayList
+        if(usuarioAutenticado){
+            MenuPrincipal menu = new MenuPrincipal();
+            menu.setVisible(true);
+        }else{
+            view.exibeMensagem("Usuário ou senha inválidos!");
+        }
+        
         //Se for igual, redirecionar para o Menu
         //Se não, mostrar mensagem "Usuário ou senha Inválidos"
     }

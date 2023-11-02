@@ -1,6 +1,8 @@
 
 package Controller.Helper;
 
+import Model.DAO.UsuarioAutenticacao;
+import static Model.DAO.UsuarioAutenticacao.usuarios;
 import Model.Usuario;
 import View.Login;
 

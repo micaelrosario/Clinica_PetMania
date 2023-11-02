@@ -21,7 +21,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
-        controller = new LoginController(this);
+        this.controller = new LoginController(this);
     }
 
     /**
@@ -74,7 +74,7 @@ public class Login extends javax.swing.JFrame {
                 btn_EntrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_Entrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 140, 40));
+        getContentPane().add(btn_Entrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 140, 40));
 
         btn_Cadastre1.setContentAreaFilled(false);
         btn_Cadastre1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -124,11 +124,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btn_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EntrarActionPerformed
         // Ação após clicar no Botão Entrar
-        this.controller.fizTarefa();
-        System.out.println(text_usuario.getText()); //usuário
-        System.out.println(text_senha.getText()); // senha
-        /*MenuPrincipal novoFrame = new MenuPrincipal();
-        novoFrame.setVisible(true);*/
+        this.controller.entrarNoSistema();
     }//GEN-LAST:event_btn_EntrarActionPerformed
 
     private void btn_Cadastre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Cadastre1ActionPerformed
