@@ -5,8 +5,9 @@ import Model.DAO.UsuarioAutenticacao;
 import static Model.DAO.UsuarioAutenticacao.usuarios;
 import Model.Usuario;
 import View.Login;
+import java.io.Serializable;
 
-public class LoginHelper {
+public class LoginHelper implements Serializable{
     
     private final Login view;
 

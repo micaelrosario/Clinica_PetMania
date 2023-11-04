@@ -4,17 +4,22 @@
  */
 package View;
 
+import Controller.PetController;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Usuário
  */
 public class AdicionarPet extends javax.swing.JFrame {
-
+    
+    private final PetController controller;
     /**
      * Creates new form AdicionarPet
      */
     public AdicionarPet() {
         initComponents();
+        this.controller = new PetController(this);
     }
 
     /**
@@ -29,11 +34,11 @@ public class AdicionarPet extends javax.swing.JFrame {
         lb_nome2 = new javax.swing.JLabel();
         lb_especie = new javax.swing.JLabel();
         lb_idade = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        tf_nome = new javax.swing.JTextField();
+        tf_raca = new javax.swing.JTextField();
+        tf_idade = new javax.swing.JTextField();
+        btn_voltar = new javax.swing.JButton();
+        btn_salvar = new javax.swing.JButton();
         AdicionarPet = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,48 +59,54 @@ public class AdicionarPet extends javax.swing.JFrame {
         lb_idade.setText("Idade:");
         getContentPane().add(lb_idade, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, -1, -1));
 
-        jTextField10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 141, 185), 2, true));
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+        tf_nome.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 141, 185), 2, true));
+        tf_nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
+                tf_nomeActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 320, 40));
+        getContentPane().add(tf_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 320, 40));
 
-        jTextField9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 141, 185), 2, true));
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        tf_raca.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 141, 185), 2, true));
+        tf_raca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                tf_racaActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 160, 40));
+        getContentPane().add(tf_raca, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 160, 40));
 
-        jTextField8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 141, 185), 2, true));
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        tf_idade.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 141, 185), 2, true));
+        tf_idade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                tf_idadeActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, 80, 40));
+        getContentPane().add(tf_idade, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, 80, 40));
 
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addInputMethodListener(new java.awt.event.InputMethodListener() {
+        btn_voltar.setContentAreaFilled(false);
+        btn_voltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_voltar.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-                jButton1CaretPositionChanged(evt);
+                btn_voltarCaretPositionChanged(evt);
             }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_voltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_voltarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, 120, 40));
+        getContentPane().add(btn_voltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, 120, 40));
 
-        jButton2.setContentAreaFilled(false);
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, 120, 40));
+        btn_salvar.setContentAreaFilled(false);
+        btn_salvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_salvarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_salvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, 120, 40));
 
         AdicionarPet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/AdicionarPet.png"))); // NOI18N
         getContentPane().add(AdicionarPet, new org.netbeans.lib.awtextra.AbsoluteConstraints(-11, 0, 750, -1));
@@ -103,27 +114,30 @@ public class AdicionarPet extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void tf_idadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_idadeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_tf_idadeActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void tf_racaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_racaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+    }//GEN-LAST:event_tf_racaActionPerformed
 
-    private void jButton1CaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jButton1CaretPositionChanged
+    private void btn_voltarCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_btn_voltarCaretPositionChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1CaretPositionChanged
+    }//GEN-LAST:event_btn_voltarCaretPositionChanged
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+    private void tf_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_nomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
+    }//GEN-LAST:event_tf_nomeActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
          // Ação após clicar no Botão Voltar
-        SubMenuCadastro novoFrame = new SubMenuCadastro();
-        novoFrame.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.controller.voltarAoMenu();
+    }//GEN-LAST:event_btn_voltarActionPerformed
+
+    private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
+        this.controller.cadastrarPet();
+    }//GEN-LAST:event_btn_salvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,13 +176,38 @@ public class AdicionarPet extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AdicionarPet;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JButton btn_salvar;
+    private javax.swing.JButton btn_voltar;
     private javax.swing.JLabel lb_especie;
     private javax.swing.JLabel lb_idade;
     private javax.swing.JLabel lb_nome2;
+    private javax.swing.JTextField tf_idade;
+    private javax.swing.JTextField tf_nome;
+    private javax.swing.JTextField tf_raca;
     // End of variables declaration//GEN-END:variables
+
+    public JTextField getTf_nome() {
+        return tf_nome;
+    }
+
+    public void setTf_nome(JTextField tf_nome) {
+        this.tf_nome = tf_nome;
+    }
+
+    public JTextField getTf_raca() {
+        return tf_raca;
+    }
+
+    public void setTf_raca(JTextField tf_raca) {
+        this.tf_raca = tf_raca;
+    }
+
+    public JTextField getTf_idade() {
+        return tf_idade;
+    }
+
+    public void setTf_idade(JTextField tf_idade) {
+        this.tf_idade = tf_idade;
+    }
+    
 }

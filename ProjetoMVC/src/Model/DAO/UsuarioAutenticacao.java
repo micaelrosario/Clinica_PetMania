@@ -6,10 +6,27 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsuarioAutenticacao {
+public class UsuarioAutenticacao implements Serializable{
     // ARRAYLIST DE USUÁRIOS PARA LOGAR NO SISTEMA
     public static ArrayList<Usuario> usuarios = new ArrayList<>();
-
+    
+    
+    // Método para carregar a lista de usuários a partir de um arquivo
+    public void carregarUsuarios() {
+     try {
+         FileInputStream inFile = new FileInputStream("usuarios_lista.txt");
+         ObjectInputStream objectInputStream = new ObjectInputStream(inFile);
+         ArrayList<Usuario> usuariosCarregados = (ArrayList<Usuario>) objectInputStream.readObject();
+         objectInputStream.close();
+         usuarios.clear(); // Limpa a lista atual de usuários
+         usuarios.addAll(usuariosCarregados); // Adiciona os usuários carregados ao ArrayList
+     } catch (IOException | ClassNotFoundException e) {
+         // Lidar com exceções, por exemplo, se o arquivo não existir
+         e.printStackTrace();
+     }
+ }
+    
+    
     public void cadastrarUsuario(Usuario usuario) {
         usuarios.add(usuario);
 

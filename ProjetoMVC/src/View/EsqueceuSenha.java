@@ -15,6 +15,8 @@ public class EsqueceuSenha extends javax.swing.JFrame {
      */
     public EsqueceuSenha() {
         initComponents();
+        text_email.setOpaque(false);
+        text_email.setBackground(new java.awt.Color(0,0,0,0));
     }
 
     /**
@@ -26,16 +28,13 @@ public class EsqueceuSenha extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        email = new javax.swing.JLabel();
         enviar = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
+        text_email = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        email.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        getContentPane().add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, 350, 40));
 
         enviar.setBorder(null);
         enviar.setBorderPainted(false);
@@ -59,6 +58,15 @@ public class EsqueceuSenha extends javax.swing.JFrame {
         });
         getContentPane().add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 80, 20));
 
+        text_email.setBackground(new java.awt.Color(255, 255, 255));
+        text_email.setBorder(null);
+        text_email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                text_emailActionPerformed(evt);
+            }
+        });
+        getContentPane().add(text_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, 280, 40));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Tela_EsqueceuSenha.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 765, 537));
@@ -75,6 +83,10 @@ public class EsqueceuSenha extends javax.swing.JFrame {
         Login novoFrame = new Login();
         novoFrame.setVisible(true);
     }//GEN-LAST:event_cancelarActionPerformed
+
+    private void text_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_emailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_text_emailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,8 +125,8 @@ public class EsqueceuSenha extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelar;
-    private javax.swing.JLabel email;
     private javax.swing.JButton enviar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField text_email;
     // End of variables declaration//GEN-END:variables
 }

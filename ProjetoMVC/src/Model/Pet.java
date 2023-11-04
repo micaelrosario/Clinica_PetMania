@@ -10,17 +10,13 @@ public class Pet extends Animal{
         this.id_Dono = id_Dono;
     }
 
-    public Pet(String nome, String especie, int idade, int id_Dono) {
-        super(nome, especie, idade);
+    public Pet(String nome, String raca, String idade, int id_Dono) {
+        super(nome, raca, idade);
         this.id_Dono = id_Dono;
     }
     
-    // MÉTODO ESPECÍFICO
-    public String ExibirDados(){
-        return "===== DADOS DO PET ====="+
-                        "\nNome: "+this.nome+
-                        "\nEspecie: "+this.especie+
-                        "\nIdade: "+this.idade+
-                        "\nDono: "+this.id_Dono;
+     @Override
+    public String toString() {
+        return "Nome: " + nome + ", Espécie: " + raca + ", Idade: " + idade;
     }
 }

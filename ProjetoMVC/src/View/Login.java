@@ -22,6 +22,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.controller = new LoginController(this);
+        this.controller.carregarUsuarios();
     }
 
     /**
@@ -92,7 +93,7 @@ public class Login extends javax.swing.JFrame {
                 btn_EsqueceuSenhaActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_EsqueceuSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, 120, 20));
+        getContentPane().add(btn_EsqueceuSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 120, 20));
 
         text_usuario.setBackground(new java.awt.Color(255, 255, 255));
         text_usuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 141, 185), 2, true));
@@ -119,7 +120,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_senhaActionPerformed
 
     private void btn_EsqueceuSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EsqueceuSenhaActionPerformed
-        // TODO add your handling code here:
+        this.controller.esqueciSenha();
     }//GEN-LAST:event_btn_EsqueceuSenhaActionPerformed
 
     private void btn_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EntrarActionPerformed

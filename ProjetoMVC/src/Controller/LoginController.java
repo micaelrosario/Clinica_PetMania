@@ -7,9 +7,11 @@ import Model.DAO.UsuarioAutenticacao;
 import static Model.DAO.UsuarioAutenticacao.usuarios;
 import Model.Usuario;
 import View.MenuPrincipal;
+import View.EsqueceuSenha;
+import java.io.Serializable;
 
 
-public class LoginController {
+public class LoginController implements Serializable{
 
     private final Login view;
     private LoginHelper helper;
@@ -43,8 +45,14 @@ public class LoginController {
         System.out.println("Busquei algo do banco de dados");
         this.view.exibeMensagem("Executei o fiz tarefa");
     }
+    public void carregarUsuarios() {
+        UsuarioAutenticacao usuarioBanco = new UsuarioAutenticacao();
+        usuarioBanco.carregarUsuarios();
+    }
 
-    
-    
+    public void esqueciSenha() {
+        EsqueceuSenha senha = new EsqueceuSenha();
+        senha.setVisible(true);
+    }
     
 }
