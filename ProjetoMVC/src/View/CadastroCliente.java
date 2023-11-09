@@ -4,6 +4,8 @@
  */
 package View;
 
+import javax.swing.JTextField;
+
 /**
  *
  * @author Usuário
@@ -29,11 +31,13 @@ public class CadastroCliente extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        Fundo_Cadastro_Cliente = new javax.swing.JLabel();
+        tf_nome = new javax.swing.JTextField();
+        tf_telefone = new javax.swing.JTextField();
+        tf_cpf = new javax.swing.JTextField();
+        tf_endereco = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        Fundo_CadastrarCliente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -53,32 +57,47 @@ public class CadastroCliente extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 40, 50));
 
-        jTextField1.setBorder(null);
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 126, 220, 30));
+        tf_nome.setBorder(null);
+        getContentPane().add(tf_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 126, 220, 30));
 
-        jTextField2.setBorder(null);
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 126, 200, 30));
+        tf_telefone.setBorder(null);
+        getContentPane().add(tf_telefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 126, 200, 30));
 
-        jTextField3.setBorder(null);
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 220, 30));
+        tf_cpf.setBorder(null);
+        getContentPane().add(tf_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 220, 30));
 
-        jTextField4.setBorder(null);
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        tf_endereco.setBorder(null);
+        tf_endereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                tf_enderecoActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 210, 200, 30));
+        getContentPane().add(tf_endereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 210, 200, 30));
 
-        Fundo_Cadastro_Cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/CadastroCliente.png"))); // NOI18N
-        getContentPane().add(Fundo_Cadastro_Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 540));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nome", "Telefone", "Cpf", "Endereço"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 690, 150));
+
+        Fundo_CadastrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/CadastroCliente.png"))); // NOI18N
+        getContentPane().add(Fundo_CadastrarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 760, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void tf_enderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_enderecoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_tf_enderecoActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
          // Ação após clicar no Botão Voltar
@@ -122,13 +141,20 @@ public class CadastroCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Fundo_Cadastro_Cliente;
+    private javax.swing.JLabel Fundo_CadastrarCliente;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField tf_cpf;
+    private javax.swing.JTextField tf_endereco;
+    private javax.swing.JTextField tf_nome;
+    private javax.swing.JTextField tf_telefone;
     // End of variables declaration//GEN-END:variables
+
+    
+    
+
+    
 }
