@@ -153,6 +153,38 @@ public class CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JTextField tf_telefone;
     // End of variables declaration//GEN-END:variables
 
+    public JTextField getTf_cpf() {
+        return tf_cpf;
+    }
+
+    public void setTf_cpf(JTextField tf_cpf) {
+        this.tf_cpf = tf_cpf;
+    }
+
+    public JTextField getTf_endereco() {
+        return tf_endereco;
+    }
+
+    public void setTf_endereco(JTextField tf_endereco) {
+        this.tf_endereco = tf_endereco;
+    }
+
+    public JTextField getTf_nome() {
+        return tf_nome;
+    }
+
+    public void setTf_nome(JTextField tf_nome) {
+        this.tf_nome = tf_nome;
+    }
+
+    public JTextField getTf_telefone() {
+        return tf_telefone;
+    }
+
+    public void setTf_telefone(JTextField tf_telefone) {
+        this.tf_telefone = tf_telefone;
+    }
+
     
     
 

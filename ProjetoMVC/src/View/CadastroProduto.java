@@ -35,9 +35,12 @@ public class CadastroProduto extends javax.swing.JFrame {
         tf_fornecedor = new javax.swing.JTextField();
         tf_valor = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         Fundo_CadastroProduto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_voltar.setContentAreaFilled(false);
@@ -74,6 +77,21 @@ public class CadastroProduto extends javax.swing.JFrame {
 
         jTextField1.setBorder(null);
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 286, 190, 30));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nome", "Código", "Fornecedor", "Valor"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 660, 140));
 
         Fundo_CadastroProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/CadastroProduto.png"))); // NOI18N
         getContentPane().add(Fundo_CadastroProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 740, 560));
@@ -131,6 +149,8 @@ public class CadastroProduto extends javax.swing.JFrame {
     private javax.swing.JButton btn_cadastrar;
     private javax.swing.JButton btn_excluir;
     private javax.swing.JButton btn_voltar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField tf_fornecedor;
     private javax.swing.JTextField tf_id;

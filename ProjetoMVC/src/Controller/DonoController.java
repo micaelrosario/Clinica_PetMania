@@ -4,6 +4,9 @@
  */
 package Controller;
 
+import Controller.Helper.DonoHelper;
+import Model.DAO.DonoDAO;
+import Model.Dono;
 import View.CadastroCliente;
 import View.SubMenuCadastro;
 import java.io.Serializable;
@@ -18,7 +21,7 @@ public class DonoController implements Serializable {
 
     public DonoController(CadastroCliente view) {
         this.view = view;
-        this.helper = new DonoHelper(helper);
+        this.helper = new DonoHelper(view);
     }
     
     public void cadastrarCliente(){
@@ -26,7 +29,7 @@ public class DonoController implements Serializable {
         Dono dono = helper.obterModelo();
         
         DonoDAO donoDao = new DonoDAO();
-        donoDao.cadastrarCliente(dono);
+        donoDao.cadastrarDono(dono);
     }
      
     public void voltarAoMenu(){

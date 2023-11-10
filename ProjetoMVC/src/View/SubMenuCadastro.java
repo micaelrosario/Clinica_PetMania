@@ -34,6 +34,7 @@ public class SubMenuCadastro extends javax.swing.JFrame {
         SubMenuCadastro = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_voltar.setContentAreaFilled(false);

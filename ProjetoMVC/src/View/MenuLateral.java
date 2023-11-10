@@ -35,6 +35,7 @@ public class MenuLateral extends javax.swing.JFrame {
         MenuLateral = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setContentAreaFilled(false);

@@ -34,9 +34,11 @@ public class CarrinhoCompra extends javax.swing.JFrame {
         jCheckBox6 = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        CarrinhoCompras = new javax.swing.JLabel();
+        FundoCarrinho = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("CarrinhoCompra");
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
         getContentPane().add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
@@ -64,8 +66,8 @@ public class CarrinhoCompra extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 50, 40));
 
-        CarrinhoCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/CarrinhoCompra.png"))); // NOI18N
-        getContentPane().add(CarrinhoCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 800, 610));
+        FundoCarrinho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/CarrinhoCompra.png"))); // NOI18N
+        getContentPane().add(FundoCarrinho, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -115,7 +117,7 @@ public class CarrinhoCompra extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel CarrinhoCompras;
+    private javax.swing.JLabel FundoCarrinho;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;

@@ -45,6 +45,7 @@ public class Cadastro extends javax.swing.JFrame {
         jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lb_nome.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N

@@ -33,9 +33,12 @@ public class CadastroServiço extends javax.swing.JFrame {
         tf_funcionario = new javax.swing.JTextField();
         tf_valor = new javax.swing.JTextField();
         tf_nome = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_excluir_servico.setContentAreaFilled(false);
@@ -94,6 +97,21 @@ public class CadastroServiço extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tf_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 190, 30));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nome", "Id", "Funcionário", "Valor"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 690, 140));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/CadastroServiço.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 760, 540));
@@ -171,6 +189,8 @@ public class CadastroServiço extends javax.swing.JFrame {
     private javax.swing.JButton btn_excluir_servico;
     private javax.swing.JButton btn_voltar_servico;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField tf_funcionario;
     private javax.swing.JTextField tf_id;
     private javax.swing.JTextField tf_nome;

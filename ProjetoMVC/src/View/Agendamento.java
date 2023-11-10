@@ -46,6 +46,7 @@ public class Agendamento extends javax.swing.JFrame {
         Agendamento = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_cancelar.setContentAreaFilled(false);
@@ -64,7 +65,6 @@ public class Agendamento extends javax.swing.JFrame {
         cb_cliente.setForeground(new java.awt.Color(0, 0, 0,0));
         cb_cliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cb_cliente.setBorder(null);
-        cb_cliente.setOpaque(false);
         cb_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_clienteActionPerformed(evt);
@@ -75,7 +75,6 @@ public class Agendamento extends javax.swing.JFrame {
         cb_proced.setForeground(new java.awt.Color(0, 0, 0,0));
         cb_proced.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cb_proced.setBorder(null);
-        cb_proced.setOpaque(false);
         cb_proced.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_procedActionPerformed(evt);
@@ -86,7 +85,6 @@ public class Agendamento extends javax.swing.JFrame {
         cb_produto.setForeground(new java.awt.Color(0, 0, 0,0));
         cb_produto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cb_produto.setBorder(null);
-        cb_produto.setOpaque(false);
         cb_produto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_produtoActionPerformed(evt);
@@ -97,7 +95,6 @@ public class Agendamento extends javax.swing.JFrame {
         cb_pet.setForeground(new java.awt.Color(0, 0, 0,0));
         cb_pet.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cb_pet.setBorder(null);
-        cb_pet.setOpaque(false);
         cb_pet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_petActionPerformed(evt);

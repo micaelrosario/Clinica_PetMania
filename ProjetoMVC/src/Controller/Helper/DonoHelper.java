@@ -1,6 +1,7 @@
 
 package Controller.Helper;
 
+import Model.Dono;
 import View.CadastroCliente;
 import java.io.Serializable;
 
@@ -15,9 +16,9 @@ public class DonoHelper implements Serializable {
     public Dono obterModelo(){
         String nome = view.getTf_nome().getText();
         String telefone = view.getTf_telefone().getText();
-        String email = view.getTf_email().getText();
+        String cpf = view.getTf_cpf().getText();
         String endereco = view.getTf_endereco().getText();
-        Pet modelo = new Dono(nome, raca,idade,id_Dono);
+        Dono modelo = new Dono(nome, cpf, telefone, endereco);
         return modelo;
     }
 }

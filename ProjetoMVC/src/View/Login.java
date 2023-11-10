@@ -56,6 +56,7 @@ public class Login extends javax.swing.JFrame {
         jTextField5.setText("jTextField5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         usuario.setFont(new java.awt.Font("Consolas", 1, 16)); // NOI18N

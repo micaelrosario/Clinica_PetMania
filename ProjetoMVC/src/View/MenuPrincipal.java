@@ -37,6 +37,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         MenuPrincipal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         carrinho.setContentAreaFilled(false);

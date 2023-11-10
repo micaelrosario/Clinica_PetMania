@@ -39,6 +39,7 @@ public class AdicionarPet extends javax.swing.JFrame {
         tf_idade = new javax.swing.JTextField();
         btn_voltar = new javax.swing.JButton();
         btn_salvar = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
         AdicionarPet = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -108,8 +109,12 @@ public class AdicionarPet extends javax.swing.JFrame {
         });
         getContentPane().add(btn_salvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, 120, 40));
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 240, 70));
+
         AdicionarPet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/AdicionarPet.png"))); // NOI18N
-        getContentPane().add(AdicionarPet, new org.netbeans.lib.awtextra.AbsoluteConstraints(-11, 0, 750, -1));
+        getContentPane().add(AdicionarPet, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -178,6 +183,7 @@ public class AdicionarPet extends javax.swing.JFrame {
     private javax.swing.JLabel AdicionarPet;
     private javax.swing.JButton btn_salvar;
     private javax.swing.JButton btn_voltar;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel lb_especie;
     private javax.swing.JLabel lb_idade;
     private javax.swing.JLabel lb_nome2;
