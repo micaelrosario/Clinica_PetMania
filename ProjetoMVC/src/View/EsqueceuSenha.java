@@ -4,6 +4,8 @@
  */
 package View;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author pawpa
@@ -76,6 +78,12 @@ public class EsqueceuSenha extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarActionPerformed
+        JOptionPane.showMessageDialog(
+            null, 
+            "Um email foi enviado para redefinir sua senha.\nPor favor, verifique sua caixa de entrada.", 
+            "Email Enviado", 
+            JOptionPane.INFORMATION_MESSAGE
+        );
         Login novoFrame = new Login();
         novoFrame.setVisible(true);
     }//GEN-LAST:event_enviarActionPerformed

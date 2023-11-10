@@ -7,6 +7,7 @@ package Controller.Helper;
 import Model.Usuario;
 import View.Cadastro;
 import View.Login;
+import javax.swing.JOptionPane;
 
 public class CadastroHelper {
     
@@ -17,12 +18,21 @@ public class CadastroHelper {
         this.view = view;
     }
     
-    public Usuario obterModelo(){
+    public Usuario obterModelo() {
         String nome = view.getTf_nome().getText();
         String senha = view.getTf_senha().getText();
+
+        // Verificar se ambos os campos estão preenchidos
+        if (nome.isEmpty() || senha.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos.");
+            return null;  // Retorna null se há campos não preenchidos
+        }
+
+        // Retorna um objeto Usuario se os campos estiverem preenchidos
         Usuario modelo = new Usuario(nome, senha);
         return modelo;
-    }
+}
+
     
     public void setarModelo(Usuario modelo){
         String nome = modelo.getNome();

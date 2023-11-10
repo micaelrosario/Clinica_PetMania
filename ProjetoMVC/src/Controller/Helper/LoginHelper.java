@@ -6,6 +6,7 @@ import static Model.DAO.UsuarioAutenticacao.usuarios;
 import Model.Usuario;
 import View.Login;
 import java.io.Serializable;
+import javax.swing.JOptionPane;
 
 public class LoginHelper implements Serializable{
     
@@ -18,6 +19,13 @@ public class LoginHelper implements Serializable{
     public Usuario obterModelo(){
         String nome = view.getText_usuario().getText();
         String senha = view.getText_senha().getText();
+        // Verificar se ambos os campos estão preenchidos
+        if (nome.isEmpty() || senha.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos.");
+            return null;  // Retorna null se há campos não preenchidos
+        }
+
+        // Retorna um objeto Usuario se os campos estiverem preenchidos
         Usuario modelo = new Usuario(nome, senha);
         return modelo;
     }

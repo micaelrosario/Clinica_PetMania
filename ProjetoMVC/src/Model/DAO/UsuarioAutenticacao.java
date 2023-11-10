@@ -50,7 +50,7 @@ public class UsuarioAutenticacao implements Serializable{
                 return true;
             }
         return false;
-        }
+    }
         
     }
 

@@ -85,7 +85,7 @@ public class Login extends javax.swing.JFrame {
                 btn_Cadastre1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_Cadastre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 430, 110, 20));
+        getContentPane().add(btn_Cadastre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, 110, 30));
 
         btn_EsqueceuSenha.setContentAreaFilled(false);
         btn_EsqueceuSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

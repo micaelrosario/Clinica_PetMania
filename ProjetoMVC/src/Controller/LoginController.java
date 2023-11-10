@@ -9,6 +9,7 @@ import Model.Usuario;
 import View.MenuPrincipal;
 import View.EsqueceuSenha;
 import java.io.Serializable;
+import javax.swing.JOptionPane;
 
 
 public class LoginController implements Serializable{
@@ -22,28 +23,32 @@ public class LoginController implements Serializable{
     }
     
     public void entrarNoSistema(){
-        //Pegar Usuário da view
-        Usuario usuario = helper.obterModelo();
-        
-        //Pesquisar Usuário no Banco e Comparar 
-        UsuarioAutenticacao usuarioBanco = new UsuarioAutenticacao();
-        Boolean usuarioAutenticado = usuarioBanco.autenticarUsuario(usuario);
+      
+            //Pegar Usuário da view
+            Usuario usuario = helper.obterModelo();
+            
+            //Pesquisar Usuário no Banco e Comparar 
+            UsuarioAutenticacao usuarioBanco = new UsuarioAutenticacao();
+            Boolean usuarioAutenticado = usuarioBanco.autenticarUsuario(usuario);
+
+
+            // Verifique se as credenciais do usuário correspondem a algum usuário no ArrayList
+            if(usuarioAutenticado){
+                // Usuário autenticado com sucesso
+                JOptionPane.showMessageDialog(null, "Login bem-sucedido! Bem-vindo, " + usuario.getNome() + "!");
+                MenuPrincipal menu = new MenuPrincipal();
+                menu.setVisible(true);
+            }
                 
-        
-        // Verifique se as credenciais do usuário correspondem a algum usuário no ArrayList
-        if(usuarioAutenticado){
-            MenuPrincipal menu = new MenuPrincipal();
-            menu.setVisible(true);
-        }else{
-            view.exibeMensagem("Usuário ou senha inválidos!");
-        }
-        
+            
+        /* catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Usuário não encontrado. Verifique suas credenciais e tente novamente.");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao fazer login: " + e.getMessage());
+        }*/
         //Se for igual, redirecionar para o Menu
         //Se não, mostrar mensagem "Usuário ou senha Inválidos"
-    }
-    public void fizTarefa() {
-        System.out.println("Busquei algo do banco de dados");
-        this.view.exibeMensagem("Executei o fiz tarefa");
     }
     public void carregarUsuarios() {
         UsuarioAutenticacao usuarioBanco = new UsuarioAutenticacao();

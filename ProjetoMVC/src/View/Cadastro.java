@@ -136,7 +136,7 @@ public class Cadastro extends javax.swing.JFrame {
 
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
         this.controller.cadastrarNoSistema();
-        this.controller.navegarParaLogin();
+        //this.controller.navegarParaLogin();
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     /**

@@ -10,6 +10,7 @@ import static Model.DAO.UsuarioAutenticacao.usuarios;
 import Model.Usuario;
 import View.Cadastro;
 import View.Login;
+import javax.swing.JOptionPane;
 
 public class CadastroController {
     private  final Cadastro view;
@@ -21,11 +22,24 @@ public class CadastroController {
     }
     
     public void cadastrarNoSistema(){
-        // Criar um usuário apartir do nome e senha em View Cadastro
-        Usuario usuario = helper.obterModelo();
-        // Colocar esse usuário na lista de usuários
-        UsuarioAutenticacao autenticacao = new UsuarioAutenticacao();
-        autenticacao.cadastrarUsuario(usuario);
+        try {
+            
+            // Criar um usuário a partir do nome e senha em View Cadastro
+            Usuario usuario = helper.obterModelo();
+            if(usuario != null){
+                // Colocar esse usuário na lista de usuários
+                UsuarioAutenticacao autenticacao = new UsuarioAutenticacao();
+                autenticacao.cadastrarUsuario(usuario);
+                JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!");
+                navegarParaLogin();
+            }
+
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao Cadastrar Usuário: Campos não preenchidos.");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao Cadastrar Usuário: " + e.getMessage());
+        }
         
         
     }
