@@ -16,12 +16,13 @@ public class LoginHelper implements Serializable{
         this.view = view;
     }
     
-    public Usuario obterModelo(){
+    public Usuario obterModelo() {
         String nome = view.getText_usuario().getText();
         String senha = view.getText_senha().getText();
+
         // Verificar se ambos os campos estão preenchidos
         if (nome.isEmpty() || senha.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos.");
+            //JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos.");
             return null;  // Retorna null se há campos não preenchidos
         }
 
@@ -29,6 +30,7 @@ public class LoginHelper implements Serializable{
         Usuario modelo = new Usuario(nome, senha);
         return modelo;
     }
+
     
     public void setarModelo(Usuario modelo){
         String nome = modelo.getNome();

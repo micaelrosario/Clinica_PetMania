@@ -23,19 +23,18 @@ public class CadastroController {
     
     public void cadastrarNoSistema(){
         try {
-            
             // Criar um usuário a partir do nome e senha em View Cadastro
             Usuario usuario = helper.obterModelo();
-            if(usuario != null){
+
+            if (usuario != null) {
                 // Colocar esse usuário na lista de usuários
                 UsuarioAutenticacao autenticacao = new UsuarioAutenticacao();
                 autenticacao.cadastrarUsuario(usuario);
                 JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!");
                 navegarParaLogin();
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao Cadastrar Usuário: Campos não preenchidos.");
             }
-
-        } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao Cadastrar Usuário: Campos não preenchidos.");
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao Cadastrar Usuário: " + e.getMessage());

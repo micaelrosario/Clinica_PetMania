@@ -46,7 +46,7 @@ public class UsuarioAutenticacao implements Serializable{
         String nome = usuario.getNome();
         String senha = usuario.getSenha();
         for (Usuario user : usuarios)
-            if (user.getNome().equals(nome) && user.getSenha().equals(senha)) {
+            if (user != null && user.getNome().equals(nome) && user.getSenha().equals(senha)) {
                 return true;
             }
         return false;
