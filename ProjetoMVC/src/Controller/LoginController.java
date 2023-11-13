@@ -73,11 +73,9 @@ public class LoginController implements Serializable{
     }
     public void carregarMenuPrincipal(){
         MenuPrincipal menu = new MenuPrincipal();
-        Login login = new Login();
         menu.setVisible(true);
-        // Fechar a tela de login
-        SwingUtilities.invokeLater(() -> {
-        login.dispose();
-    });
+        // Feche a janela de login
+        this.view.dispose();
+    };
     }
-}
+

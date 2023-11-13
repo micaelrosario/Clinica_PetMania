@@ -36,7 +36,7 @@ public class CarrinhoCompra extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         FundoCarrinho = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CarrinhoCompra");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

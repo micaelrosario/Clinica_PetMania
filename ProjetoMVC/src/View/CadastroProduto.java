@@ -1,5 +1,9 @@
 package View;
 
+import Controller.ProdutoController;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -10,12 +14,14 @@ package View;
  * @author Usuário
  */
 public class CadastroProduto extends javax.swing.JFrame {
-
+    
+    private final ProdutoController controller;
     /**
      * Creates new form CadastroProduto
      */
     public CadastroProduto() {
         initComponents();
+        controller = new ProdutoController(this);
     }
 
     /**
@@ -34,12 +40,11 @@ public class CadastroProduto extends javax.swing.JFrame {
         tf_id = new javax.swing.JTextField();
         tf_fornecedor = new javax.swing.JTextField();
         tf_valor = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        tf_validade = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableProdutos = new javax.swing.JTable();
         Fundo_CadastroProduto = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -53,6 +58,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         getContentPane().add(btn_voltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 40, 40));
 
         btn_cadastrar.setContentAreaFilled(false);
+        btn_cadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cadastrarActionPerformed(evt);
@@ -61,35 +67,33 @@ public class CadastroProduto extends javax.swing.JFrame {
         getContentPane().add(btn_cadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, 90, 40));
 
         btn_excluir.setContentAreaFilled(false);
+        btn_excluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(btn_excluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 90, 40));
 
         tf_nome.setBorder(null);
-        getContentPane().add(tf_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 180, 30));
+        getContentPane().add(tf_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 150, 30));
 
         tf_id.setBorder(null);
-        getContentPane().add(tf_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 190, 30));
+        getContentPane().add(tf_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 150, 30));
 
         tf_fornecedor.setBorder(null);
-        getContentPane().add(tf_fornecedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 180, 30));
+        getContentPane().add(tf_fornecedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 150, 30));
 
         tf_valor.setBorder(null);
-        getContentPane().add(tf_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, 160, 30));
+        getContentPane().add(tf_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 200, 100, 30));
 
-        jTextField1.setBorder(null);
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 286, 190, 30));
+        tf_validade.setBorder(null);
+        getContentPane().add(tf_validade, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 286, 130, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Nome", "Código", "Fornecedor", "Valor"
+                "Nome", "Código", "Fornecedor", "Valor", "Validade"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableProdutos);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 660, 140));
 
@@ -100,7 +104,7 @@ public class CadastroProduto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
-        // TODO add your handling code here:
+        this.controller.cadastrarProduto();
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
@@ -150,11 +154,67 @@ public class CadastroProduto extends javax.swing.JFrame {
     private javax.swing.JButton btn_excluir;
     private javax.swing.JButton btn_voltar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tableProdutos;
     private javax.swing.JTextField tf_fornecedor;
     private javax.swing.JTextField tf_id;
     private javax.swing.JTextField tf_nome;
+    private javax.swing.JTextField tf_validade;
     private javax.swing.JTextField tf_valor;
     // End of variables declaration//GEN-END:variables
+
+    private void iniciar(){
+        this.controller.atualizaTabela();
+    }
+
+    public JTable getTableProdutos() {
+        return tableProdutos;
+    }
+
+    public void setTableProdutos(JTable tableProdutos) {
+        this.tableProdutos = tableProdutos;
+    }
+
+    public JTextField getTf_fornecedor() {
+        return tf_fornecedor;
+    }
+
+    public void setTf_fornecedor(JTextField tf_fornecedor) {
+        this.tf_fornecedor = tf_fornecedor;
+    }
+
+    public JTextField getTf_id() {
+        return tf_id;
+    }
+
+    public void setTf_id(JTextField tf_id) {
+        this.tf_id = tf_id;
+    }
+
+    public JTextField getTf_nome() {
+        return tf_nome;
+    }
+
+    public void setTf_nome(JTextField tf_nome) {
+        this.tf_nome = tf_nome;
+    }
+
+    public JTextField getTf_validade() {
+        return tf_validade;
+    }
+
+    public void setTf_validade(JTextField tf_validade) {
+        this.tf_validade = tf_validade;
+    }
+
+    public JTextField getTf_valor() {
+        return tf_valor;
+    }
+
+    public void setTf_valor(JTextField tf_valor) {
+        this.tf_valor = tf_valor;
+    }
+    
+    
+    
+    
 }

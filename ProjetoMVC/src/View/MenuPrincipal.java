@@ -4,6 +4,7 @@
  */
 package View;
 
+import Controller.MenuPrincipalController;
 import javax.swing.JFrame;
 
 /**
@@ -11,12 +12,14 @@ import javax.swing.JFrame;
  * @author Usuário
  */
 public class MenuPrincipal extends javax.swing.JFrame {
-
+    
+    private final MenuPrincipalController controller;
     /**
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
         initComponents();
+        this.controller = new MenuPrincipalController(this);
     }
 
     /**
@@ -36,7 +39,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         clienteMenu = new javax.swing.JButton();
         MenuPrincipal = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -102,34 +104,28 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void agendamentoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentoMenuActionPerformed
         // Ação após clicar no Botão Agendamento
-        Agendamento novoFrame = new Agendamento();
-        novoFrame.setVisible(true);
+        this.controller.navegarParaAgendamento();
     }//GEN-LAST:event_agendamentoMenuActionPerformed
 
     private void cadastroMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroMenuActionPerformed
         // Ação após clicar o botão Cadastro
-        SubMenuCadastro novoFrame = new SubMenuCadastro();
-        novoFrame.setVisible(true);
+        this.controller.navegarParaCadastro();
     }//GEN-LAST:event_cadastroMenuActionPerformed
 
     private void clienteMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteMenuActionPerformed
-        HistoricoCliente novoFrame = new HistoricoCliente();
-        novoFrame.setVisible(true);
+        this.controller.navegarParaHistorico();
     }//GEN-LAST:event_clienteMenuActionPerformed
 
     private void compraMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compraMenuActionPerformed
-        CarrinhoCompra novoFrame = new CarrinhoCompra();
-        novoFrame.setVisible(true);
+        this.controller.navegarParaCarrinho();
     }//GEN-LAST:event_compraMenuActionPerformed
 
     private void menuLateralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLateralActionPerformed
-        MenuLateral novoFrame = new MenuLateral();
-        novoFrame.setVisible(true);
+        this.controller.navegarParaMenuLateral();
     }//GEN-LAST:event_menuLateralActionPerformed
 
     private void carrinhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carrinhoActionPerformed
-        CarrinhoCompra novoFrame = new CarrinhoCompra();
-        novoFrame.setVisible(true);
+        this.controller.navegarParaCarrinho();
     }//GEN-LAST:event_carrinhoActionPerformed
 
     /**

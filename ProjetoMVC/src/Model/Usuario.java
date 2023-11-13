@@ -6,7 +6,7 @@ package Model;
 
 import java.io.Serializable;
 
-public class Usuario implements Serializable{
+public class Usuario extends Pessoa implements Serializable{
     private String nome;
     private String senha;
 

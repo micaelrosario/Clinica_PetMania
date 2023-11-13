@@ -4,17 +4,20 @@
  */
 package View;
 
+import Controller.MenuCadastroController;
+
 /**
  *
  * @author Usuário
  */
 public class SubMenuCadastro extends javax.swing.JFrame {
-
+    private final MenuCadastroController controller;
     /**
      * Creates new form SubMenuCadastro
      */
     public SubMenuCadastro() {
         initComponents();
+        this.controller = new MenuCadastroController(this);
     }
 
     /**
@@ -33,7 +36,6 @@ public class SubMenuCadastro extends javax.swing.JFrame {
         btn_Produto = new javax.swing.JButton();
         SubMenuCadastro = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -89,32 +91,27 @@ public class SubMenuCadastro extends javax.swing.JFrame {
 
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
         // Ação após clicar no Botão Voltar
-        MenuPrincipal novoFrame = new MenuPrincipal();
-        novoFrame.setVisible(true);
+        this.controller.navegarParaMenuPrincipal();
     }//GEN-LAST:event_btn_voltarActionPerformed
 
     private void btn_PetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PetActionPerformed
         // Ação após clicar no Botão Cadastrar Pet
-        AdicionarPet novoFrame = new AdicionarPet();
-        novoFrame.setVisible(true);
+        this.controller.navegarParaPet();
     }//GEN-LAST:event_btn_PetActionPerformed
 
     private void btn_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ClienteActionPerformed
         // Ação após clicar no Botão Cadastrar Cliente
-        CadastroCliente novoFrame = new CadastroCliente();
-        novoFrame.setVisible(true);
+        this.controller.navegarParaCliente();
     }//GEN-LAST:event_btn_ClienteActionPerformed
 
     private void btn_ServiçoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ServiçoActionPerformed
         // Ação após clicar no Botão Cadastrar Serviço
-        CadastroServiço novoFrame = new CadastroServiço();
-        novoFrame.setVisible(true);
+        this.controller.navegarParaServico();
     }//GEN-LAST:event_btn_ServiçoActionPerformed
 
     private void btn_ProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ProdutoActionPerformed
         // Ação após clicar no Botão Cadastrar Produto
-        CadastroProduto novoFrame = new CadastroProduto();
-        novoFrame.setVisible(true);
+        this.controller.navegarParaProduto();
     }//GEN-LAST:event_btn_ProdutoActionPerformed
 
     /**

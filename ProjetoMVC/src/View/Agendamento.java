@@ -4,6 +4,9 @@
  */
 package View;
 
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Usuário
@@ -23,8 +26,8 @@ public class Agendamento extends javax.swing.JFrame {
         tf_data.setBackground(new java.awt.Color(0,0,0,0));
         cb_produto.setOpaque(false);
         cb_produto.setBackground(new java.awt.Color(0,0,0,0));
-        cb_proced.setOpaque(false);
-        cb_proced.setBackground(new java.awt.Color(0,0,0,0));
+        cb_procedimento.setOpaque(false);
+        cb_procedimento.setBackground(new java.awt.Color(0,0,0,0));
     }
 
     /**
@@ -39,13 +42,13 @@ public class Agendamento extends javax.swing.JFrame {
         btn_cancelar = new javax.swing.JButton();
         btn_agendar = new javax.swing.JButton();
         cb_cliente = new javax.swing.JComboBox<>();
-        cb_proced = new javax.swing.JComboBox<>();
+        cb_procedimento = new javax.swing.JComboBox<>();
         cb_produto = new javax.swing.JComboBox<>();
         cb_pet = new javax.swing.JComboBox<>();
         tf_data = new javax.swing.JTextField();
         Agendamento = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -72,15 +75,15 @@ public class Agendamento extends javax.swing.JFrame {
         });
         getContentPane().add(cb_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 500, 40));
 
-        cb_proced.setForeground(new java.awt.Color(0, 0, 0,0));
-        cb_proced.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cb_proced.setBorder(null);
-        cb_proced.addActionListener(new java.awt.event.ActionListener() {
+        cb_procedimento.setForeground(new java.awt.Color(0, 0, 0,0));
+        cb_procedimento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_procedimento.setBorder(null);
+        cb_procedimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_procedActionPerformed(evt);
+                cb_procedimentoActionPerformed(evt);
             }
         });
-        getContentPane().add(cb_proced, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 440, 40));
+        getContentPane().add(cb_procedimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 440, 40));
 
         cb_produto.setForeground(new java.awt.Color(0, 0, 0,0));
         cb_produto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -121,9 +124,9 @@ public class Agendamento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cb_clienteActionPerformed
 
-    private void cb_procedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_procedActionPerformed
+    private void cb_procedimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_procedimentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cb_procedActionPerformed
+    }//GEN-LAST:event_cb_procedimentoActionPerformed
 
     private void cb_produtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_produtoActionPerformed
         // TODO add your handling code here:
@@ -174,8 +177,49 @@ public class Agendamento extends javax.swing.JFrame {
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JComboBox<String> cb_cliente;
     private javax.swing.JComboBox<String> cb_pet;
-    private javax.swing.JComboBox<String> cb_proced;
+    private javax.swing.JComboBox<String> cb_procedimento;
     private javax.swing.JComboBox<String> cb_produto;
     private javax.swing.JTextField tf_data;
     // End of variables declaration//GEN-END:variables
+
+    public JComboBox<String> getCb_cliente() {
+        return cb_cliente;
+    }
+
+    public void setCb_cliente(JComboBox<String> cb_cliente) {
+        this.cb_cliente = cb_cliente;
+    }
+
+    public JComboBox<String> getCb_pet() {
+        return cb_pet;
+    }
+
+    public void setCb_pet(JComboBox<String> cb_pet) {
+        this.cb_pet = cb_pet;
+    }
+
+    public JComboBox<String> getCb_procedimento() {
+        return cb_procedimento;
+    }
+
+    public void setCb_procedimento(JComboBox<String> cb_procedimento) {
+        this.cb_procedimento = cb_procedimento;
+    }
+
+    public JComboBox<String> getCb_produto() {
+        return cb_produto;
+    }
+
+    public void setCb_produto(JComboBox<String> cb_produto) {
+        this.cb_produto = cb_produto;
+    }
+
+    public JTextField getTf_data() {
+        return tf_data;
+    }
+
+    public void setTf_data(JTextField tf_data) {
+        this.tf_data = tf_data;
+    }
+    
 }

@@ -4,33 +4,26 @@ package Model;
 
 public class Produto {
     private String nome;
-    private int codigo;
+    private String id;
+    private String fornecedor;
     private double valor;
     private String validade;
-    private int qtdEstoque;
+    
 
     //========== CONSTRUTOR ===========
-    public Produto(String nome, int codigo, double valor, String validade, int qtdEstoque) {
+    public Produto(String nome, String id, String fornecedor, double valor, String validade ) {
         this.nome = nome;
-        this.codigo = codigo;
+        this.id = id;
+        this.fornecedor = fornecedor;
         this.valor = valor;
         this.validade = validade;
-        this.qtdEstoque = qtdEstoque;
     }
     
     //========== MÉTODOS ESPECÍFICOS ============
 
-    //Método para exibir informações do produto
-    public void exibirProduto() {
-        System.out.println("Nome do Produto: " + this.getNome());
-        System.out.println("Código do Produto: " + this.getCodigo());
-        System.out.println("Preço do Produto: R$" +this.getValor());
-        System.out.println("Validade do Produto: R$" +this.getValidade());
-        System.out.println("Quantidade em Estoque: " +this.getQtdEstoque() );
-    }
 
     //========== GETTERS E SETTERS ============
-    
+
     public String getNome() {
         return nome;
     }
@@ -39,12 +32,20 @@ public class Produto {
         this.nome = nome;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public String getId() {
+        return id;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(String fornecedor) {
+        this.fornecedor = fornecedor;
     }
 
     public double getValor() {
@@ -62,12 +63,6 @@ public class Produto {
     public void setValidade(String validade) {
         this.validade = validade;
     }
-
-    public int getQtdEstoque() {
-        return qtdEstoque;
-    }
-
-    public void setQtdEstoque(int qtdEstoque) {
-        this.qtdEstoque = qtdEstoque;
-    }
+    
+    
 }

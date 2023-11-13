@@ -42,7 +42,7 @@ public class AdicionarPet extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         AdicionarPet = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lb_nome2.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
