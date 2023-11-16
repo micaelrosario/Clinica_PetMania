@@ -2,12 +2,14 @@ package Controller.Helper;
 
 import Model.Produto;
 import View.CadastroProduto;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class ProdutoHelper {
+public class ProdutoHelper implements Serializable{
     private final CadastroProduto view;
 
     public ProdutoHelper(CadastroProduto view) {
@@ -23,7 +25,7 @@ public class ProdutoHelper {
 
         // Verificar se algum campo obrigatório está vazio
         if (nome.isEmpty() || id.isEmpty() || fornecedor.isEmpty() || valorStr.isEmpty() || validade.isEmpty()) {
-            // JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos obrigatórios.");
+            JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos obrigatórios.");
             return null;  // Retorna null se há campos não preenchidos
         }
         
@@ -33,7 +35,7 @@ public class ProdutoHelper {
             valor = Double.parseDouble(valorStr);
         } catch (NumberFormatException e) {
             // Tratar o caso em que o valor não pode ser convertido para double
-            JOptionPane.showMessageDialog(null, "O valor deve ser um número válido.");
+            JOptionPane.showMessageDialog(null, "O campo VALOR deve ser um número válido. ex: 10.00");
             return null;
         }
         
@@ -65,9 +67,14 @@ public class ProdutoHelper {
 
     public void preencherTabela(ArrayList<Produto> produtos) {
         DefaultTableModel tableModel = (DefaultTableModel) view.getTableProdutos().getModel();
+
+        // Limpar as linhas existentes na tabela
         tableModel.setNumRows(0);
-        
-        //Percorrer a lista preenchendo o table Model
+
+        // Inverter a ordem dos produtos
+        Collections.reverse(produtos);
+
+        // Percorrer a lista preenchendo o table Model
         for (Produto produto : produtos) {
             tableModel.addRow(new Object[]{
                 produto.getNome(),
@@ -78,4 +85,6 @@ public class ProdutoHelper {
             });
         }
     }
+
+
 }

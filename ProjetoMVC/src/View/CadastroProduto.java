@@ -22,6 +22,14 @@ public class CadastroProduto extends javax.swing.JFrame {
     public CadastroProduto() {
         initComponents();
         controller = new ProdutoController(this);
+        
+        // Adicione um listener para o evento de visibilidade da janela
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                controller.atualizaTabela();
+            }
+        });
     }
 
     /**
@@ -87,7 +95,16 @@ public class CadastroProduto extends javax.swing.JFrame {
 
         tableProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
                 "Nome", "Código", "Fornecedor", "Valor", "Validade"

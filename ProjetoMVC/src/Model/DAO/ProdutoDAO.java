@@ -35,18 +35,22 @@ public class ProdutoDAO implements Serializable {
         }
     }
 
-    public void carregarProduto() {
+    public ArrayList<Produto> carregarProdutos() {
+        ArrayList<Produto> produtos = new ArrayList<>();
+
         try {
             FileInputStream inFile = new FileInputStream("produtos_lista.txt");
             ObjectInputStream objectInputStream = new ObjectInputStream(inFile);
             ArrayList<Produto> produtosCarregados = (ArrayList<Produto>) objectInputStream.readObject();
             objectInputStream.close();
-            produtos.clear();
             produtos.addAll(produtosCarregados);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+        return produtos;
     }
+
 
     public ArrayList<Produto> obterProdutos() {
         return produtos;

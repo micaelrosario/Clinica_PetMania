@@ -1,8 +1,10 @@
 
 package Model;
 
+import java.io.Serializable;
 
-public class Produto {
+
+public class Produto implements Serializable {
     private String nome;
     private String id;
     private String fornecedor;
