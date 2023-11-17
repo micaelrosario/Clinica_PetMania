@@ -38,19 +38,15 @@ public class ProdutoController implements Serializable{
     }
     
     public void excluirProduto(){
-        helper.limparTela();
+        helper.excluirProduto();
     }
     
-    public ArrayList<Produto> carregarProdutos() {
-        ProdutoDAO produtosBanco = new ProdutoDAO();
-        return produtosBanco.carregarProdutos();
-    }
     
     public void atualizaTabela() {
         // Buscar Lista com produtos do banco de dados
         ProdutoDAO produtoDAO = new ProdutoDAO();
         //ArrayList<Produto> produtos = produtoDAO.carregarProdutos();
-        ArrayList<Produto> produtos = produtoDAO.carregarProdutos();
+        ArrayList<Produto> produtos = produtoDAO.obterProdutos();
         //Condição 
         if (produtos != null) {
             // Exibir esta lista na View

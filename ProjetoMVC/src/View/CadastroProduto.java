@@ -76,6 +76,11 @@ public class CadastroProduto extends javax.swing.JFrame {
 
         btn_excluir.setContentAreaFilled(false);
         btn_excluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_excluirActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_excluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 90, 40));
 
         tf_nome.setBorder(null);
@@ -129,6 +134,10 @@ public class CadastroProduto extends javax.swing.JFrame {
         SubMenuCadastro novoFrame = new SubMenuCadastro();
         novoFrame.setVisible(true);
     }//GEN-LAST:event_btn_voltarActionPerformed
+
+    private void btn_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirActionPerformed
+        this.controller.excluirProduto();
+    }//GEN-LAST:event_btn_excluirActionPerformed
 
     /**
      * @param args the command line arguments

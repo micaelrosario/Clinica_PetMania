@@ -35,24 +35,52 @@ public class ProdutoDAO implements Serializable {
         }
     }
 
-    public ArrayList<Produto> carregarProdutos() {
-        ArrayList<Produto> produtos = new ArrayList<>();
-
+    public void carregarProdutos() {
         try {
             FileInputStream inFile = new FileInputStream("produtos_lista.txt");
             ObjectInputStream objectInputStream = new ObjectInputStream(inFile);
             ArrayList<Produto> produtosCarregados = (ArrayList<Produto>) objectInputStream.readObject();
             objectInputStream.close();
-            produtos.addAll(produtosCarregados);
+            produtos.clear(); // Limpe a lista estática existente
+            produtos.addAll(produtosCarregados); // Adicione os produtos carregados à lista estática
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-
-        return produtos;
     }
-
 
     public ArrayList<Produto> obterProdutos() {
         return produtos;
+    }
+    
+    public void removerProduto(String productId) {
+        // Encontrar o índice do produto pelo ID
+        int indexToRemove = -1;
+        for (int i = 0; i < produtos.size(); i++) {
+            Produto produto = produtos.get(i);
+            if (produto.getId().equals(productId)) {
+                indexToRemove = i;
+                break;
+            }
+        }
+
+        // Se o produto foi encontrado, remova-o
+        if (indexToRemove != -1) {
+            produtos.remove(indexToRemove);
+
+            // Atualize o arquivo serializado
+            salvarProdutos();
+        }
+    }
+    
+    private void salvarProdutos() {
+        try {
+            FileOutputStream outFile = new FileOutputStream("produtos_lista.txt");
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outFile);
+            objectOutputStream.writeObject(ProdutoDAO.produtos);
+            objectOutputStream.flush();
+            objectOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

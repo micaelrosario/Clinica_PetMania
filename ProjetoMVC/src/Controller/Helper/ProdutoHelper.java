@@ -8,6 +8,7 @@ import java.util.Collections;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import Model.DAO.ProdutoDAO;
 
 public class ProdutoHelper implements Serializable{
     private final CadastroProduto view;
@@ -65,17 +66,17 @@ public class ProdutoHelper implements Serializable{
         view.getTf_validade().setText("");
     }
 
-    public void preencherTabela(ArrayList<Produto> produtos) {
+    public void preencherTabela(ArrayList<Produto> produtosCarregados) {
         DefaultTableModel tableModel = (DefaultTableModel) view.getTableProdutos().getModel();
 
         // Limpar as linhas existentes na tabela
         tableModel.setNumRows(0);
 
         // Inverter a ordem dos produtos
-        Collections.reverse(produtos);
+        Collections.reverse(produtosCarregados);
 
         // Percorrer a lista preenchendo o table Model
-        for (Produto produto : produtos) {
+        for (Produto produto : produtosCarregados) {
             tableModel.addRow(new Object[]{
                 produto.getNome(),
                 produto.getId(),
@@ -83,8 +84,35 @@ public class ProdutoHelper implements Serializable{
                 produto.getValor(),
                 produto.getValidade()
             });
+            System.out.println(produto);
         }
     }
+    
+    public void excluirProduto(){
+        DefaultTableModel tableModel = (DefaultTableModel) view.getTableProdutos().getModel();
+        int selectedRow = view.getTableProdutos().getSelectedRow();
+
+        if (selectedRow != -1) {
+            // Obtém o ID do produto na coluna 1 (ou ajuste conforme necessário)
+            String productId = (String) tableModel.getValueAt(selectedRow, 1);
+
+            // Remove o produto do modelo da tabela
+            tableModel.removeRow(selectedRow);
+
+            // Atualiza a exibição da tabela
+            tableModel.fireTableDataChanged();
+
+            // Remova o produto do armazenamento persistente, se necessário
+            ProdutoDAO produtoDAO = new ProdutoDAO();
+            produtoDAO.removerProduto(productId);
+            // Exemplo: ProdutoDAO.removerProduto(productId);
+        } else {
+            // Exiba uma mensagem informando que nenhum produto foi selecionado
+            JOptionPane.showMessageDialog(null, "Selecione um produto para excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
+        }
+
+    }
+
 
 
 }
