@@ -4,17 +4,31 @@
  */
 package View;
 
+import Controller.ProcedimentoController;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Usuário
  */
 public class CadastroServiço extends javax.swing.JFrame {
-
+    
+    private final ProcedimentoController controller;
     /**
      * Creates new form CadastroServiço
      */
     public CadastroServiço() {
         initComponents();
+        controller = new ProcedimentoController(this);
+        
+        // Adicione um listener para o evento de visibilidade da janela
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                controller.atualizaTabela();
+            }
+        });
     }
 
     /**
@@ -34,7 +48,7 @@ public class CadastroServiço extends javax.swing.JFrame {
         tf_valor = new javax.swing.JTextField();
         tf_nome = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableProcedimento = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -72,7 +86,7 @@ public class CadastroServiço extends javax.swing.JFrame {
                 tf_idActionPerformed(evt);
             }
         });
-        getContentPane().add(tf_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, 190, 30));
+        getContentPane().add(tf_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 180, 30));
 
         tf_funcionario.setBorder(null);
         tf_funcionario.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +102,7 @@ public class CadastroServiço extends javax.swing.JFrame {
                 tf_valorActionPerformed(evt);
             }
         });
-        getContentPane().add(tf_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, 160, 30));
+        getContentPane().add(tf_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, 150, 30));
 
         tf_nome.setBorder(null);
         tf_nome.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +112,7 @@ public class CadastroServiço extends javax.swing.JFrame {
         });
         getContentPane().add(tf_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 190, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableProcedimento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -109,7 +123,7 @@ public class CadastroServiço extends javax.swing.JFrame {
                 "Nome", "Id", "Funcionário", "Valor"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableProcedimento);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 690, 140));
 
@@ -120,7 +134,7 @@ public class CadastroServiço extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_cadastrar_servicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrar_servicoActionPerformed
-        // TODO add your handling code here:
+        this.controller.cadastrarProcedimento();
     }//GEN-LAST:event_btn_cadastrar_servicoActionPerformed
 
     private void tf_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_idActionPerformed
@@ -140,7 +154,7 @@ public class CadastroServiço extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_nomeActionPerformed
 
     private void btn_excluir_servicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluir_servicoActionPerformed
-        // TODO add your handling code here:
+        this.controller.excluirProcedimento();
     }//GEN-LAST:event_btn_excluir_servicoActionPerformed
 
     private void btn_voltar_servicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltar_servicoActionPerformed
@@ -190,10 +204,52 @@ public class CadastroServiço extends javax.swing.JFrame {
     private javax.swing.JButton btn_voltar_servico;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tableProcedimento;
     private javax.swing.JTextField tf_funcionario;
     private javax.swing.JTextField tf_id;
     private javax.swing.JTextField tf_nome;
     private javax.swing.JTextField tf_valor;
     // End of variables declaration//GEN-END:variables
+
+    public JTextField getTf_funcionario() {
+        return tf_funcionario;
+    }
+
+    public void setTf_funcionario(JTextField tf_funcionario) {
+        this.tf_funcionario = tf_funcionario;
+    }
+
+    public JTextField getTf_id() {
+        return tf_id;
+    }
+
+    public void setTf_id(JTextField tf_id) {
+        this.tf_id = tf_id;
+    }
+
+    public JTextField getTf_nome() {
+        return tf_nome;
+    }
+
+    public void setTf_nome(JTextField tf_nome) {
+        this.tf_nome = tf_nome;
+    }
+
+    public JTextField getTf_valor() {
+        return tf_valor;
+    }
+
+    public void setTf_valor(JTextField tf_valor) {
+        this.tf_valor = tf_valor;
+    }
+
+    public JTable getTableProcedimento() {
+        return tableProcedimento;
+    }
+
+    public void setTableProcedimento(JTable tableProcedimento) {
+        this.tableProcedimento = tableProcedimento;
+    }
+    
+    
 }

@@ -49,8 +49,6 @@ public class ProdutoController implements Serializable{
         ArrayList<Produto> produtos = produtoDAO.obterProdutos();
         //Condição 
         if (produtos != null) {
-            // Exibir esta lista na View
-            System.out.println("TABELA PREENCHIDA");
             helper.preencherTabela(produtos);
         } else {
             // Lidar com o caso em que a leitura falhou (pode ser um arquivo ausente, erro de formato, etc.)

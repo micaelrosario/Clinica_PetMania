@@ -1,30 +1,38 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Controller.Helper;
 
-import Model.Produto;
-import View.CadastroProduto;
+import Model.DAO.ProcedimentoDAO;
+import Model.Procedimento;
+import View.CadastroServiço;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import Model.DAO.ProdutoDAO;
 
-public class ProdutoHelper implements Serializable{
-    private final CadastroProduto view;
+/**
+ *
+ * @author Usuário
+ */
+public class ProcedimentoHelper implements Serializable{
+    private final CadastroServiço view;
 
-    public ProdutoHelper(CadastroProduto view) {
+    public ProcedimentoHelper(CadastroServiço view) {
         this.view = view;
     }
     
-    public Produto obterModelo() {
+    public Procedimento obterModelo() {
         String nome = view.getTf_nome().getText();
         String id = view.getTf_id().getText();
-        String fornecedor = view.getTf_fornecedor().getText();
+        String funcionario = view.getTf_funcionario().getText();
         String valorStr = view.getTf_valor().getText();
-        String validade = view.getTf_validade().getText();
+        
 
         // Verificar se algum campo obrigatório está vazio
-        if (nome.isEmpty() || id.isEmpty() || fornecedor.isEmpty() || valorStr.isEmpty() || validade.isEmpty()) {
+        if (nome.isEmpty() || id.isEmpty() || funcionario.isEmpty() || valorStr.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos obrigatórios.");
             return null;  // Retorna null se há campos não preenchidos
         }
@@ -40,59 +48,58 @@ public class ProdutoHelper implements Serializable{
         }
         
         // Criar e retornar um objeto Produto com os dados fornecidos
-        return new Produto(nome, id, fornecedor, valor, validade);
+        return new Procedimento(nome, id, funcionario, valor);
     }
 
-    public void setarModelo(Produto modelo) {
+    public void setarModelo(Procedimento modelo) {
         String nome = modelo.getNome();
         String id = modelo.getId();  // Corrigido para obter o ID do modelo
-        String fornecedor = modelo.getFornecedor();  // Corrigido para obter o fornecedor do modelo
+        String fornecedor = modelo.getFuncionario();  // Corrigido para obter o fornecedor do modelo
         String valor = String.valueOf(modelo.getValor());  // Corrigido para obter o valor como String
-        String validade = modelo.getValidade();
+        
         
         view.getTf_nome().setText(nome);
         view.getTf_id().setText(id);
-        view.getTf_fornecedor().setText(fornecedor);
+        view.getTf_funcionario().setText(fornecedor);
         view.getTf_valor().setText(valor);
-        view.getTf_validade().setText(validade);
+        
     }
     
     public void limparTela() {
         view.getTf_nome().setText("");
         view.getTf_id().setText("");
-        view.getTf_fornecedor().setText("");
+        view.getTf_funcionario().setText("");
         view.getTf_valor().setText("");
-        view.getTf_validade().setText("");
+        
     }
 
-    public void preencherTabela(ArrayList<Produto> produtosCarregados) {
-        DefaultTableModel tableModel = (DefaultTableModel) view.getTableProdutos().getModel();
+    public void preencherTabela(ArrayList<Procedimento> procedimentosCarregados) {
+        DefaultTableModel tableModel = (DefaultTableModel) view.getTableProcedimento().getModel();
 
         // Limpar as linhas existentes na tabela
         tableModel.setNumRows(0);
 
         // Inverter a ordem dos produtos
-        Collections.reverse(produtosCarregados);
+        Collections.reverse(procedimentosCarregados);
 
         // Percorrer a lista preenchendo o table Model
-        for (Produto produto : produtosCarregados) {
+        for (Procedimento procedimento : procedimentosCarregados) {
             tableModel.addRow(new Object[]{
-                produto.getNome(),
-                produto.getId(),
-                produto.getFornecedor(),
-                produto.getValor(),
-                produto.getValidade()
+                procedimento.getNome(),
+                procedimento.getId(),
+                procedimento.getFuncionario(),
+                procedimento.getValor(),
             });
         }
     }
     
-    public void excluirProduto(){
-        DefaultTableModel tableModel = (DefaultTableModel) view.getTableProdutos().getModel();
-        int selectedRow = view.getTableProdutos().getSelectedRow();
+    public void excluirProcedimento(){
+        DefaultTableModel tableModel = (DefaultTableModel) view.getTableProcedimento().getModel();
+        int selectedRow = view.getTableProcedimento().getSelectedRow();
 
         if (selectedRow != -1) {
             // Obtém o ID do produto na coluna 1 (ou ajuste conforme necessário)
-            String productId = (String) tableModel.getValueAt(selectedRow, 1);
+            String procedimentoId = (String) tableModel.getValueAt(selectedRow, 1);
 
             // Remove o produto do modelo da tabela
             tableModel.removeRow(selectedRow);
@@ -101,16 +108,12 @@ public class ProdutoHelper implements Serializable{
             tableModel.fireTableDataChanged();
 
             // Remova o produto do armazenamento persistente, se necessário
-            ProdutoDAO produtoDAO = new ProdutoDAO();
-            produtoDAO.removerProduto(productId);
+            ProcedimentoDAO produtoDAO = new ProcedimentoDAO();
+            produtoDAO.removerProcedimento(procedimentoId);
             // Exemplo: ProdutoDAO.removerProduto(productId);
         } else {
             // Exiba uma mensagem informando que nenhum produto foi selecionado
-            JOptionPane.showMessageDialog(null, "Selecione um produto para excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Selecione um procedimento para excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
-
     }
-
-
-
 }
