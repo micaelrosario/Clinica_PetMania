@@ -4,7 +4,7 @@
  */
 package Model.DAO;
 
-import Model.Procedimento;
+import Model.Dono;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -17,17 +17,17 @@ import java.util.ArrayList;
  *
  * @author Usuário
  */
-public class ProcedimentoDAO implements Serializable{
-    private static ArrayList<Procedimento> procedimentos = new ArrayList<>();
+public class ClienteDAO implements Serializable{
+    private static ArrayList<Dono> clientes = new ArrayList<>();
 
-    public void cadastrarProcedimento(Procedimento procedimento) {
-        procedimentos.add(procedimento);
+    public void cadastrarCliente(Dono cliente) {
+        clientes.add(cliente);
 
         // Serializar a lista de usuários em um arquivo
         try{
-            FileOutputStream outFile = new FileOutputStream("procedimentos_lista.txt");
+            FileOutputStream outFile = new FileOutputStream("clientes_lista.txt");
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outFile);
-            objectOutputStream.writeObject(ProcedimentoDAO.procedimentos);
+            objectOutputStream.writeObject(ClienteDAO.clientes);
             objectOutputStream.flush();
             objectOutputStream.close();
         } catch (IOException e) {
@@ -35,29 +35,29 @@ public class ProcedimentoDAO implements Serializable{
         }
     }
 
-    public void carregarProcedimento() {
+    public void carregarCliente() {
         try {
-            FileInputStream inFile = new FileInputStream("procedimentos_lista.txt");
+            FileInputStream inFile = new FileInputStream("clientes_lista.txt");
             ObjectInputStream objectInputStream = new ObjectInputStream(inFile);
-            ArrayList<Procedimento> procedimentosCarregados = (ArrayList<Procedimento>) objectInputStream.readObject();
+            ArrayList<Dono> clientesCarregados = (ArrayList<Dono>) objectInputStream.readObject();
             objectInputStream.close();
-            procedimentos.clear(); // Limpe a lista estática existente
-            procedimentos.addAll(procedimentosCarregados); // Adicione os procedimentos carregados à lista estática
+            clientes.clear(); // Limpe a lista estática existente
+            clientes.addAll(clientesCarregados); // Adicione os clientes carregados à lista estática
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    public ArrayList<Procedimento> obterProcedimentos() {
-        return procedimentos;
+    public ArrayList<Dono> obterClientes() {
+        return clientes;
     }
     
-    public void removerProcedimento(String procedimentoId) {
-        // Encontrar o índice do procedimento pelo ID
+    public void removerCliente(String clienteId) {
+        // Encontrar o índice do cliente pelo ID
         int indexToRemove = -1;
-        for (int i = 0; i < procedimentos.size(); i++) {
-            Procedimento procedimento = procedimentos.get(i);
-            if (procedimento.getId().equals(procedimentoId)) {
+        for (int i = 0; i < clientes.size(); i++) {
+            Dono cliente = clientes.get(i);
+            if (cliente.getCpf().equals(clienteId)) {
                 indexToRemove = i;
                 break;
             }
@@ -65,18 +65,18 @@ public class ProcedimentoDAO implements Serializable{
 
         // Se o produto foi encontrado, remova-o
         if (indexToRemove != -1) {
-            procedimentos.remove(indexToRemove);
+            clientes.remove(indexToRemove);
 
             // Atualize o arquivo serializado
-            salvarProcedimentos();
+            salvarClientes();
         }
     }
     
-    private void salvarProcedimentos() {
+    private void salvarClientes() {
         try {
-            FileOutputStream outFile = new FileOutputStream("procedimentos_lista.txt");
+            FileOutputStream outFile = new FileOutputStream("clientes_lista.txt");
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outFile);
-            objectOutputStream.writeObject(ProcedimentoDAO.procedimentos);
+            objectOutputStream.writeObject(ClienteDAO.clientes);
             objectOutputStream.flush();
             objectOutputStream.close();
         } catch (IOException e) {

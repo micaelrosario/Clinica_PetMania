@@ -47,7 +47,7 @@ public class ProcedimentoHelper implements Serializable{
             return null;
         }
         
-        // Criar e retornar um objeto Produto com os dados fornecidos
+        // Criar e retornar um objeto Procedimento com os dados fornecidos
         return new Procedimento(nome, id, funcionario, valor);
     }
 

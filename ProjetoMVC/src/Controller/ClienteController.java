@@ -4,56 +4,60 @@
  */
 package Controller;
 
-import Controller.Helper.ProdutoHelper;
-import Model.DAO.ProdutoDAO;
-import Model.Produto;
-import View.CadastroProduto;
+import Controller.Helper.ClienteHelper;
+import Model.DAO.ClienteDAO;
+import Model.Dono;
+import View.CadastroCliente;
 import View.SubMenuCadastro;
 import java.io.Serializable;
-import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
-public class ProdutoController implements Serializable{
-    private final CadastroProduto view;
-    private final ProdutoHelper helper;
+/**
+ *
+ * @author Usuário
+ */
+public class ClienteController implements Serializable {
+    private final CadastroCliente view;
+    private final ClienteHelper helper;
 
-    public ProdutoController(CadastroProduto view) {
+    public ClienteController(CadastroCliente view) {
         this.view = view;
-        this.helper = new ProdutoHelper(view);
+        this.helper = new ClienteHelper(view);
     }
     
-    public void cadastrarProduto(){
-        Produto produto = helper.obterModelo();
+    public void cadastrarCliente(){
+        Dono cliente = helper.obterModelo();
         
-        if(produto != null){
-            ProdutoDAO produtoDAO = new ProdutoDAO();
-            produtoDAO.cadastrarProduto(produto);
+        if(cliente != null){
+            ClienteDAO produtoDAO = new ClienteDAO();
+            produtoDAO.cadastrarCliente(cliente);
             ImageIcon icon = new ImageIcon("C:\\Users\\Usuário\\OneDrive\\Documentos\\MeusProjetos-Github\\Clinica_PetMania\\ProjetoMVC\\src\\Imagens/sucess.png");
             ImageIcon resizedIcon = new ImageIcon(icon.getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH));
-            JOptionPane.showMessageDialog(null, "Produto Cadastrado com Sucesso","Info",JOptionPane.PLAIN_MESSAGE, resizedIcon);
+            JOptionPane.showMessageDialog(null, "Cliente Cadastrado com Sucesso","Info",JOptionPane.PLAIN_MESSAGE, resizedIcon);
             atualizaTabela();
         }else {
-            //JOptionPane.showMessageDialog(null, "Erro ao Cadastrar Produto: Campos não preenchidos.");
+            //JOptionPane.showMessageDialog(null, "Erro ao Cadastrar Cliente: Campos não preenchidos.");
         }
     }
     
-    public void excluirProduto(){
-        helper.excluirProduto();
+    public void excluirCliente(){
+        helper.excluirCliente();
     }
     
     
     public void atualizaTabela() {
-        // Buscar Lista com produtos do banco de dados
-        ProdutoDAO produtoDAO = new ProdutoDAO();
+        // Buscar Lista com cliente do banco de dados
+        ClienteDAO clienteDAO = new ClienteDAO();
         //ArrayList<Produto> produtos = produtoDAO.carregarProdutos();
-        ArrayList<Produto> produtos = produtoDAO.obterProdutos();
+        ArrayList<Dono> clientes = clienteDAO.obterClientes();
         //Condição 
-        if (produtos != null) {
-            helper.preencherTabela(produtos);
+        if (clientes != null) {
+            helper.preencherTabela(clientes);
         } else {
             // Lidar com o caso em que a leitura falhou (pode ser um arquivo ausente, erro de formato, etc.)
-            JOptionPane.showMessageDialog(null, "Erro ao carregar produtos do arquivo.");
+            JOptionPane.showMessageDialog(null, "Erro ao carregar clientes do arquivo.");
         }
         
     }
@@ -65,5 +69,4 @@ public class ProdutoController implements Serializable{
         // Feche a janela de login
         this.view.dispose();
     }
-
 }

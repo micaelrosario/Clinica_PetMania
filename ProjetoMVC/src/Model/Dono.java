@@ -3,10 +3,9 @@ package Model;
 
 import java.util.ArrayList;
 import Model.Pet;
+import java.io.Serializable;
 
-public class Dono extends Pessoa{
-    // ATRIBUTOS
-    private int id_Dono;
+public class Dono extends Pessoa implements Serializable{
     
     ArrayList<Pet> ListaPets;
     
@@ -33,31 +32,7 @@ public class Dono extends Pessoa{
     public ArrayList<Pet> getListaPets(){
         return ListaPets;
     }
-
-
-    //GETTERS E SETTERS
-    public int getId_Dono() {
-        return id_Dono;
-    }
-
-    public void setId_Dono(int id_Dono) {
-        this.id_Dono = id_Dono;
-    }
+   
 
     // ================= MÉTODOS ESPECÍFICOS    =========================
-    // < CONSULTAR DADOS DO DONO >
-    public String consultarDados() {
-        return "===== DADOS DO DONO ====="+
-                        "\nNome: "+this.getNome()+
-                        "\nEspecie: "+this.getCpf()+
-                        "\nIdade: "+this.getTelefone()+
-                        "\nEndereço: "+this.getEndereco()+
-                        "\nID do Dono: "+this.getId_Dono();
-                        
-    }
-                    
-    // Ver o histórico de pets do dono (você pode implementar essa função)
-    public void verHistorico() {
-        // Implemente aqui a visualização do histórico do dono
-    }
 }

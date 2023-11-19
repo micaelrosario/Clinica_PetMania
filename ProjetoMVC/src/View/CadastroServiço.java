@@ -29,6 +29,8 @@ public class CadastroServiço extends javax.swing.JFrame {
                 controller.atualizaTabela();
             }
         });
+        // Impedir reordenação de colunas
+        tableProcedimento.getTableHeader().setReorderingAllowed(false);
     }
 
     /**
@@ -158,9 +160,7 @@ public class CadastroServiço extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_excluir_servicoActionPerformed
 
     private void btn_voltar_servicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltar_servicoActionPerformed
-         // Ação após clicar no Botão Voltar
-        SubMenuCadastro novoFrame = new SubMenuCadastro();
-        novoFrame.setVisible(true);
+         this.controller.voltarSubMenuCadastro();
     }//GEN-LAST:event_btn_voltar_servicoActionPerformed
 
     /**

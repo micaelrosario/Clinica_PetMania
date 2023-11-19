@@ -30,6 +30,8 @@ public class CadastroProduto extends javax.swing.JFrame {
                 controller.atualizaTabela();
             }
         });
+        // Impedir reordenação de colunas
+        tableProdutos.getTableHeader().setReorderingAllowed(false);
     }
 
     /**
@@ -130,9 +132,7 @@ public class CadastroProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
-        // Ação após clicar no Botão Voltar
-        SubMenuCadastro novoFrame = new SubMenuCadastro();
-        novoFrame.setVisible(true);
+        this.controller.voltarSubMenuCadastro();
     }//GEN-LAST:event_btn_voltarActionPerformed
 
     private void btn_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirActionPerformed

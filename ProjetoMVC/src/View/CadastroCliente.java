@@ -4,6 +4,8 @@
  */
 package View;
 
+import Controller.ClienteController;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
@@ -12,11 +14,24 @@ import javax.swing.JTextField;
  */
 public class CadastroCliente extends javax.swing.JFrame {
 
+    private final ClienteController controller;
     /**
      * Creates new form CadastroCliente
      */
     public CadastroCliente() {
         initComponents();
+        
+        controller = new ClienteController(this);
+        
+        // Adicione um listener para o evento de visibilidade da janela
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                controller.atualizaTabela();
+            }
+        });
+        // Impedir reordenação de colunas
+        tableCliente.getTableHeader().setReorderingAllowed(false);
     }
 
     /**
@@ -36,16 +51,26 @@ public class CadastroCliente extends javax.swing.JFrame {
         tf_cpf = new javax.swing.JTextField();
         tf_endereco = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableCliente = new javax.swing.JTable();
         Fundo_CadastrarCliente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 280, 100, 40));
 
         jButton2.setContentAreaFilled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, 100, 40));
 
         jButton3.setContentAreaFilled(false);
@@ -74,7 +99,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         });
         getContentPane().add(tf_endereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 210, 200, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -85,7 +110,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                 "Nome", "Telefone", "Cpf", "Endereço"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableCliente);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 690, 150));
 
@@ -100,10 +125,16 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_enderecoActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         // Ação após clicar no Botão Voltar
-        SubMenuCadastro novoFrame = new SubMenuCadastro();
-        novoFrame.setVisible(true);
+        this.controller.voltarSubMenuCadastro();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.controller.cadastrarCliente();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.controller.excluirCliente();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,7 +177,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tableCliente;
     private javax.swing.JTextField tf_cpf;
     private javax.swing.JTextField tf_endereco;
     private javax.swing.JTextField tf_nome;
@@ -183,6 +214,14 @@ public class CadastroCliente extends javax.swing.JFrame {
 
     public void setTf_telefone(JTextField tf_telefone) {
         this.tf_telefone = tf_telefone;
+    }
+
+    public JTable getTableCliente() {
+        return tableCliente;
+    }
+
+    public void setTableCliente(JTable tableCliente) {
+        this.tableCliente = tableCliente;
     }
 
     

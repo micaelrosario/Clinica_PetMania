@@ -8,6 +8,7 @@ import Controller.Helper.ProcedimentoHelper;
 import Model.DAO.ProcedimentoDAO;
 import Model.Procedimento;
 import View.CadastroServiço;
+import View.SubMenuCadastro;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -30,8 +31,8 @@ public class ProcedimentoController implements Serializable{
         Procedimento procedimento = helper.obterModelo();
         
         if(procedimento != null){
-            ProcedimentoDAO produtoDAO = new ProcedimentoDAO();
-            produtoDAO.cadastrarProcedimento(procedimento);
+            ProcedimentoDAO procedimentoDAO = new ProcedimentoDAO();
+            procedimentoDAO.cadastrarProcedimento(procedimento);
             ImageIcon icon = new ImageIcon("C:\\Users\\Usuário\\OneDrive\\Documentos\\MeusProjetos-Github\\Clinica_PetMania\\ProjetoMVC\\src\\Imagens/sucess.png");
             ImageIcon resizedIcon = new ImageIcon(icon.getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH));
             JOptionPane.showMessageDialog(null, "Procedimento Cadastrado com Sucesso","Info",JOptionPane.PLAIN_MESSAGE, resizedIcon);
@@ -59,5 +60,13 @@ public class ProcedimentoController implements Serializable{
             JOptionPane.showMessageDialog(null, "Erro ao carregar procedimentos do arquivo.");
         }
         
+    }
+    
+    public void voltarSubMenuCadastro(){
+        // Ação após clicar no Botão Voltar
+        SubMenuCadastro novoFrame = new SubMenuCadastro();
+        novoFrame.setVisible(true);
+        // Feche a janela de login
+        this.view.dispose();
     }
 }

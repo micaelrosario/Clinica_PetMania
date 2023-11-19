@@ -17,8 +17,8 @@ public class LoginHelper implements Serializable{
     }
     
     public Usuario obterModelo() {
-        String nome = view.getText_usuario().getText();
-        String senha = view.getText_senha().getText();
+        String nome = view.getText_usuario().getText().trim();
+        String senha = view.getText_senha().getText().trim();
 
         // Verificar se ambos os campos estão preenchidos
         if (nome.isEmpty() || senha.isEmpty()) {
