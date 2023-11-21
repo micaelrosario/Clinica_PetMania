@@ -29,17 +29,28 @@ public class ClienteHelper implements Serializable{
         String cpf = view.getTf_cpf().getText();
         String telefone = view.getTf_telefone().getText();
         String endereco = view.getTf_endereco().getText();
-        
 
         // Verificar se algum campo obrigatório está vazio
         if (nome.isEmpty() || cpf.isEmpty() || telefone.isEmpty() || endereco.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos obrigatórios.");
-            return null;  // Retorna null se há campos não preenchcpfos
+            return null;  // Retorna null se há campos não preenchidos
         }
-        
-        // Criar e retornar um objeto Cliente com os dados forneccpfos
+
+        // Verificar se o CPF já existe na lista de clientes
+        ClienteDAO clienteDAO = new ClienteDAO();
+        ArrayList<Dono> clientes = clienteDAO.obterClientes();
+
+        for (Dono cliente : clientes) {
+            if (cliente.getCpf().equals(cpf)) {
+                JOptionPane.showMessageDialog(null, "Cliente com CPF " + cpf + " já cadastrado.");
+                return null;  // Retorna null se o CPF já existe
+            }
+        }
+
+        // Criar e retornar um objeto Cliente com os dados fornecidos
         return new Dono(nome, cpf, telefone, endereco);
     }
+
 
     public void setarModelo(Dono modelo) {
         String nome = modelo.getNome();
@@ -89,18 +100,15 @@ public class ClienteHelper implements Serializable{
 
         if (selectedRow != -1) {
             // Obtém o ID do Cliente na coluna 1 (ou ajuste conforme necessário)
-            String clienteId = (String) tableModel.getValueAt(selectedRow, 1);
+            String clienteId = (String) tableModel.getValueAt(selectedRow, 2);
 
             // Remove o produto do modelo da tabela
             tableModel.removeRow(selectedRow);
-
             // Atualiza a exibição da tabela
             tableModel.fireTableDataChanged();
-
             // Remova o produto do armazenamento persistente, se necessário
             ClienteDAO clienteDAO = new ClienteDAO();
             clienteDAO.removerCliente(clienteId);
-            // Exemplo: ProdutoDAO.removerProduto(productId);
         } else {
             // Exiba uma mensagem informando que nenhum cliente foi selecionado
             JOptionPane.showMessageDialog(null, "Selecione um cliente para excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);

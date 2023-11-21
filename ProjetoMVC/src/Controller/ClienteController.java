@@ -69,4 +69,6 @@ public class ClienteController implements Serializable {
         // Feche a janela de login
         this.view.dispose();
     }
+    
+    
 }

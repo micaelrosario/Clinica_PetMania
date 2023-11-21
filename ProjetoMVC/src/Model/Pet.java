@@ -4,19 +4,31 @@ package Model;
 
 public class Pet extends Animal{
     //Atributos do Pet
-    private int id_Dono;
+    private Dono dono;
 
-    public Pet(int id_Dono) {
-        this.id_Dono = id_Dono;
+    public Pet(Dono dono) {
+        this.dono = dono;
     }
 
-    public Pet(String nome, String raca, String idade, int id_Dono) {
+    public Pet(String nome, String raca, String idade, Dono dono) {
         super(nome, raca, idade);
-        this.id_Dono = id_Dono;
+        this.dono = dono;
     }
     
      @Override
     public String toString() {
         return "Nome: " + nome + ", Espécie: " + raca + ", Idade: " + idade;
     }
+
+    public Dono getIdDono() {
+        return dono;
+    }
+
+    public void setIdDono(Dono dono) {
+        this.dono = dono;
+    }
+
+    
+    
+    
 }

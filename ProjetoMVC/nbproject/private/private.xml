@@ -3,16 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/View/CadastroProduto.java</file>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Controller/ProcedimentoController.java</file>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Model/DAO/ProcedimentoDAO.java</file>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Controller/ProdutoController.java</file>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Controller/Helper/ProdutoHelper.java</file>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Model/Produto.java</file>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/View/CadastroServiço.java</file>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Model/Procedimento.java</file>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Controller/Helper/ProcedimentoHelper.java</file>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Model/DAO/ProdutoDAO.java</file>
+            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Model/DAO/ClienteDAO.java</file>
+            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/View/CadastroCliente.java</file>
+            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Controller/ClienteController.java</file>
+            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Controller/Helper/LoginHelper.java</file>
+            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Controller/Helper/ClienteHelper.java</file>
+            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Model/Dono.java</file>
         </group>
     </open-files>
 </project-private>

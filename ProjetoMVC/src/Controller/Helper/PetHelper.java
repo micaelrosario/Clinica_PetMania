@@ -4,13 +4,17 @@
  */
 package Controller.Helper;
 
+import Model.DAO.ClienteDAO;
+import Model.Dono;
 import Model.Pet;
 import View.AdicionarPet;
 import java.io.Serializable;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
         
 public class PetHelper implements Serializable{
     private final AdicionarPet view;
-    private int id_Dono;
+    
 
     public PetHelper(AdicionarPet view) {
         this.view = view;
@@ -20,7 +24,8 @@ public class PetHelper implements Serializable{
         String nome = view.getTf_nome().getText();
         String raca = view.getTf_raca().getText();
         String idade = view.getTf_idade().getText();
-        Pet modelo = new Pet(nome, raca,idade,id_Dono);
+        //Dono dono = 
+        Pet modelo = new Pet(nome, raca,idade);
         return modelo;
     }
     
@@ -38,5 +43,18 @@ public class PetHelper implements Serializable{
         view.getTf_nome().setText("");
         view.getTf_raca().setText("");
         view.getTf_idade().setText("");
+    }
+
+    public void preencherDonos(ArrayList<Dono> clientes) {
+        DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getCb_Dono().getModel();
+        
+        ClienteDAO clienteDAO = new ClienteDAO();
+        clienteDAO.carregarCliente(); // Certifique-se de carregar os clientes antes de obter a lista
+
+        ArrayList<Dono> donos = clienteDAO.carregarCliente();
+        
+        for (Dono dono : clientes){
+            comboBoxModel.addElement(dono); 
+        }
     }
 }

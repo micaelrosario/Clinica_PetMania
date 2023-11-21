@@ -6,10 +6,13 @@ package Controller;
 
 import View.AdicionarPet;
 import Controller.Helper.PetHelper;
+import Model.DAO.ClienteDAO;
 import Model.DAO.PetDados;
+import Model.Dono;
 import Model.Pet;
 import View.SubMenuCadastro;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -35,5 +38,14 @@ public class PetController implements Serializable{
     public void voltarAoMenu(){
         SubMenuCadastro novoFrame = new SubMenuCadastro();
         novoFrame.setVisible(true);
+    }
+    
+    public void atualizaDono(){
+        // Buscar Clientes do Banco de Dados
+        ClienteDAO clienteDAO = new ClienteDAO();
+        ArrayList<Dono> clientes = clienteDAO.obterClientes();
+        
+        //Exibir Donos no ComboBox dono
+        helper.preencherDonos(clientes);
     }
 }
