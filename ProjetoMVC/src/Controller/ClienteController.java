@@ -38,7 +38,7 @@ public class ClienteController implements Serializable {
             JOptionPane.showMessageDialog(null, "Cliente Cadastrado com Sucesso","Info",JOptionPane.PLAIN_MESSAGE, resizedIcon);
             atualizaTabela();
         }else {
-            //JOptionPane.showMessageDialog(null, "Erro ao Cadastrar Cliente: Campos não preenchidos.");
+            //JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos obrigatórios.");
         }
     }
     

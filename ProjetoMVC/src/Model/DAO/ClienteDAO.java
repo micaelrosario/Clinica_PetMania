@@ -41,7 +41,7 @@ public class ClienteDAO implements Serializable{
             ObjectInputStream objectInputStream = new ObjectInputStream(inFile);
             ArrayList<Dono> clientesCarregados = (ArrayList<Dono>) objectInputStream.readObject();
             objectInputStream.close();
-            clientes.clear(); // Limpe a lista estática existente
+            //clientes.clear(); // Limpe a lista estática existente
             clientes.addAll(clientesCarregados); // Adicione os clientes carregados à lista estática
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();

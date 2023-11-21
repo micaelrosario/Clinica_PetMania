@@ -21,6 +21,7 @@ public class AdicionarPet extends javax.swing.JFrame {
     public AdicionarPet() {
         initComponents();
         this.controller = new PetController(this);
+        this.controller.atualizaDono();
     }
 
     /**
@@ -137,7 +138,7 @@ public class AdicionarPet extends javax.swing.JFrame {
 
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
          // Ação após clicar no Botão Voltar
-        this.controller.voltarAoMenu();
+        this.controller.voltarSubMenuCadastro();
     }//GEN-LAST:event_btn_voltarActionPerformed
 
     private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed

@@ -36,5 +36,8 @@ public class Dono extends Pessoa implements Serializable{
    
 
     // ================= MÉTODOS ESPECÍFICOS    =========================
-    
+    @Override
+    public String toString(){
+        return getNome();
+    }
 }

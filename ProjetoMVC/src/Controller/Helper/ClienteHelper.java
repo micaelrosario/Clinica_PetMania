@@ -41,7 +41,7 @@ public class ClienteHelper implements Serializable{
         ArrayList<Dono> clientes = clienteDAO.obterClientes();
 
         for (Dono cliente : clientes) {
-            if (cliente.getCpf().equals(cpf)) {
+            if (cliente.getCpf() != null && cliente.getCpf().equals(cpf)) {
                 JOptionPane.showMessageDialog(null, "Cliente com CPF " + cpf + " já cadastrado.");
                 return null;  // Retorna null se o CPF já existe
             }
@@ -85,12 +85,17 @@ public class ClienteHelper implements Serializable{
 
         // Percorrer a lista preenchendo o table Model
         for (Dono cliente : clientesCarregados) {
-            tableModel.addRow(new Object[]{
-                cliente.getNome(),
-                cliente.getTelefone(),
-                cliente.getCpf(),
-                cliente.getEndereco(),
-            });
+            if (cliente.getNome() != null && cliente.getTelefone() != null && cliente.getCpf() != null && cliente.getEndereco() != null) {
+                // Verificar se os campos relevantes estão vazios
+                if (!cliente.getNome().isEmpty() && !cliente.getTelefone().isEmpty() && !cliente.getCpf().isEmpty() && !cliente.getEndereco().isEmpty()) {
+                    tableModel.addRow(new Object[]{
+                        cliente.getNome(),
+                        cliente.getTelefone(),
+                        cliente.getCpf(),
+                        cliente.getEndereco(),
+                    });
+                }
+            }
         }
     }
     
