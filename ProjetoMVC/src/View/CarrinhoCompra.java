@@ -4,17 +4,20 @@
  */
 package View;
 
+import Controller.CarrinhoController;
+
 /**
  *
  * @author aluno
  */
 public class CarrinhoCompra extends javax.swing.JFrame {
-
+    private final CarrinhoController controller;
     /**
      * Creates new form CarrinhoCompra
      */
     public CarrinhoCompra() {
         initComponents();
+        controller = new CarrinhoController(this);
     }
 
     /**
@@ -26,35 +29,46 @@ public class CarrinhoCompra extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
+        cb_shampoo = new javax.swing.JCheckBox();
+        cb_racao = new javax.swing.JCheckBox();
+        cb_coleira = new javax.swing.JCheckBox();
+        cb_livro = new javax.swing.JCheckBox();
+        cb_repelente = new javax.swing.JCheckBox();
+        cb_fantasia = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        tf_nome = new javax.swing.JTextField();
+        tf_nome1 = new javax.swing.JTextField();
+        tf_nome2 = new javax.swing.JTextField();
+        tf_nome3 = new javax.swing.JTextField();
+        tf_nome4 = new javax.swing.JTextField();
+        tf_nome5 = new javax.swing.JTextField();
         FundoCarrinho = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CarrinhoCompra");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
-        getContentPane().add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
-        getContentPane().add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, -1, -1));
+        getContentPane().add(cb_shampoo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
+        getContentPane().add(cb_racao, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
+        getContentPane().add(cb_coleira, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, -1, -1));
 
-        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+        cb_livro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox4ActionPerformed(evt);
+                cb_livroActionPerformed(evt);
             }
         });
-        getContentPane().add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, -1, -1));
-        getContentPane().add(jCheckBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, -1, -1));
-        getContentPane().add(jCheckBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 400, -1, -1));
+        getContentPane().add(cb_livro, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, -1, -1));
+        getContentPane().add(cb_repelente, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, -1, -1));
+        getContentPane().add(cb_fantasia, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 400, -1, -1));
 
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 475, 150, 50));
 
         jButton2.setContentAreaFilled(false);
@@ -66,20 +80,42 @@ public class CarrinhoCompra extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 50, 40));
 
+        tf_nome.setBorder(null);
+        getContentPane().add(tf_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 30, 30));
+
+        tf_nome1.setBorder(null);
+        getContentPane().add(tf_nome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 30, 30));
+
+        tf_nome2.setBorder(null);
+        getContentPane().add(tf_nome2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 30, 30));
+
+        tf_nome3.setBorder(null);
+        getContentPane().add(tf_nome3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 180, 30, 30));
+
+        tf_nome4.setBorder(null);
+        getContentPane().add(tf_nome4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, 30, 30));
+
+        tf_nome5.setBorder(null);
+        getContentPane().add(tf_nome5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 420, 30, 30));
+
         FundoCarrinho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/CarrinhoCompra.png"))); // NOI18N
         getContentPane().add(FundoCarrinho, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+    private void cb_livroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_livroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox4ActionPerformed
+    }//GEN-LAST:event_cb_livroActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         MenuPrincipal novoFrame = new MenuPrincipal();
         novoFrame.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.controller.fazerPedido();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -118,13 +154,19 @@ public class CarrinhoCompra extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FundoCarrinho;
+    private javax.swing.JCheckBox cb_coleira;
+    private javax.swing.JCheckBox cb_fantasia;
+    private javax.swing.JCheckBox cb_livro;
+    private javax.swing.JCheckBox cb_racao;
+    private javax.swing.JCheckBox cb_repelente;
+    private javax.swing.JCheckBox cb_shampoo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
+    private javax.swing.JTextField tf_nome;
+    private javax.swing.JTextField tf_nome1;
+    private javax.swing.JTextField tf_nome2;
+    private javax.swing.JTextField tf_nome3;
+    private javax.swing.JTextField tf_nome4;
+    private javax.swing.JTextField tf_nome5;
     // End of variables declaration//GEN-END:variables
 }
