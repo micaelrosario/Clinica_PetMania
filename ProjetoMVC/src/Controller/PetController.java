@@ -6,13 +6,10 @@ package Controller;
 
 import View.AdicionarPet;
 import Controller.Helper.PetHelper;
-import Model.DAO.ClienteDAO;
 import Model.DAO.PetDados;
-import Model.Dono;
 import Model.Pet;
 import View.SubMenuCadastro;
 import java.io.Serializable;
-import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 

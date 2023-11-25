@@ -4,6 +4,12 @@
  */
 package View;
 
+import Controller.AgendamentoController;
+import Model.Dono;
+import Model.GeradorDeId;
+import Model.Pet;
+import Model.Procedimento;
+import Model.Produto;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
@@ -12,23 +18,17 @@ import javax.swing.JTextField;
  * @author Usuário
  */
 public class Agendamento extends javax.swing.JFrame {
+    
+    private final AgendamentoController controller;
 
-    /**
-     * Creates new form Agendamento
-     */
-    public Agendamento() {
-        initComponents();
-        cb_cliente.setOpaque(false);
-        cb_cliente.setBackground(new java.awt.Color(0,0,0,0));
-        cb_pet.setOpaque(false);
-        cb_pet.setBackground(new java.awt.Color(0,0,0,0));
-        tf_data.setOpaque(false);
-        tf_data.setBackground(new java.awt.Color(0,0,0,0));
-        cb_produto.setOpaque(false);
-        cb_produto.setBackground(new java.awt.Color(0,0,0,0));
-        cb_procedimento.setOpaque(false);
-        cb_procedimento.setBackground(new java.awt.Color(0,0,0,0));
+    public Agendamento(AgendamentoController controller) {
+        this.controller = controller;
     }
+        
+    
+
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,6 +63,11 @@ public class Agendamento extends javax.swing.JFrame {
 
         btn_agendar.setContentAreaFilled(false);
         btn_agendar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_agendar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_agendarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_agendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 480, 140, 40));
 
         cb_cliente.setForeground(new java.awt.Color(0, 0, 0,0));
@@ -135,6 +140,10 @@ public class Agendamento extends javax.swing.JFrame {
     private void cb_petActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_petActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cb_petActionPerformed
+
+    private void btn_agendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agendarActionPerformed
+        this.controller.agendar();
+    }//GEN-LAST:event_btn_agendarActionPerformed
 
     /**
      * @param args the command line arguments

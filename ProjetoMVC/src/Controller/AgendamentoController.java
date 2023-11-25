@@ -4,10 +4,35 @@
  */
 package Controller;
 
+import Controller.Helper.AgendamentoHelper;
+import Model.DAO.AgendamentoDAO;
+import Model.DAO.PetDados;
+import View.Agendamento;
+import java.io.Serializable;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuário
  */
-public class AgendamentoController {
+public class AgendamentoController implements Serializable {
     
+    private final Agendamento view;
+    private AgendamentoHelper helper;
+
+    public AgendamentoController(Agendamento view) {
+        this.view = view;
+    }
+     
+    public void agendar(){
+        Agendamento newAgendamento = helper.obterModelo();
+        if (newAgendamento != null) {
+            AgendamentoDAO agendamentoDao = new AgendamentoDAO();
+            agendamentoDao.cadastrarAgendamento(newAgendamento);
+            ImageIcon icon = new ImageIcon("C:\\Users\\Usuário\\OneDrive\\Documentos\\MeusProjetos-Github\\Clinica_PetMania\\ProjetoMVC\\src\\Imagens/sucess.png");
+            ImageIcon resizedIcon = new ImageIcon(icon.getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH));
+            JOptionPane.showMessageDialog(null, "Agendamento feito com Sucesso!","Info",JOptionPane.PLAIN_MESSAGE, resizedIcon);
+        }
+    }
 }
