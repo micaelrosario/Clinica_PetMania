@@ -4,35 +4,25 @@
  */
 package Model;
 
-import java.time.LocalDateTime; // Importe a classe LocalDateTime para representar a hora do atendimento.
-import Model.Dono;
-import Model.Pet;
-import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Agendamento {
-    private int id;
+public class Agendamento implements Serializable{
+    private GeradorDeId id;
     private Dono dono; // 
     private Pet pet; // 
-    private Date horaAtendimento; 
+    private String horaAtend; 
     private Produto produto;
     private Procedimento procedimento;
 
     // Construtor
-    public Agendamento(int id, Dono dono, Pet pet, String horaAtendimento, Produto produto, Procedimento procedimento) {
-        this.id = id;
+    public Agendamento(int id, Dono dono, Pet pet, String horaAtend, Produto produto, Procedimento procedimento) {
+        this.id = new GeradorDeId(id);
         this.dono = dono;
         this.pet = pet;
-        try {
-            this.horaAtendimento = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(horaAtendimento);
-        } catch (ParseException ex) {
-            // Se houver um erro ao analisar a data, imprima a exceção e defina a data como null
-            ex.printStackTrace();
-            this.horaAtendimento = null; // Ou defina para um valor padrão, dependendo da lógica do seu aplicativo
-        }
+        this.horaAtend = horaAtend;
         this.produto = produto;
         this.procedimento = procedimento;
     }
@@ -40,11 +30,11 @@ public class Agendamento {
 
     // Métodos Getters e Setters
 
-    public int getId() {
+    public GeradorDeId getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(GeradorDeId id) {
         this.id = id;
     }
     
@@ -66,12 +56,12 @@ public class Agendamento {
         this.pet = pet;
     }
 
-    public Date getHoraAtendimento() {
-        return horaAtendimento;
+    public String getHoraAtendimento() {
+        return horaAtend;
     }
 
-    public void setHoraAtendimento(Date horaAtendimento) {
-        this.horaAtendimento = horaAtendimento;
+    public void setHoraAtendimento(String horaAtend) {
+        this.horaAtend = horaAtend;
     }
 
     public Produto getProduto() {

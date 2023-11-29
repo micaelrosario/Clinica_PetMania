@@ -1,8 +1,10 @@
 
 package Model;
 
+import java.io.Serializable;
 
-public class Pet extends Animal{
+
+public class Pet extends Animal implements Serializable{
     //Atributos do Pet
     private Dono dono;
 
@@ -17,7 +19,7 @@ public class Pet extends Animal{
     
      @Override
     public String toString() {
-        return "Nome: " + nome + ", Espécie: " + raca + ", Idade: " + idade;
+        return "Nome: " + nome + ", Especie: " + raca + ", Idade: " + idade+", Dono: "+dono;
     }
 
     public Dono getIdDono() {

@@ -6,13 +6,10 @@ package Controller;
 
 import View.AdicionarPet;
 import Controller.Helper.PetHelper;
-import Model.DAO.ClienteDAO;
 import Model.DAO.PetDados;
-import Model.Dono;
 import Model.Pet;
 import View.SubMenuCadastro;
 import java.io.Serializable;
-import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -33,6 +30,7 @@ public class PetController implements Serializable{
     public void cadastrarPet(){
         //Pegar Pet da view
         Pet pet = helper.obterModelo();
+        System.out.println(pet);
         if (pet != null) {
             PetDados petDados = new PetDados();
             petDados.cadastrarPet(pet);

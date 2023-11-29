@@ -4,8 +4,13 @@
  */
 package Controller.Helper;
 
+import Model.Dono;
+import Model.GeradorDeId;
+import Model.Pet;
+import Model.Procedimento;
+import Model.Produto;
 import View.Agendamento;
-import java.util.Date;
+
 
 /**
  *
@@ -17,35 +22,27 @@ public class AgendamentoHelper {
 
     public AgendamentoHelper(Agendamento view) {
         this.view = view;
+        
     }
     
     
     public Agendamento obterModelo() {
-        //Dono dono = view.getText_usuario().getText();
-        //Pet pet = view.getText_senha().getText();
+        GeradorDeId gerarId  = new GeradorDeId();
+        int id = gerarId.gerarNovoId();
+        Dono dono = (Dono) view.getCb_cliente().getSelectedItem();
+        Pet pet = (Pet) view.getCb_pet().getSelectedItem();
+        Produto prod = (Produto) view.getCb_produto().getSelectedItem();
+        Procedimento proced = (Procedimento) view.getCb_procedimento().getSelectedItem();
         String data = view.getTf_data().getText();
+
         // Verificar se ambos os campos estão preenchidos
-        /*if () {
+        if (dono == null || pet == null || data.isEmpty() || prod == null || proced == null) {
             //JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos.");
             return null;  // Retorna null se há campos não preenchidos
-        }*/
-
-        // Retorna um objeto Usuario se os campos estiverem preenchidos
-        /*Agendamento modelo = new Agendamento(id, dono, pet, data,produto, procedimento);*/
-        return null;
+        }
+        // Retorna um objeto Agendamento se os campos estiverem preenchidos
+        Agendamento modelo = new Agendamento(id, dono, pet, data, prod, proced);
+        return modelo;
     }
 
-    
-    public void setarModelo(Agendamento modelo){
-        /*String nome = modelo.getNome();
-        String senha = modelo.getSenha();
-        
-        view.getText_usuario().setText(nome);
-        view.getText_senha().setText(senha);*/
-    }
-    
-    public void  limparTela(){
-        /*view.getText_usuario().setText("");
-        view.getText_senha().setText("");*/ 
-    }
 }
