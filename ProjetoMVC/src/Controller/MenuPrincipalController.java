@@ -4,7 +4,7 @@
  */
 package Controller;
 
-import View.Agendamento;
+import View.View_Agendamento;
 import View.CarrinhoCompra;
 import View.HistoricoCliente;
 import View.MenuLateral;
@@ -34,9 +34,9 @@ public class MenuPrincipalController {
         // Feche a janela de login
         this.view.dispose();
     }
-    //Navegar para o Agendamento
+    //Navegar para o View_Agendamento
     public void navegarParaAgendamento(){
-        Agendamento agendamento = new Agendamento();
+        View_Agendamento agendamento = new View_Agendamento();
         agendamento.setVisible(true);
         // Feche a janela de login
         this.view.dispose();

@@ -5,11 +5,6 @@
 package View;
 
 import Controller.AgendamentoController;
-import Model.Dono;
-import Model.GeradorDeId;
-import Model.Pet;
-import Model.Procedimento;
-import Model.Produto;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
@@ -17,18 +12,19 @@ import javax.swing.JTextField;
  *
  * @author Usuário
  */
-public class Agendamento extends javax.swing.JFrame {
+public class View_Agendamento extends javax.swing.JFrame {
     
     private final AgendamentoController controller;
 
-    public Agendamento(AgendamentoController controller) {
-        this.controller = controller;
+    public View_Agendamento() {
+        initComponents();
+        this.controller = new AgendamentoController(this);
+        this.controller.atualizaDono();
+        this.controller.atualizaProcedimento();
+        this.controller.atualizaProduto();
+        this.controller.atualizaPet();
+        this.controller.atualizaData();
     }
-        
-    
-
-
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -111,6 +107,11 @@ public class Agendamento extends javax.swing.JFrame {
         getContentPane().add(cb_pet, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 500, 40));
 
         tf_data.setBorder(null);
+        tf_data.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_dataActionPerformed(evt);
+            }
+        });
         getContentPane().add(tf_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 302, 160, 40));
 
         Agendamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Agendamento.png"))); // NOI18N
@@ -126,24 +127,28 @@ public class Agendamento extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
     private void cb_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_clienteActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_cb_clienteActionPerformed
 
     private void cb_procedimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_procedimentoActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_cb_procedimentoActionPerformed
 
     private void cb_produtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_produtoActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_cb_produtoActionPerformed
 
     private void cb_petActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_petActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_cb_petActionPerformed
 
     private void btn_agendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agendarActionPerformed
         this.controller.agendar();
     }//GEN-LAST:event_btn_agendarActionPerformed
+
+    private void tf_dataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_dataActionPerformed
+        
+    }//GEN-LAST:event_tf_dataActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,20 +167,22 @@ public class Agendamento extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Agendamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View_Agendamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Agendamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View_Agendamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Agendamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View_Agendamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Agendamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View_Agendamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new Agendamento().setVisible(true);
+                new View_Agendamento().setVisible(true);
             }
         });
     }

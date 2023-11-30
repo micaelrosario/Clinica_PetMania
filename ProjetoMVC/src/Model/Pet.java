@@ -19,11 +19,8 @@ public class Pet extends Animal implements Serializable{
     
      @Override
     public String toString() {
-<<<<<<< HEAD
         return "Nome: " + nome + ", Especie: " + raca + ", Idade: " + idade+", Dono: "+dono;
-=======
-        return "Nome: " + nome + ", Espécie: " + raca + ", Idade: " + idade+" Dono: "+dono;
->>>>>>> 64cf2ecc99e24c0e05695767622aca2570f94679
+
     }
 
     public Dono getIdDono() {

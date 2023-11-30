@@ -5,77 +5,116 @@
 package Controller.Helper;
 
 import Model.Dono;
+import View.View_Agendamento;
 import Model.GeradorDeId;
 import Model.Pet;
 import Model.Procedimento;
 import Model.Produto;
-import View.Agendamento;
-<<<<<<< HEAD
-
-=======
-import java.io.Serializable;
-import java.util.Date;
-import javax.swing.JOptionPane;
->>>>>>> 64cf2ecc99e24c0e05695767622aca2570f94679
+import Model.Agendamento;
+import Model.DAO.AgendamentoDAO;
+import Model.DAO.ClienteDAO;
+import Model.DAO.ProcedimentoDAO;
+import Model.DAO.PetDados;
+import Model.DAO.ProdutoDAO;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
  * @author Usuário
  */
-public class AgendamentoHelper implements Serializable {
+public class AgendamentoHelper  {
     
-    private final Agendamento view;
+    private final View_Agendamento view;
+    
 
-    public AgendamentoHelper(Agendamento view) {
+    public AgendamentoHelper(View_Agendamento view) {
         this.view = view;
-        
     }
     
     
     public Agendamento obterModelo() {
-<<<<<<< HEAD
-        GeradorDeId gerarId  = new GeradorDeId();
+        GeradorDeId gerarId = new GeradorDeId();
         int id = gerarId.gerarNovoId();
         Dono dono = (Dono) view.getCb_cliente().getSelectedItem();
         Pet pet = (Pet) view.getCb_pet().getSelectedItem();
         Produto prod = (Produto) view.getCb_produto().getSelectedItem();
         Procedimento proced = (Procedimento) view.getCb_procedimento().getSelectedItem();
-=======
-        GeradorDeId novoId = new GeradorDeId();
-        int id = novoId.gerarNovoId();
-        
-        Dono donoSelecionado = (Dono) view.getCb_cliente().getSelectedItem();
-        Pet petSelecionado = (Pet) view.getCb_pet().getSelectedItem();
-        Produto produtoSelecionado = (Produto) view.getCb_produto().getSelectedItem();
-        Procedimento procedimentoSelecionado = (Procedimento) view.getCb_procedimento().getSelectedItem();
->>>>>>> 64cf2ecc99e24c0e05695767622aca2570f94679
         String data = view.getTf_data().getText();
 
-        // Verificar se ambos os campos estão preenchidos
-<<<<<<< HEAD
         if (dono == null || pet == null || data.isEmpty() || prod == null || proced == null) {
-            //JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos.");
-            return null;  // Retorna null se há campos não preenchidos
-        }
-        // Retorna um objeto Agendamento se os campos estiverem preenchidos
-        return new Agendamento(new GeradorDeId(id), dono, pet, data, prod, proced);
-=======
-        if (donoSelecionado == null || petSelecionado == null || data.isEmpty() || produtoSelecionado == null || procedimentoSelecionado == null) {
-            JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos.");
             return null;  // Retorna null se há campos não preenchidos
         }
 
-        // Retorna um objeto Agendamento se os campos estiverem preenchidos
-        Agendamento modelo = new Agendamento(id, donoSelecionado, petSelecionado, data, produtoSelecionado, procedimentoSelecionado);
-        return modelo;
+        return new Agendamento( id, dono, pet,  data,  prod,  proced);
     }
 
+    public void preencherDonos() {
+        DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getCb_cliente().getModel();
+
+        ClienteDAO procedimentoDAO = new ClienteDAO();
+        procedimentoDAO.carregarCliente(); // Certifique-se de carregar os clientes antes de obter a lista
+
+        ArrayList<Dono> donos = procedimentoDAO.obterClientes();
+
+        // Limpar o combobox antes de adicionar os novos elementos
+        comboBoxModel.removeAllElements();
+
+        for (Dono dono : donos) {
+            comboBoxModel.addElement(dono);
+        }
+    }
     
-    public void setarModelo(Agendamento modelo){
-        /*String nome = modelo.getNome();
-        String senha = modelo.getSenha();
->>>>>>> 64cf2ecc99e24c0e05695767622aca2570f94679
-        
-    }
+    public void preencherPet() {
+        DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getCb_pet().getModel();
 
+        PetDados petDAO = new PetDados();
+        petDAO.carregarPets();// Certifique-se de carregar os clientes antes de obter a lista
+
+        ArrayList<Pet> pets = petDAO.obterPets();
+
+        // Limpar o combobox antes de adicionar os novos elementos
+        comboBoxModel.removeAllElements();
+
+        for (Pet pet : pets) {
+            comboBoxModel.addElement(pet);
+        }
+    }
+    
+    public String preencherData(){
+        String data = view.getTf_data().getText();
+        return data;
+    }
+    
+    public void preencherProduto() {
+        DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getCb_produto().getModel();
+
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        produtoDAO.carregarProdutos();// Certifique-se de carregar os clientes antes de obter a lista
+
+        ArrayList<Produto> produtos = produtoDAO.obterProdutos();
+
+        // Limpar o combobox antes de adicionar os novos elementos
+        comboBoxModel.removeAllElements();
+
+        for (Produto produto : produtos) {
+            comboBoxModel.addElement(produto);
+        }
+    }
+    
+    public void preencherProcedimento() {
+        DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getCb_procedimento().getModel();
+
+        ProcedimentoDAO procedimentoDAO = new ProcedimentoDAO();
+        procedimentoDAO.carregarProcedimento(); // Certifique-se de carregar os clientes antes de obter a lista
+
+        ArrayList<Procedimento> procedimentos = procedimentoDAO.obterProcedimentos();
+
+        // Limpar o combobox antes de adicionar os novos elementos
+        comboBoxModel.removeAllElements();
+
+        for (Procedimento procedimento : procedimentos) {
+            comboBoxModel.addElement(procedimento);
+        }
+    }
 }

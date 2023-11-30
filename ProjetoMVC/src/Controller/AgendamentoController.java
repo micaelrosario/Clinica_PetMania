@@ -5,12 +5,9 @@
 package Controller;
 
 import Controller.Helper.AgendamentoHelper;
+import Model.Agendamento;
 import Model.DAO.AgendamentoDAO;
-<<<<<<< HEAD
-=======
-import Model.DAO.PetDados;
->>>>>>> 64cf2ecc99e24c0e05695767622aca2570f94679
-import View.Agendamento;
+import View.View_Agendamento;
 import java.io.Serializable;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -20,16 +17,18 @@ import javax.swing.JOptionPane;
  * @author Usuário
  */
 public class AgendamentoController implements Serializable {
-<<<<<<< HEAD
-    private final Agendamento view;
+
+    private final View_Agendamento view;
     private AgendamentoHelper helper;
 
-    public AgendamentoController(Agendamento view) {
+    public AgendamentoController(View_Agendamento view) {
         this.view = view;
     }
     
+    
     public void agendar(){
         Agendamento agendamento = helper.obterModelo();
+        System.out.println(agendamento);
         if(agendamento != null){
             AgendamentoDAO agendamentoDAO = new AgendamentoDAO();
             agendamentoDAO.cadastrarAgendamento(agendamento);
@@ -39,24 +38,24 @@ public class AgendamentoController implements Serializable {
         }
     }
     
-=======
->>>>>>> 64cf2ecc99e24c0e05695767622aca2570f94679
-    
-    private final Agendamento view;
-    private AgendamentoHelper helper;
-
-    public AgendamentoController(Agendamento view) {
-        this.view = view;
+    public void atualizaDono(){
+        // Buscar Clientes do Banco de Dados
+        helper.preencherDonos();
     }
-     
-    public void agendar(){
-        Agendamento newAgendamento = helper.obterModelo();
-        if (newAgendamento != null) {
-            AgendamentoDAO agendamentoDao = new AgendamentoDAO();
-            agendamentoDao.cadastrarAgendamento(newAgendamento);
-            ImageIcon icon = new ImageIcon("C:\\Users\\Usuário\\OneDrive\\Documentos\\MeusProjetos-Github\\Clinica_PetMania\\ProjetoMVC\\src\\Imagens/sucess.png");
-            ImageIcon resizedIcon = new ImageIcon(icon.getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH));
-            JOptionPane.showMessageDialog(null, "Agendamento feito com Sucesso!","Info",JOptionPane.PLAIN_MESSAGE, resizedIcon);
-        }
+    public void atualizaPet(){
+        // Buscar Clientes do Banco de Dados
+        helper.preencherPet();
+    }
+    public void atualizaData(){
+        // Buscar Clientes do Banco de Dados
+        helper.preencherData();
+    }
+    public void atualizaProduto(){
+        // Buscar Clientes do Banco de Dados
+        helper.preencherProduto();
+    }
+    public void atualizaProcedimento(){
+        // Buscar Clientes do Banco de Dados
+        helper.preencherProcedimento();
     }
 }
