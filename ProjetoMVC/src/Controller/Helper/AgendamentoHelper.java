@@ -52,10 +52,10 @@ public class AgendamentoHelper  {
     public void preencherDonos() {
         DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getCb_cliente().getModel();
 
-        ClienteDAO procedimentoDAO = new ClienteDAO();
-        procedimentoDAO.carregarCliente(); // Certifique-se de carregar os clientes antes de obter a lista
+        ClienteDAO clienteDAO = new ClienteDAO();
+        clienteDAO.carregarCliente(); // Certifique-se de carregar os clientes antes de obter a lista
 
-        ArrayList<Dono> donos = procedimentoDAO.obterClientes();
+        ArrayList<Dono> donos = clienteDAO.obterClientes();
 
         // Limpar o combobox antes de adicionar os novos elementos
         comboBoxModel.removeAllElements();
