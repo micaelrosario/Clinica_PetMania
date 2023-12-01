@@ -41,8 +41,8 @@ public class AgendamentoHelper {
             return null;  // Retorna null se há campos não preenchidos
         }
         // Retorna um objeto Agendamento se os campos estiverem preenchidos
-        Agendamento modelo = new Agendamento(id, dono, pet, data, prod, proced);
-        return modelo;
+        return new Agendamento(new GeradorDeId(id), dono, pet, data, prod, proced);
+        
     }
 
 }

@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Agendamento implements Serializable{
-    private GeradorDeId id;
+    private int id;
     private Dono dono; // 
     private Pet pet; // 
     private String horaAtend; 
@@ -19,7 +19,7 @@ public class Agendamento implements Serializable{
 
     // Construtor
     public Agendamento(int id, Dono dono, Pet pet, String horaAtend, Produto produto, Procedimento procedimento) {
-        this.id = new GeradorDeId(id);
+        this.id = id;
         this.dono = dono;
         this.pet = pet;
         this.horaAtend = horaAtend;
@@ -30,11 +30,11 @@ public class Agendamento implements Serializable{
 
     // Métodos Getters e Setters
 
-    public GeradorDeId getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(GeradorDeId id) {
+    public void setId(int id) {
         this.id = id;
     }
     

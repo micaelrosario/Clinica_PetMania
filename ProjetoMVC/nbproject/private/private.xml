@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Model/DAO/ClienteDAO.java</file>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/View/CadastroCliente.java</file>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Controller/ClienteController.java</file>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Controller/Helper/LoginHelper.java</file>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Controller/Helper/ClienteHelper.java</file>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Model/Dono.java</file>
+            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Controller/Helper/PetHelper.java</file>
+            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Model/DAO/PetDados.java</file>
+            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Controller/PetController.java</file>
+            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Model/Pet.java</file>
         </group>
     </open-files>
 </project-private>

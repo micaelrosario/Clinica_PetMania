@@ -30,7 +30,6 @@ public class PetController implements Serializable{
     public void cadastrarPet(){
         //Pegar Pet da view
         Pet pet = helper.obterModelo();
-        System.out.println(pet);
         if (pet != null) {
             PetDados petDados = new PetDados();
             petDados.cadastrarPet(pet);
