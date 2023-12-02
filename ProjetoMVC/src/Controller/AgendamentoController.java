@@ -7,6 +7,7 @@ package Controller;
 import Controller.Helper.AgendamentoHelper;
 import Model.Agendamento;
 import Model.DAO.AgendamentoDAO;
+import View.MenuPrincipal;
 import View.View_Agendamento;
 import java.io.Serializable;
 import javax.swing.ImageIcon;
@@ -23,6 +24,7 @@ public class AgendamentoController implements Serializable {
 
     public AgendamentoController(View_Agendamento view) {
         this.view = view;
+        this.helper = new AgendamentoHelper(view);
     }
     
     
@@ -57,5 +59,13 @@ public class AgendamentoController implements Serializable {
     public void atualizaProcedimento(){
         // Buscar Clientes do Banco de Dados
         helper.preencherProcedimento();
+    }
+    
+    //Navegar para o Cadastro
+    public void navegarParaMenuPrincipal(){
+        MenuPrincipal menu = new MenuPrincipal();
+        menu.setVisible(true);
+        // Feche a janela de login
+        this.view.dispose();
     }
 }

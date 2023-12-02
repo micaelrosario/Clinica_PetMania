@@ -113,7 +113,7 @@ public class ProcedimentoHelper implements Serializable{
             // Exemplo: ProdutoDAO.removerProduto(productId);
         } else {
             // Exiba uma mensagem informando que nenhum produto foi selecionado
-            JOptionPane.showMessageDialog(null, "Selecione um procedimento para excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Selecione um serviço para excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
 }

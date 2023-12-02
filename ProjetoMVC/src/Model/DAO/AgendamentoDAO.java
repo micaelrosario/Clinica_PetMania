@@ -37,10 +37,6 @@ public class AgendamentoDAO implements Serializable{
         }
 
         agendamentos.add(agendamento);
-
-        
-        
-
         System.out.println("Agendamento adicionado no arquivo");
     }
     

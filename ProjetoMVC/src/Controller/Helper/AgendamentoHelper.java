@@ -11,7 +11,6 @@ import Model.Pet;
 import Model.Procedimento;
 import Model.Produto;
 import Model.Agendamento;
-import Model.DAO.AgendamentoDAO;
 import Model.DAO.ClienteDAO;
 import Model.DAO.ProcedimentoDAO;
 import Model.DAO.PetDados;
@@ -61,6 +60,7 @@ public class AgendamentoHelper  {
         comboBoxModel.removeAllElements();
 
         for (Dono dono : donos) {
+            System.out.println(dono);
             comboBoxModel.addElement(dono);
         }
     }
@@ -68,21 +68,28 @@ public class AgendamentoHelper  {
     public void preencherPet() {
         DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getCb_pet().getModel();
 
-        PetDados petDAO = new PetDados();
-        petDAO.carregarPets();// Certifique-se de carregar os clientes antes de obter a lista
+        // Obtém o Dono selecionado no JComboBox
+        Dono donoSelecionado = (Dono) view.getCb_cliente().getSelectedItem();
 
-        ArrayList<Pet> pets = petDAO.obterPets();
+        if (donoSelecionado != null) {
+            // Aqui você deve ter algum método em PetDados que retorna os pets de um dono específico
+            PetDados petDAO = new PetDados();
+            ArrayList<Pet> pets = petDAO.obterPetsDoDono(donoSelecionado);
 
-        // Limpar o combobox antes de adicionar os novos elementos
-        comboBoxModel.removeAllElements();
+            // Limpar o combobox antes de adicionar os novos elementos
+            comboBoxModel.removeAllElements();
 
-        for (Pet pet : pets) {
-            comboBoxModel.addElement(pet);
+            for (Pet pet : pets) {
+                System.out.println(pet);
+                comboBoxModel.addElement(pet);
+            }
         }
     }
+
     
     public String preencherData(){
         String data = view.getTf_data().getText();
+        System.out.println(data.toString());
         return data;
     }
     
@@ -98,6 +105,7 @@ public class AgendamentoHelper  {
         comboBoxModel.removeAllElements();
 
         for (Produto produto : produtos) {
+            System.out.println(produto);
             comboBoxModel.addElement(produto);
         }
     }
@@ -114,6 +122,7 @@ public class AgendamentoHelper  {
         comboBoxModel.removeAllElements();
 
         for (Procedimento procedimento : procedimentos) {
+            System.out.println(procedimento);
             comboBoxModel.addElement(procedimento);
         }
     }

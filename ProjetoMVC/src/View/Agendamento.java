@@ -5,11 +5,6 @@
 package View;
 
 import Controller.AgendamentoController;
-import Model.Dono;
-import Model.GeradorDeId;
-import Model.Pet;
-import Model.Procedimento;
-import Model.Produto;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
@@ -23,11 +18,12 @@ public class Agendamento extends javax.swing.JFrame {
 
     public Agendamento(AgendamentoController controller) {
         this.controller = controller;
+        this.controller.atualizaDono();
+        this.controller.atualizaPet();
+        this.controller.atualizaData();
+        this.controller.atualizaProduto();
+        this.controller.atualizaProcedimento();
     }
-        
-    
-
-
     
 
     /**
@@ -120,9 +116,7 @@ public class Agendamento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
-        // Ação após clicar no Botão Cancelar
-        MenuPrincipal novoFrame = new MenuPrincipal();
-        novoFrame.setVisible(true);
+        this.controller.navegarParaMenuPrincipal();
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
     private void cb_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_clienteActionPerformed
@@ -175,7 +169,7 @@ public class Agendamento extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Agendamento().setVisible(true);
+                new View_Agendamento().setVisible(true);
             }
         });
     }

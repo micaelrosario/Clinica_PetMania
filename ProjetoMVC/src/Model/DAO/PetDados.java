@@ -4,12 +4,14 @@
  */
 package Model.DAO;
 
+import Model.Dono;
 import Model.Pet;
 import java.io.*;
 import java.util.ArrayList;
 
 public class PetDados implements Serializable{
     private static ArrayList<Pet> pets = new ArrayList<>();
+    
 
     public void cadastrarPet(Pet pet) {
         pets.add(pet);
@@ -32,14 +34,24 @@ public class PetDados implements Serializable{
             ObjectInputStream objectInputStream = new ObjectInputStream(inFile);
             ArrayList<Pet> petsCarregados = (ArrayList<Pet>) objectInputStream.readObject();
             objectInputStream.close();
-            pets.clear();
+            //pets.clear();
             pets.addAll(petsCarregados);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
+    
+    public ArrayList<Pet> obterPetsDoDono(Dono dono) {
+        ArrayList<Pet> petsDoDono = new ArrayList<>();
 
-    public ArrayList<Pet> obterPets() {
-        return pets;
+        // Percorre todos os pets e adiciona à lista apenas os que pertencem ao dono especificado
+        for (Pet pet : pets) {
+            if (pet.getIdDono().equals(dono)) {
+                petsDoDono.add(pet);
+            }
+        }
+
+        return petsDoDono;
     }
+    
 }

@@ -56,6 +56,9 @@ public class Procedimento implements Serializable{
         this.valor = valor;
     }
     
+    public String ToString(){
+        return getNome();
+    }
     
     
 }

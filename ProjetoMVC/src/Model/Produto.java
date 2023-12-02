@@ -66,5 +66,7 @@ public class Produto implements Serializable {
         this.validade = validade;
     }
     
-    
+    public String ToString(){
+        return getNome();
+}
 }
