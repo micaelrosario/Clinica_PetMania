@@ -17,11 +17,11 @@ import java.util.ArrayList;
  *
  * @author Usuário
  */
-public class ClienteDAO implements Serializable{
+public class ClienteDAO implements Serializable {
     private static ArrayList<Dono> clientes = new ArrayList<>();
 
-    public void cadastrarCliente(Dono cliente) {
-        clientes.add(cliente);
+    public void cadastrarCliente(Dono produto) {
+        clientes.add(produto);
 
         // Serializar a lista de usuários em um arquivo
         try{
@@ -35,13 +35,13 @@ public class ClienteDAO implements Serializable{
         }
     }
 
-    public void carregarCliente() {
+    public void carregarClientes() {
         try {
             FileInputStream inFile = new FileInputStream("clientes_lista.txt");
             ObjectInputStream objectInputStream = new ObjectInputStream(inFile);
             ArrayList<Dono> clientesCarregados = (ArrayList<Dono>) objectInputStream.readObject();
             objectInputStream.close();
-            //clientes.clear(); // Limpe a lista estática existente
+            clientes.clear(); // Limpe a lista estática existente
             clientes.addAll(clientesCarregados); // Adicione os clientes carregados à lista estática
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -52,12 +52,12 @@ public class ClienteDAO implements Serializable{
         return clientes;
     }
     
-    public void removerCliente(String clienteId) {
-        // Encontrar o índice do cliente pelo ID
+    public void removerCliente(String productId) {
+        // Encontrar o índice do produto pelo ID
         int indexToRemove = -1;
         for (int i = 0; i < clientes.size(); i++) {
             Dono cliente = clientes.get(i);
-            if (cliente.getCpf().equals(clienteId)) {
+            if (cliente.getCpf().equals(productId)) {
                 indexToRemove = i;
                 break;
             }
@@ -68,11 +68,11 @@ public class ClienteDAO implements Serializable{
             clientes.remove(indexToRemove);
 
             // Atualize o arquivo serializado
-            salvarClientes();
+            salvarCliente();
         }
     }
     
-    private void salvarClientes() {
+    private void salvarCliente() {
         try {
             FileOutputStream outFile = new FileOutputStream("clientes_lista.txt");
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outFile);

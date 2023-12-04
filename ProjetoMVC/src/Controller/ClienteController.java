@@ -29,10 +29,10 @@ public class ClienteController implements Serializable {
     
     public void cadastrarCliente(){
         Dono cliente = helper.obterModelo();
-        
+        System.out.println(cliente+" Criado no Controller");
         if(cliente != null){
-            ClienteDAO produtoDAO = new ClienteDAO();
-            produtoDAO.cadastrarCliente(cliente);
+            ClienteDAO clienteDAO = new ClienteDAO();
+            clienteDAO.cadastrarCliente(cliente);
             ImageIcon icon = new ImageIcon("C:\\Users\\Usuário\\OneDrive\\Documentos\\MeusProjetos-Github\\Clinica_PetMania\\ProjetoMVC\\src\\Imagens/sucess.png");
             ImageIcon resizedIcon = new ImageIcon(icon.getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH));
             JOptionPane.showMessageDialog(null, "Cliente Cadastrado com Sucesso","Info",JOptionPane.PLAIN_MESSAGE, resizedIcon);
@@ -50,11 +50,12 @@ public class ClienteController implements Serializable {
     public void atualizaTabela() {
         // Buscar Lista com cliente do banco de dados
         ClienteDAO clienteDAO = new ClienteDAO();
-        //ArrayList<Produto> produtos = produtoDAO.carregarProdutos();
+        clienteDAO.carregarClientes();
         ArrayList<Dono> clientes = clienteDAO.obterClientes();
         //Condição 
         if (clientes != null) {
             helper.preencherTabela(clientes);
+            System.out.println("Tabela Preenchida!");
         } else {
             // Lidar com o caso em que a leitura falhou (pode ser um arquivo ausente, erro de formato, etc.)
             JOptionPane.showMessageDialog(null, "Erro ao carregar clientes do arquivo.");

@@ -22,8 +22,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         initComponents();
         
         controller = new ClienteController(this);
-        
-        // Adicione um listener para o evento de visibilidade da janela
+        /* Adicione um listener para o evento de visibilidade da janela
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -31,7 +30,7 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
         });
         // Impedir reordenação de colunas
-        tableCliente.getTableHeader().setReorderingAllowed(false);
+        tableCliente.getTableHeader().setReorderingAllowed(false);*/
     }
 
     /**
