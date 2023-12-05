@@ -45,6 +45,7 @@ public class Agendamento extends javax.swing.JFrame {
         Agendamento = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Agendamento");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -113,6 +114,7 @@ public class Agendamento extends javax.swing.JFrame {
         getContentPane().add(Agendamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 850, 650));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed

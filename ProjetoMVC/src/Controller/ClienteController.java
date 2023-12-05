@@ -32,34 +32,24 @@ public class ClienteController implements Serializable {
         
         if(cliente != null){
             ClienteDAO produtoDAO = new ClienteDAO();
-            produtoDAO.cadastrarCliente(cliente);
+            produtoDAO.create(cliente);
             ImageIcon icon = new ImageIcon("C:\\Users\\Usuário\\OneDrive\\Documentos\\MeusProjetos-Github\\Clinica_PetMania\\ProjetoMVC\\src\\Imagens/sucess.png");
             ImageIcon resizedIcon = new ImageIcon(icon.getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH));
             JOptionPane.showMessageDialog(null, "Cliente Cadastrado com Sucesso","Info",JOptionPane.PLAIN_MESSAGE, resizedIcon);
+            helper.limparTela();
             atualizaTabela();
         }else {
             //JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos obrigatórios.");
         }
     }
     
-    public void excluirCliente(){
+    /*public void excluirCliente(){
         helper.excluirCliente();
     }
-    
+    */
     
     public void atualizaTabela() {
-        // Buscar Lista com cliente do banco de dados
-        ClienteDAO clienteDAO = new ClienteDAO();
-        //ArrayList<Produto> produtos = produtoDAO.carregarProdutos();
-        ArrayList<Dono> clientes = clienteDAO.obterClientes();
-        //Condição 
-        if (clientes != null) {
-            helper.preencherTabela(clientes);
-        } else {
-            // Lidar com o caso em que a leitura falhou (pode ser um arquivo ausente, erro de formato, etc.)
-            JOptionPane.showMessageDialog(null, "Erro ao carregar clientes do arquivo.");
-        }
-        
+        helper.preencherTabela();
     }
     
     public void voltarSubMenuCadastro(){

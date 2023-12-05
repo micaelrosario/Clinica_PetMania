@@ -1,26 +1,25 @@
 
 package Model;
 
-import java.io.Serializable;
-
-
-public class Produto implements Serializable {
+public class Produto {
     private String nome;
     private String id;
     private String fornecedor;
     private double valor;
     private String validade;
     
-
     //========== CONSTRUTOR ===========
-    public Produto(String nome, String id, String fornecedor, double valor, String validade ) {
+    public Produto( ) {
+        
+    }
+    
+    public Produto(String nome, String id, String fornecedor, double valor, String validade) {
         this.nome = nome;
         this.id = id;
         this.fornecedor = fornecedor;
         this.valor = valor;
         this.validade = validade;
     }
-    
     //========== MÉTODOS ESPECÍFICOS ============
 
 
@@ -66,7 +65,8 @@ public class Produto implements Serializable {
         this.validade = validade;
     }
     
-    public String ToString(){
+    @Override
+    public String toString(){
         return getNome();
 }
 }

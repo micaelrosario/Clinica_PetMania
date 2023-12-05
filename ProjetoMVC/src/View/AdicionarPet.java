@@ -45,6 +45,7 @@ public class AdicionarPet extends javax.swing.JFrame {
         AdicionarPet = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastrar Pet");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lb_nome2.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
@@ -118,6 +119,7 @@ public class AdicionarPet extends javax.swing.JFrame {
         getContentPane().add(AdicionarPet, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tf_idadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_idadeActionPerformed

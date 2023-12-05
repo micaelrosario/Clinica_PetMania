@@ -10,6 +10,7 @@ import View.CadastroCliente;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -38,7 +39,7 @@ public class ClienteHelper implements Serializable{
 
         // Verificar se o CPF já existe na lista de clientes
         ClienteDAO clienteDAO = new ClienteDAO();
-        ArrayList<Dono> clientes = clienteDAO.obterClientes();
+        List<Dono> clientes = clienteDAO.read();
 
         for (Dono cliente : clientes) {
             if (cliente.getCpf() != null && cliente.getCpf().equals(cpf)) {
@@ -46,7 +47,7 @@ public class ClienteHelper implements Serializable{
                 return null;  // Retorna null se o CPF já existe
             }
         }
-
+        
         // Criar e retornar um objeto Cliente com os dados fornecidos
         return new Dono(nome, cpf, telefone, endereco);
     }
@@ -74,32 +75,31 @@ public class ClienteHelper implements Serializable{
         
     }
 
-    public void preencherTabela(ArrayList<Dono> clientesCarregados) {
+    public void preencherTabela() {
         DefaultTableModel tableModel = (DefaultTableModel) view.getTableCliente().getModel();
 
         // Limpar as linhas existentes na tabela
         tableModel.setNumRows(0);
 
-        // Inverter a ordem dos produtos
-        Collections.reverse(clientesCarregados);
+        ClienteDAO cliente = new ClienteDAO();
 
         // Percorrer a lista preenchendo o table Model
-        for (Dono cliente : clientesCarregados) {
-            if (cliente.getNome() != null && cliente.getTelefone() != null && cliente.getCpf() != null && cliente.getEndereco() != null) {
+        for (Dono c : cliente.read()) {
+            if (c.getNome() != null && c.getTelefone() != null && c.getCpf() != null && c.getEndereco() != null) {
                 // Verificar se os campos relevantes estão vazios
-                if (!cliente.getNome().isEmpty() && !cliente.getTelefone().isEmpty() && !cliente.getCpf().isEmpty() && !cliente.getEndereco().isEmpty()) {
+                if (!c.getNome().isEmpty() && !c.getTelefone().isEmpty() && !c.getCpf().isEmpty() && !c.getEndereco().isEmpty()) {
                     tableModel.addRow(new Object[]{
-                        cliente.getNome(),
-                        cliente.getTelefone(),
-                        cliente.getCpf(),
-                        cliente.getEndereco(),
+                        c.getNome(),
+                        c.getTelefone(),
+                        c.getCpf(),
+                        c.getEndereco(),
                     });
                 }
             }
         }
     }
     
-    public void excluirCliente(){
+    /*public void excluirCliente(){
         DefaultTableModel tableModel = (DefaultTableModel) view.getTableCliente().getModel();
         int selectedRow = view.getTableCliente().getSelectedRow();
 
@@ -117,6 +117,6 @@ public class ClienteHelper implements Serializable{
         } else {
             // Exiba uma mensagem informando que nenhum cliente foi selecionado
             JOptionPane.showMessageDialog(null, "Selecione um cliente para excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
-        }
-    }
+        }*
+    }*/
 }

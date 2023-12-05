@@ -30,8 +30,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                 controller.atualizaTabela();
             }
         });
-        // Impedir reordenação de colunas
-        tableCliente.getTableHeader().setReorderingAllowed(false);
+        
     }
 
     /**
@@ -55,6 +54,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         Fundo_CadastrarCliente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastrar Cliente");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -112,8 +112,22 @@ public class CadastroCliente extends javax.swing.JFrame {
             new String [] {
                 "Nome", "Telefone", "Cpf", "Endereço"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tableCliente);
+        if (tableCliente.getColumnModel().getColumnCount() > 0) {
+            tableCliente.getColumnModel().getColumn(0).setResizable(false);
+            tableCliente.getColumnModel().getColumn(1).setResizable(false);
+            tableCliente.getColumnModel().getColumn(2).setResizable(false);
+            tableCliente.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 690, 150));
 
@@ -121,6 +135,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         getContentPane().add(Fundo_CadastrarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 760, 570));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tf_enderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_enderecoActionPerformed
@@ -136,7 +151,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.controller.excluirCliente();
+        //this.controller.excluirCliente();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

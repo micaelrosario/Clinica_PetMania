@@ -28,7 +28,7 @@ public class ProdutoController implements Serializable{
         
         if(produto != null){
             ProdutoDAO produtoDAO = new ProdutoDAO();
-            produtoDAO.cadastrarProduto(produto);
+            produtoDAO.create(produto);
             ImageIcon icon = new ImageIcon("C:\\Users\\Usuário\\OneDrive\\Documentos\\MeusProjetos-Github\\Clinica_PetMania\\ProjetoMVC\\src\\Imagens/sucess.png");
             ImageIcon resizedIcon = new ImageIcon(icon.getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH));
             JOptionPane.showMessageDialog(null, "Produto Cadastrado com Sucesso","Info",JOptionPane.PLAIN_MESSAGE, resizedIcon);
@@ -38,23 +38,13 @@ public class ProdutoController implements Serializable{
         }
     }
     
-    public void excluirProduto(){
+    /*public void excluirProduto(){
         helper.excluirProduto();
-    }
+    }*/
     
     
     public void atualizaTabela() {
-        // Buscar Lista com produtos do banco de dados
-        ProdutoDAO produtoDAO = new ProdutoDAO();
-        //ArrayList<Produto> produtos = produtoDAO.carregarProdutos();
-        ArrayList<Produto> produtos = produtoDAO.obterProdutos();
-        //Condição 
-        if (produtos != null) {
-            helper.preencherTabela(produtos);
-        } else {
-            // Lidar com o caso em que a leitura falhou (pode ser um arquivo ausente, erro de formato, etc.)
-            JOptionPane.showMessageDialog(null, "Erro ao carregar produtos do arquivo.");
-        }
+        helper.preencherTabela();
         
     }
     

@@ -1,86 +1,66 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Model.DAO;
 
+import ConnectionFactory.ConnectionFactory;
 import Model.Produto;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
+import java.sql.ResultSet;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author Usuário
- */
-public class ProdutoDAO implements Serializable {
-    private static ArrayList<Produto> produtos = new ArrayList<>();
-
-    public void cadastrarProduto(Produto produto) {
-        produtos.add(produto);
-
-        // Serializar a lista de usuários em um arquivo
+public class ProdutoDAO {
+    
+    public void create(Produto produto){
+        
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = con.prepareStatement("INSERT INTO produto(nome, codBarras, fornecedor, valor, validade) VALUES (?, ?, ?, ?, ?)");
+            stmt.setString(1, produto.getNome());
+            stmt.setString(2, produto.getId());
+            stmt.setString(3, produto.getFornecedor());
+            stmt.setDouble(4, produto.getValor());
+            stmt.setString(5, produto.getValidade());
+            
+            stmt.executeUpdate();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Salvar Produto: " + ex); 
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
+    public List<Produto> read(){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Produto> produtos = new ArrayList<>();
+        
         try{
-            FileOutputStream outFile = new FileOutputStream("produtos_lista.txt");
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outFile);
-            objectOutputStream.writeObject(ProdutoDAO.produtos);
-            objectOutputStream.flush();
-            objectOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+            stmt = con.prepareStatement("SELECT * FROM produto");
+            rs = stmt.executeQuery();
 
-    public void carregarProdutos() {
-        try {
-            FileInputStream inFile = new FileInputStream("produtos_lista.txt");
-            ObjectInputStream objectInputStream = new ObjectInputStream(inFile);
-            ArrayList<Produto> produtosCarregados = (ArrayList<Produto>) objectInputStream.readObject();
-            objectInputStream.close();
-            produtos.clear(); // Limpe a lista estática existente
-            produtos.addAll(produtosCarregados); // Adicione os produtos carregados à lista estática
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
+            while (rs.next()) {
+                Produto produto = new Produto(
+                    rs.getString("nome"),
+                    rs.getString("codBarras"),
+                    rs.getString("fornecedor"),
+                    rs.getDouble("valor"),
+                    rs.getString("validade")
+                );
 
-    public ArrayList<Produto> obterProdutos() {
-        return produtos;
-    }
-    
-    public void removerProduto(String productId) {
-        // Encontrar o índice do produto pelo ID
-        int indexToRemove = -1;
-        for (int i = 0; i < produtos.size(); i++) {
-            Produto produto = produtos.get(i);
-            if (produto.getId().equals(productId)) {
-                indexToRemove = i;
-                break;
+                produtos.add(produto);
             }
+        } catch (SQLException ex) {
+            System.out.println("Erro ao tentar ler Produtos "+ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
         }
-
-        // Se o produto foi encontrado, remova-o
-        if (indexToRemove != -1) {
-            produtos.remove(indexToRemove);
-
-            // Atualize o arquivo serializado
-            salvarProdutos();
-        }
-    }
-    
-    private void salvarProdutos() {
-        try {
-            FileOutputStream outFile = new FileOutputStream("produtos_lista.txt");
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outFile);
-            objectOutputStream.writeObject(ProdutoDAO.produtos);
-            objectOutputStream.flush();
-            objectOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return produtos;   
     }
 }

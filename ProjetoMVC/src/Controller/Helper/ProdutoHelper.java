@@ -4,7 +4,6 @@ import Model.Produto;
 import View.CadastroProduto;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Model.DAO.ProdutoDAO;
@@ -65,28 +64,31 @@ public class ProdutoHelper implements Serializable{
         view.getTf_validade().setText("");
     }
 
-    public void preencherTabela(ArrayList<Produto> produtosCarregados) {
+    public void preencherTabela() {
         DefaultTableModel tableModel = (DefaultTableModel) view.getTableProdutos().getModel();
 
         // Limpar as linhas existentes na tabela
         tableModel.setNumRows(0);
 
-        // Inverter a ordem dos produtos
-        Collections.reverse(produtosCarregados);
+        ProdutoDAO produto = new ProdutoDAO();
 
         // Percorrer a lista preenchendo o table Model
-        for (Produto produto : produtosCarregados) {
-            tableModel.addRow(new Object[]{
-                produto.getNome(),
-                produto.getId(),
-                produto.getFornecedor(),
-                produto.getValor(),
-                produto.getValidade()
-            });
+        for (Produto p : produto.read()) {
+            // Verificar se o nome não é vazio e o valor é diferente de zero
+            if (!p.getNome().isEmpty() && p.getValor() != 0.0) {
+                tableModel.addRow(new Object[]{
+                    p.getNome(),
+                    p.getId(),
+                    p.getFornecedor(),
+                    p.getValor(),
+                    p.getValidade(),
+                });
+            }
         }
     }
+}
     
-    public void excluirProduto(){
+    /*public void excluirProduto(){
         DefaultTableModel tableModel = (DefaultTableModel) view.getTableProdutos().getModel();
         int selectedRow = view.getTableProdutos().getSelectedRow();
 
@@ -109,8 +111,8 @@ public class ProdutoHelper implements Serializable{
             JOptionPane.showMessageDialog(null, "Selecione um produto para excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
 
-    }
+    }*/
 
 
 
-}
+

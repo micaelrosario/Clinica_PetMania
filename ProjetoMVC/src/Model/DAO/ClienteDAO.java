@@ -4,83 +4,68 @@
  */
 package Model.DAO;
 
+import ConnectionFactory.ConnectionFactory;
 import Model.Dono;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
+import java.sql.ResultSet;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/**
- *
- * @author Usuário
- */
-public class ClienteDAO implements Serializable{
-    private static ArrayList<Dono> clientes = new ArrayList<>();
-
-    public void cadastrarCliente(Dono cliente) {
-        clientes.add(cliente);
-
-        // Serializar a lista de usuários em um arquivo
+public class ClienteDAO {
+    
+    public void create(Dono d){
+        
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = con.prepareStatement("INSERT INTO cliente(nome, telefone, cpf, endereco)VALUES(?, ?, ?, ?)");
+            stmt.setString(1, d.getNome());
+            stmt.setString(2, d.getTelefone());
+            stmt.setString(3, d.getCpf());
+            stmt.setString(4, d.getEndereco());
+            
+            stmt.executeUpdate();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Erro ao Salvar Cliente" +ex); 
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
+    public List<Dono> read(){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Dono> clientes = new ArrayList<>();
+        
         try{
-            FileOutputStream outFile = new FileOutputStream("clientes_lista.txt");
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outFile);
-            objectOutputStream.writeObject(ClienteDAO.clientes);
-            objectOutputStream.flush();
-            objectOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void carregarCliente() {
-        try {
-            FileInputStream inFile = new FileInputStream("clientes_lista.txt");
-            ObjectInputStream objectInputStream = new ObjectInputStream(inFile);
-            ArrayList<Dono> clientesCarregados = (ArrayList<Dono>) objectInputStream.readObject();
-            objectInputStream.close();
-            //clientes.clear(); // Limpe a lista estática existente
-            clientes.addAll(clientesCarregados); // Adicione os clientes carregados à lista estática
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public ArrayList<Dono> obterClientes() {
-        return clientes;
-    }
-    
-    public void removerCliente(String clienteId) {
-        // Encontrar o índice do cliente pelo ID
-        int indexToRemove = -1;
-        for (int i = 0; i < clientes.size(); i++) {
-            Dono cliente = clientes.get(i);
-            if (cliente.getCpf().equals(clienteId)) {
-                indexToRemove = i;
-                break;
+            stmt = con.prepareStatement("SELECT * FROM cliente");
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                Dono cliente = new Dono();
+                
+                cliente.setNome(rs.getString("nome"));
+                cliente.setTelefone(rs.getString("telefone"));
+                cliente.setCpf(rs.getString("cpf"));
+                cliente.setEndereco(rs.getString("endereco"));
+                clientes.add(cliente);
             }
+        }catch(SQLException ex){
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
         }
-
-        // Se o produto foi encontrado, remova-o
-        if (indexToRemove != -1) {
-            clientes.remove(indexToRemove);
-
-            // Atualize o arquivo serializado
-            salvarClientes();
-        }
-    }
-    
-    private void salvarClientes() {
-        try {
-            FileOutputStream outFile = new FileOutputStream("clientes_lista.txt");
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outFile);
-            objectOutputStream.writeObject(ClienteDAO.clientes);
-            objectOutputStream.flush();
-            objectOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        
+        
+        return clientes; 
     }
 }

@@ -21,17 +21,17 @@ public class CadastroProduto extends javax.swing.JFrame {
      */
     public CadastroProduto() {
         initComponents();
+                
         controller = new ProdutoController(this);
-        
+        controller.atualizaTabela();
         // Adicione um listener para o evento de visibilidade da janela
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowOpened(java.awt.event.WindowEvent evt) {
-                controller.atualizaTabela();
+                
+                System.out.println("Produtos atualizado na tabela");
             }
         });
-        // Impedir reordenação de colunas
-        tableProdutos.getTableHeader().setReorderingAllowed(false);
     }
 
     /**
@@ -98,7 +98,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         getContentPane().add(tf_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 200, 100, 30));
 
         tf_validade.setBorder(null);
-        getContentPane().add(tf_validade, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 286, 130, 30));
+        getContentPane().add(tf_validade, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 286, 180, 30));
 
         tableProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -143,7 +143,7 @@ public class CadastroProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_voltarActionPerformed
 
     private void btn_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirActionPerformed
-        this.controller.excluirProduto();
+        //this.controller.excluirProduto();
     }//GEN-LAST:event_btn_excluirActionPerformed
 
     /**

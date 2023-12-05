@@ -2,10 +2,8 @@
 package Model;
 
 import java.util.ArrayList;
-import Model.Pet;
-import java.io.Serializable;
 
-public class Dono extends Pessoa implements Serializable{
+public class Dono extends Pessoa{
     
     private ArrayList<Pet> listaPets;
     
