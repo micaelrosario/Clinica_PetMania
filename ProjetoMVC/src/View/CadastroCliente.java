@@ -8,35 +8,26 @@ import Controller.ClienteController;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-/**
- *
- * @author Usuário
- */
 public class CadastroCliente extends javax.swing.JFrame {
 
     private final ClienteController controller;
     /**
-     * Creates new form CadastroCliente
+     * Creates new form CadastroProduto
      */
     public CadastroCliente() {
         initComponents();
-        
+                
         controller = new ClienteController(this);
-        /* Adicione um listener para o evento de visibilidade da janela
+        controller.atualizaTabela();
+        // Adicione um listener para o evento de visibilidade da janela
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowOpened(java.awt.event.WindowEvent evt) {
-                controller.atualizaTabela();
+                
+                System.out.println("Produtos atualizado na tabela");
             }
         });
-<<<<<<< HEAD
-        
-=======
-        // Impedir reordenação de colunas
-        tableCliente.getTableHeader().setReorderingAllowed(false);*/
->>>>>>> 572612a388795f3ab9bb249013ee05d32b16f2f3
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -155,7 +146,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //this.controller.excluirCliente();
+        this.controller.excluirCliente();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

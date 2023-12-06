@@ -34,6 +34,26 @@ public class ProdutoDAO {
         }
     }
     
+    public void delete(Produto p){
+        
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = con.prepareStatement("DELETE FROM produto WHERE codBarras = ?");
+            stmt.setString(1, p.getId());
+          
+            
+            stmt.executeUpdate();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Erro ao Excluir Produto" +ex); 
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
+    
     public List<Produto> read(){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;

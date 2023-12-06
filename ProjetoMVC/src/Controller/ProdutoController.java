@@ -11,7 +11,6 @@ import View.CadastroProduto;
 import View.SubMenuCadastro;
 import java.io.Serializable;
 import javax.swing.JOptionPane;
-import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 public class ProdutoController implements Serializable{
@@ -38,9 +37,9 @@ public class ProdutoController implements Serializable{
         }
     }
     
-    /*public void excluirProduto(){
+    public void excluirProduto(){
         helper.excluirProduto();
-    }*/
+    }
     
     
     public void atualizaTabela() {

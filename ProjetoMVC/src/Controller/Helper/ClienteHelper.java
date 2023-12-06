@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,15 +37,11 @@ public class ClienteHelper implements Serializable{
             JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos obrigatórios.");
             return null;  // Retorna null se há campos não preenchidos
         }
-
+        
         // Verificar se o CPF já existe na lista de clientes
         ClienteDAO clienteDAO = new ClienteDAO();
-<<<<<<< HEAD
         List<Dono> clientes = clienteDAO.read();
-=======
-        clienteDAO.carregarClientes();
-        ArrayList<Dono> clientes = clienteDAO.obterClientes();
->>>>>>> 572612a388795f3ab9bb249013ee05d32b16f2f3
+        
 
         for (Dono cliente : clientes) {
             if (cliente.getCpf() != null && cliente.getCpf().equals(cpf)) {
@@ -55,7 +52,6 @@ public class ClienteHelper implements Serializable{
         
         // Criar e retornar um objeto Cliente com os dados fornecidos
         Dono modelo = new Dono(nome, cpf, telefone, endereco);
-        System.out.println(modelo+" Criado no Helper");
         return modelo;
     }
 
@@ -106,24 +102,33 @@ public class ClienteHelper implements Serializable{
         }
     }
     
-    /*public void excluirCliente(){
+    public void excluirCliente() {
         DefaultTableModel tableModel = (DefaultTableModel) view.getTableCliente().getModel();
         int selectedRow = view.getTableCliente().getSelectedRow();
-
+        Dono cliente = new Dono();
+        
         if (selectedRow != -1) {
-            // Obtém o ID do Cliente na coluna 1 (ou ajuste conforme necessário)
-            String clienteId = (String) tableModel.getValueAt(selectedRow, 2);
+            // Obtém o ID do Cliente na coluna 1
+            cliente.setCpf((String) tableModel.getValueAt(selectedRow, 2));
 
-            // Remove o produto do modelo da tabela
+            // Remove o cliente do modelo da tabela
             tableModel.removeRow(selectedRow);
+
             // Atualiza a exibição da tabela
-            tableModel.fireTableDataChanged();
-            // Remova o produto do armazenamento persistente, se necessário
+            tableModel.fireTableRowsDeleted(selectedRow, selectedRow);
+
+            // Remova o cliente do armazenamento persistente, se necessário
             ClienteDAO clienteDAO = new ClienteDAO();
-            clienteDAO.removerCliente(clienteId);
+            clienteDAO.delete(cliente);
+            
+            ImageIcon icon = new ImageIcon("C:\\Users\\Usuário\\OneDrive\\Documentos\\MeusProjetos-Github\\Clinica_PetMania\\ProjetoMVC\\src\\Imagens/sucess.png");
+            ImageIcon resizedIcon = new ImageIcon(icon.getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH));
+            JOptionPane.showMessageDialog(null, "Cliente "+cliente+" Excluído com Sucesso","Info",JOptionPane.PLAIN_MESSAGE, resizedIcon);
+            
         } else {
             // Exiba uma mensagem informando que nenhum cliente foi selecionado
             JOptionPane.showMessageDialog(null, "Selecione um cliente para excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
-        }*
-    }*/
+        }
+    }
+
 }

@@ -143,7 +143,7 @@ public class CadastroProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_voltarActionPerformed
 
     private void btn_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirActionPerformed
-        //this.controller.excluirProduto();
+        this.controller.excluirProduto();
     }//GEN-LAST:event_btn_excluirActionPerformed
 
     /**

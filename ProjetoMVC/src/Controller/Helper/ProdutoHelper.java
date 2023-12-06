@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Model.DAO.ProdutoDAO;
+import javax.swing.ImageIcon;
 
 public class ProdutoHelper implements Serializable{
     private final CadastroProduto view;
@@ -86,15 +87,16 @@ public class ProdutoHelper implements Serializable{
             }
         }
     }
-}
+
     
-    /*public void excluirProduto(){
+    public void excluirProduto(){
         DefaultTableModel tableModel = (DefaultTableModel) view.getTableProdutos().getModel();
         int selectedRow = view.getTableProdutos().getSelectedRow();
-
+        Produto produto = new Produto();
+        
         if (selectedRow != -1) {
             // Obtém o ID do produto na coluna 1 (ou ajuste conforme necessário)
-            String productId = (String) tableModel.getValueAt(selectedRow, 1);
+            produto.setId((String) tableModel.getValueAt(selectedRow, 1));
 
             // Remove o produto do modelo da tabela
             tableModel.removeRow(selectedRow);
@@ -104,14 +106,18 @@ public class ProdutoHelper implements Serializable{
 
             // Remova o produto do armazenamento persistente, se necessário
             ProdutoDAO produtoDAO = new ProdutoDAO();
-            produtoDAO.removerProduto(productId);
-            // Exemplo: ProdutoDAO.removerProduto(productId);
+            produtoDAO.delete(produto);
+            
+            ImageIcon icon = new ImageIcon("C:\\Users\\Usuário\\OneDrive\\Documentos\\MeusProjetos-Github\\Clinica_PetMania\\ProjetoMVC\\src\\Imagens/sucess.png");
+            ImageIcon resizedIcon = new ImageIcon(icon.getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH));
+            JOptionPane.showMessageDialog(null, "Produto "+produto.getNome()+" Excluído com Sucesso","Info",JOptionPane.PLAIN_MESSAGE, resizedIcon);
         } else {
             // Exiba uma mensagem informando que nenhum produto foi selecionado
             JOptionPane.showMessageDialog(null, "Selecione um produto para excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
 
-    }*/
+    }
+}
 
 
 
