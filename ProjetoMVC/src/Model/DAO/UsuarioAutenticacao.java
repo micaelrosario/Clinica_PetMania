@@ -5,6 +5,7 @@ import Model.Usuario;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class UsuarioAutenticacao implements Serializable{
     // ARRAYLIST DE USUÁRIOS PARA LOGAR NO SISTEMA
@@ -38,7 +39,7 @@ public class UsuarioAutenticacao implements Serializable{
             objectOutputStream.flush();
             objectOutputStream.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao criar arquivo");
         }
     }
     public Boolean autenticarUsuario(Usuario usuario) {

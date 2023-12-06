@@ -60,8 +60,8 @@ public class PetHelper implements Serializable{
         DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getCb_Dono().getModel();
 
         ClienteDAO clienteDAO = new ClienteDAO();
-        clienteDAO.carregarCliente(); // Certifique-se de carregar os clientes antes de obter a lista
-
+      
+        clienteDAO.carregarClientes();
         ArrayList<Dono> donos = clienteDAO.obterClientes();
 
         // Limpar o combobox antes de adicionar os novos elementos

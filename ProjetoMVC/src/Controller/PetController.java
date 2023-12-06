@@ -6,7 +6,7 @@ package Controller;
 
 import View.AdicionarPet;
 import Controller.Helper.PetHelper;
-import Model.DAO.PetDados;
+import Model.DAO.PetDAO;
 import Model.Pet;
 import View.SubMenuCadastro;
 import java.io.Serializable;
@@ -31,7 +31,7 @@ public class PetController implements Serializable{
         //Pegar Pet da view
         Pet pet = helper.obterModelo();
         if (pet != null) {
-            PetDados petDados = new PetDados();
+            PetDAO petDados = new PetDAO();
             petDados.cadastrarPet(pet);
             ImageIcon icon = new ImageIcon("C:\\Users\\Usuário\\OneDrive\\Documentos\\MeusProjetos-Github\\Clinica_PetMania\\ProjetoMVC\\src\\Imagens/sucess.png");
             ImageIcon resizedIcon = new ImageIcon(icon.getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH));

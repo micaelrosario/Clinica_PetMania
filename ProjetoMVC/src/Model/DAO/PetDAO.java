@@ -9,7 +9,7 @@ import Model.Pet;
 import java.io.*;
 import java.util.ArrayList;
 
-public class PetDados implements Serializable{
+public class PetDAO implements Serializable{
     private static ArrayList<Pet> pets = new ArrayList<>();
     
 
@@ -20,7 +20,7 @@ public class PetDados implements Serializable{
         try{
             FileOutputStream outFile = new FileOutputStream("pets_lista.txt");
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outFile);
-            objectOutputStream.writeObject(PetDados.pets);
+            objectOutputStream.writeObject(PetDAO.pets);
             objectOutputStream.flush();
             objectOutputStream.close();
         } catch (IOException e) {

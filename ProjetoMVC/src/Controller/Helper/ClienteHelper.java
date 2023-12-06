@@ -39,7 +39,12 @@ public class ClienteHelper implements Serializable{
 
         // Verificar se o CPF já existe na lista de clientes
         ClienteDAO clienteDAO = new ClienteDAO();
+<<<<<<< HEAD
         List<Dono> clientes = clienteDAO.read();
+=======
+        clienteDAO.carregarClientes();
+        ArrayList<Dono> clientes = clienteDAO.obterClientes();
+>>>>>>> 572612a388795f3ab9bb249013ee05d32b16f2f3
 
         for (Dono cliente : clientes) {
             if (cliente.getCpf() != null && cliente.getCpf().equals(cpf)) {
@@ -49,7 +54,9 @@ public class ClienteHelper implements Serializable{
         }
         
         // Criar e retornar um objeto Cliente com os dados fornecidos
-        return new Dono(nome, cpf, telefone, endereco);
+        Dono modelo = new Dono(nome, cpf, telefone, endereco);
+        System.out.println(modelo+" Criado no Helper");
+        return modelo;
     }
 
 

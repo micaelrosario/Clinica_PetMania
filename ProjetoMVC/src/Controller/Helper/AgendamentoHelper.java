@@ -13,7 +13,7 @@ import Model.Produto;
 import Model.Agendamento;
 import Model.DAO.ClienteDAO;
 import Model.DAO.ProcedimentoDAO;
-import Model.DAO.PetDados;
+import Model.DAO.PetDAO;
 import Model.DAO.ProdutoDAO;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
@@ -52,9 +52,9 @@ public class AgendamentoHelper  {
         DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getCb_cliente().getModel();
 
         ClienteDAO clienteDAO = new ClienteDAO();
-        clienteDAO.carregarCliente(); // Certifique-se de carregar os clientes antes de obter a lista
+        
 
-        ArrayList<Dono> donos = clienteDAO.obterClientes();
+        ArrayList<Dono> donos = clienteDAO.carregarListaDeClientes();
 
         // Limpar o combobox antes de adicionar os novos elementos
         comboBoxModel.removeAllElements();
@@ -72,8 +72,8 @@ public class AgendamentoHelper  {
         Dono donoSelecionado = (Dono) view.getCb_cliente().getSelectedItem();
 
         if (donoSelecionado != null) {
-            // Aqui você deve ter algum método em PetDados que retorna os pets de um dono específico
-            PetDados petDAO = new PetDados();
+            // Aqui você deve ter algum método em PetDAO que retorna os pets de um dono específico
+            PetDAO petDAO = new PetDAO();
             ArrayList<Pet> pets = petDAO.obterPetsDoDono(donoSelecionado);
 
             // Limpar o combobox antes de adicionar os novos elementos
