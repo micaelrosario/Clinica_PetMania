@@ -6,19 +6,23 @@ import java.io.Serializable;
 
 public class Procedimento implements Serializable{
     private String nome;
-    private String id;
+    private int id;
     private String funcionario;
     private double valor;
 
 
     //========== CONSTRUTOR ===========
-    public Procedimento(String nome, String id, String funcionario, double valor) {
+    
+    
+    public Procedimento() {
+    }
+
+    public Procedimento(String nome, int id, String funcionario, double valor) {
         this.nome = nome;
         this.id = id;
         this.funcionario = funcionario;
         this.valor = valor;
     }
-
     //========== MÉTODOS ESPECÍFICOS ============
     
 
@@ -32,11 +36,11 @@ public class Procedimento implements Serializable{
         this.nome = nome;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

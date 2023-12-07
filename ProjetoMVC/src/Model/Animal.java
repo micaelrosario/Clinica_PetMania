@@ -4,14 +4,14 @@ public abstract class Animal {
      //ATRIBUTOS 
     String nome;
     String raca;
-    String idade;
+    int idade;
 
     //MÉTODO CONSTRUTOR DA CLASSE
     public Animal(){
 
     }
 
-    public Animal(String nome, String raca, String idade) {
+    public Animal(String nome, String raca, int idade) {
         this.nome = nome;
         this.raca = raca;
         this.idade = idade;
@@ -34,11 +34,11 @@ public abstract class Animal {
         this.raca = raca;
     }
 
-    public String getIdade() {
+    public int getIdade() {
         return idade;
     }
 
-    public void setIdade(String idade) {
+    public void setIdade(int idade) {
         this.idade = idade;
     }
 }

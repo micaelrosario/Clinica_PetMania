@@ -8,12 +8,11 @@ import Model.DAO.ClienteDAO;
 import Model.Dono;
 import Model.Pet;
 import View.AdicionarPet;
-import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
         
-public class PetHelper implements Serializable{
+public class PetHelper {
     private final AdicionarPet view;
     
 
@@ -24,13 +23,13 @@ public class PetHelper implements Serializable{
     public Pet obterModelo() {
         String nome = view.getTf_nome().getText();
         String raca = view.getTf_raca().getText();
-        String idade = view.getTf_idade().getText();
+        int idade = Integer.parseInt( view.getTf_idade().getText());
 
         // Obtém o Dono selecionado no JComboBox
         Dono donoSelecionado = (Dono) view.getCb_Dono().getSelectedItem();
         
         // Verificar se algum campo obrigatório está vazio ou nulo
-        if (nome.isEmpty() || raca.isEmpty() || idade.isEmpty() || donoSelecionado == null) {
+        if (nome.isEmpty() || raca.isEmpty() || idade == 0 || donoSelecionado == null) {
             JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos obrigatórios.");
             return null;  // Retorna null se há campos não preenchidos
         }
@@ -43,11 +42,13 @@ public class PetHelper implements Serializable{
     public void setarModelo(Pet modelo){
         String nome = modelo.getNome();
         String raca = modelo.getRaca();
-        String idade = modelo.getIdade();
+        int idade = modelo.getIdade();
+        String idadeStr = String.valueOf(idade);
         
         view.getTf_nome().setText(nome);
         view.getTf_raca().setText(raca);
-        view.getTf_idade().setText(idade);
+        view.getTf_idade().setText(idadeStr);
+        
     }
     
     public void  limparTela(){
@@ -60,9 +61,7 @@ public class PetHelper implements Serializable{
         DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getCb_Dono().getModel();
 
         ClienteDAO clienteDAO = new ClienteDAO();
-      
-        clienteDAO.carregarClientes();
-        ArrayList<Dono> donos = clienteDAO.obterClientes();
+        List<Dono> donos = clienteDAO.read();
 
         // Limpar o combobox antes de adicionar os novos elementos
         comboBoxModel.removeAllElements();

@@ -4,7 +4,7 @@ package Model;
 import java.io.Serializable;
 
 
-public class Pet extends Animal implements Serializable{
+public class Pet extends Animal {
     //Atributos do Pet
     private Dono dono;
 
@@ -12,7 +12,7 @@ public class Pet extends Animal implements Serializable{
         this.dono = dono;
     }
 
-    public Pet(String nome, String raca, String idade, Dono dono) {
+    public Pet(String nome, String raca, int idade, Dono dono) {
         super(nome, raca, idade);
         this.dono = dono;
     }
@@ -30,8 +30,4 @@ public class Pet extends Animal implements Serializable{
     public void setIdDono(Dono dono) {
         this.dono = dono;
     }
-
-    
-    
-    
 }

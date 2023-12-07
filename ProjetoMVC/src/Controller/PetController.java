@@ -9,7 +9,6 @@ import Controller.Helper.PetHelper;
 import Model.DAO.PetDAO;
 import Model.Pet;
 import View.SubMenuCadastro;
-import java.io.Serializable;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -17,7 +16,7 @@ import javax.swing.JOptionPane;
  *
  * @author Usuário
  */
-public class PetController implements Serializable{
+public class PetController {
     
     private final AdicionarPet view;
     private PetHelper helper;
@@ -32,16 +31,18 @@ public class PetController implements Serializable{
         Pet pet = helper.obterModelo();
         if (pet != null) {
             PetDAO petDados = new PetDAO();
-            petDados.cadastrarPet(pet);
+            petDados.create(pet);
             ImageIcon icon = new ImageIcon("C:\\Users\\Usuário\\OneDrive\\Documentos\\MeusProjetos-Github\\Clinica_PetMania\\ProjetoMVC\\src\\Imagens/sucess.png");
             ImageIcon resizedIcon = new ImageIcon(icon.getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH));
             JOptionPane.showMessageDialog(null, "Pet Cadastrado com Sucesso!","Info",JOptionPane.PLAIN_MESSAGE, resizedIcon);
+            System.out.println(pet+" Foi Cadastrado para "+pet.getIdDono());
+        }else{
+            JOptionPane.showMessageDialog(null, "Não foi possivel cadastrar "+pet);
         }
         
     }
     
-    public void atualizaDono(){
-        // Buscar Clientes do Banco de Dados
+    public void prencherDonoPet(){
         helper.preencherDonos();
     }
     

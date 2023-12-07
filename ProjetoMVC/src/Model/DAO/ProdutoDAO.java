@@ -20,7 +20,7 @@ public class ProdutoDAO {
         try {
             stmt = con.prepareStatement("INSERT INTO produto(nome, codBarras, fornecedor, valor, validade) VALUES (?, ?, ?, ?, ?)");
             stmt.setString(1, produto.getNome());
-            stmt.setString(2, produto.getId());
+            stmt.setInt(2, produto.getId());
             stmt.setString(3, produto.getFornecedor());
             stmt.setDouble(4, produto.getValor());
             stmt.setString(5, produto.getValidade());
@@ -41,7 +41,7 @@ public class ProdutoDAO {
         
         try {
             stmt = con.prepareStatement("DELETE FROM produto WHERE codBarras = ?");
-            stmt.setString(1, p.getId());
+            stmt.setInt(1, p.getId());
           
             
             stmt.executeUpdate();
@@ -68,7 +68,7 @@ public class ProdutoDAO {
             while (rs.next()) {
                 Produto produto = new Produto(
                     rs.getString("nome"),
-                    rs.getString("codBarras"),
+                    rs.getInt("codBarras"),
                     rs.getString("fornecedor"),
                     rs.getDouble("valor"),
                     rs.getString("validade")

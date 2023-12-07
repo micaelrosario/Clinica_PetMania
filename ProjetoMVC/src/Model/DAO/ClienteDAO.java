@@ -87,4 +87,35 @@ public class ClienteDAO {
         }
         return clientes;
     }
+
+    public Dono obterDonoPorID(String id) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM cliente WHERE id = ?");
+            stmt.setString(1, id);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                Dono dono = new Dono(
+                    rs.getString("nome"),
+                    rs.getString("cpf"),
+                    rs.getString("telefone"),
+                    rs.getString("endereco")
+                );
+                return dono;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Erro ao obter Dono por ID: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return null; // Retorna null se não encontrar um dono com o ID especificado
+    }
 }
+
+

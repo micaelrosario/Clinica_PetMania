@@ -1,5 +1,6 @@
 package Controller.Helper;
 
+import Model.DAO.ProcedimentoDAO;
 import Model.Produto;
 import View.CadastroProduto;
 import java.io.Serializable;
@@ -7,6 +8,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Model.DAO.ProdutoDAO;
+import Model.Procedimento;
+import java.util.List;
 import javax.swing.ImageIcon;
 
 public class ProdutoHelper implements Serializable{
@@ -18,13 +21,14 @@ public class ProdutoHelper implements Serializable{
     
     public Produto obterModelo() {
         String nome = view.getTf_nome().getText();
-        String id = view.getTf_id().getText();
+        String idStr = view.getTf_id().getText();
         String fornecedor = view.getTf_fornecedor().getText();
         String valorStr = view.getTf_valor().getText();
         String validade = view.getTf_validade().getText();
+        int id = Integer.parseInt(idStr);
 
         // Verificar se algum campo obrigatório está vazio
-        if (nome.isEmpty() || id.isEmpty() || fornecedor.isEmpty() || valorStr.isEmpty() || validade.isEmpty()) {
+        if (nome.isEmpty() || id == 0 || fornecedor.isEmpty() || valorStr.isEmpty() || validade.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos obrigatórios.");
             return null;  // Retorna null se há campos não preenchidos
         }
@@ -39,16 +43,30 @@ public class ProdutoHelper implements Serializable{
             return null;
         }
         
+        // Verificar se o CPF já existe na lista de clientes
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        List<Produto> produtos = produtoDAO.read();
+        
+
+        for (Produto produto : produtos) {
+            if (produto.getId()!= 0 && produto.getId() == id) {
+                JOptionPane.showMessageDialog(null, "Produto com ID: "+produto.getId()+" já cadastrado.");
+                return null;  // Retorna null se o CPF já existe
+            }
+        }
+        
+        
         // Criar e retornar um objeto Produto com os dados fornecidos
         return new Produto(nome, id, fornecedor, valor, validade);
     }
 
     public void setarModelo(Produto modelo) {
         String nome = modelo.getNome();
-        String id = modelo.getId();  // Corrigido para obter o ID do modelo
+        int idInt = modelo.getId();  // Corrigido para obter o ID do modelo
         String fornecedor = modelo.getFornecedor();  // Corrigido para obter o fornecedor do modelo
         String valor = String.valueOf(modelo.getValor());  // Corrigido para obter o valor como String
         String validade = modelo.getValidade();
+        String id = String.valueOf(idInt);
         
         view.getTf_nome().setText(nome);
         view.getTf_id().setText(id);
@@ -96,7 +114,7 @@ public class ProdutoHelper implements Serializable{
         
         if (selectedRow != -1) {
             // Obtém o ID do produto na coluna 1 (ou ajuste conforme necessário)
-            produto.setId((String) tableModel.getValueAt(selectedRow, 1));
+            produto.setId((int) tableModel.getValueAt(selectedRow, 1));
 
             // Remove o produto do modelo da tabela
             tableModel.removeRow(selectedRow);

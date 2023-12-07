@@ -21,7 +21,7 @@ public class AdicionarPet extends javax.swing.JFrame {
     public AdicionarPet() {
         initComponents();
         this.controller = new PetController(this);
-        this.controller.atualizaDono();
+        this.controller.prencherDonoPet();
     }
 
     /**
@@ -113,6 +113,11 @@ public class AdicionarPet extends javax.swing.JFrame {
         getContentPane().add(btn_salvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, 120, 40));
 
         cb_Dono.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        cb_Dono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_DonoActionPerformed(evt);
+            }
+        });
         getContentPane().add(cb_Dono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 240, 70));
 
         AdicionarPet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/AdicionarPet.png"))); // NOI18N
@@ -146,6 +151,10 @@ public class AdicionarPet extends javax.swing.JFrame {
     private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
         this.controller.cadastrarPet();
     }//GEN-LAST:event_btn_salvarActionPerformed
+
+    private void cb_DonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_DonoActionPerformed
+        
+    }//GEN-LAST:event_cb_DonoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,7 +195,7 @@ public class AdicionarPet extends javax.swing.JFrame {
     private javax.swing.JLabel AdicionarPet;
     private javax.swing.JButton btn_salvar;
     private javax.swing.JButton btn_voltar;
-    private javax.swing.JComboBox<String> cb_Dono;
+    private javax.swing.JComboBox<Object> cb_Dono;
     private javax.swing.JLabel lb_especie;
     private javax.swing.JLabel lb_idade;
     private javax.swing.JLabel lb_nome2;
@@ -195,9 +204,7 @@ public class AdicionarPet extends javax.swing.JFrame {
     private javax.swing.JTextField tf_raca;
     // End of variables declaration//GEN-END:variables
     
-    public void iniciar(){
-        this.controller.atualizaDono();
-    }
+    
     
     public JTextField getTf_nome() {
         return tf_nome;
@@ -223,13 +230,15 @@ public class AdicionarPet extends javax.swing.JFrame {
         this.tf_idade = tf_idade;
     }
 
-    public JComboBox<String> getCb_Dono() {
+    public JComboBox<Object> getCb_Dono() {
         return cb_Dono;
     }
 
-    public void setCb_Dono(JComboBox<String> cb_Dono) {
+    public void setCb_Dono(JComboBox<Object> cb_Dono) {
         this.cb_Dono = cb_Dono;
     }
+
+    
     
     
 }

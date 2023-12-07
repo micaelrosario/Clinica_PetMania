@@ -7,9 +7,7 @@ package Controller.Helper;
 import Model.DAO.ProcedimentoDAO;
 import Model.Procedimento;
 import View.CadastroServiço;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Usuário
  */
-public class ProcedimentoHelper implements Serializable{
+public class ProcedimentoHelper {
     private final CadastroServiço view;
 
     public ProcedimentoHelper(CadastroServiço view) {
@@ -26,13 +24,13 @@ public class ProcedimentoHelper implements Serializable{
     
     public Procedimento obterModelo() {
         String nome = view.getTf_nome().getText();
-        String id = view.getTf_id().getText();
+        String idStr = view.getTf_id().getText();
         String funcionario = view.getTf_funcionario().getText();
         String valorStr = view.getTf_valor().getText();
-        
+        int id = Integer.parseInt(idStr);
 
         // Verificar se algum campo obrigatório está vazio
-        if (nome.isEmpty() || id.isEmpty() || funcionario.isEmpty() || valorStr.isEmpty()) {
+        if (nome.isEmpty() || id == 0 || funcionario.isEmpty() || valorStr.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos obrigatórios.");
             return null;  // Retorna null se há campos não preenchidos
         }
@@ -47,16 +45,30 @@ public class ProcedimentoHelper implements Serializable{
             return null;
         }
         
+        // Verificar se o CPF já existe na lista de clientes
+        ProcedimentoDAO procedimentoDAO = new ProcedimentoDAO();
+        List<Procedimento> procedimentos = procedimentoDAO.read();
+        
+
+        for (Procedimento procedimento : procedimentos) {
+            if (procedimento.getId()!= 0 && procedimento.getId() == id) {
+                JOptionPane.showMessageDialog(null, "Serviço com ID: "+procedimento.getId()+" já cadastrado.");
+                return null;  // Retorna null se o CPF já existe
+            }
+        }
+        
+        
+        
         // Criar e retornar um objeto Procedimento com os dados fornecidos
         return new Procedimento(nome, id, funcionario, valor);
     }
 
     public void setarModelo(Procedimento modelo) {
         String nome = modelo.getNome();
-        String id = modelo.getId();  // Corrigido para obter o ID do modelo
+        int idInt = modelo.getId();  // Corrigido para obter o ID do modelo
         String fornecedor = modelo.getFuncionario();  // Corrigido para obter o fornecedor do modelo
         String valor = String.valueOf(modelo.getValor());  // Corrigido para obter o valor como String
-        
+        String id = String.valueOf(idInt);
         
         view.getTf_nome().setText(nome);
         view.getTf_id().setText(id);
@@ -73,17 +85,16 @@ public class ProcedimentoHelper implements Serializable{
         
     }
 
-    public void preencherTabela(ArrayList<Procedimento> procedimentosCarregados) {
+    public void preencherTabela() {
         DefaultTableModel tableModel = (DefaultTableModel) view.getTableProcedimento().getModel();
 
         // Limpar as linhas existentes na tabela
         tableModel.setNumRows(0);
-
-        // Inverter a ordem dos produtos
-        Collections.reverse(procedimentosCarregados);
+        
+        ProcedimentoDAO procedimentoDAO= new ProcedimentoDAO();
 
         // Percorrer a lista preenchendo o table Model
-        for (Procedimento procedimento : procedimentosCarregados) {
+        for (Procedimento procedimento : procedimentoDAO.read()) {
             tableModel.addRow(new Object[]{
                 procedimento.getNome(),
                 procedimento.getId(),
@@ -96,10 +107,10 @@ public class ProcedimentoHelper implements Serializable{
     public void excluirProcedimento(){
         DefaultTableModel tableModel = (DefaultTableModel) view.getTableProcedimento().getModel();
         int selectedRow = view.getTableProcedimento().getSelectedRow();
-
+        Procedimento procedimento = new Procedimento();
         if (selectedRow != -1) {
             // Obtém o ID do produto na coluna 1 (ou ajuste conforme necessário)
-            String procedimentoId = (String) tableModel.getValueAt(selectedRow, 1);
+            procedimento.setId((int) tableModel.getValueAt(selectedRow, 1));
 
             // Remove o produto do modelo da tabela
             tableModel.removeRow(selectedRow);
@@ -108,8 +119,8 @@ public class ProcedimentoHelper implements Serializable{
             tableModel.fireTableDataChanged();
 
             // Remova o produto do armazenamento persistente, se necessário
-            ProcedimentoDAO produtoDAO = new ProcedimentoDAO();
-            produtoDAO.removerProcedimento(procedimentoId);
+            ProcedimentoDAO procedDAO = new ProcedimentoDAO();
+            procedDAO.delete(procedimento);
             // Exemplo: ProdutoDAO.removerProduto(productId);
         } else {
             // Exiba uma mensagem informando que nenhum produto foi selecionado

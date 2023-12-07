@@ -1,86 +1,85 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Model.DAO;
 
+import ConnectionFactory.ConnectionFactory;
 import Model.Procedimento;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import Model.Produto;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
+import java.sql.ResultSet;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author Usuário
- */
-public class ProcedimentoDAO implements Serializable{
-    private static ArrayList<Procedimento> procedimentos = new ArrayList<>();
-
-    public void cadastrarProcedimento(Procedimento procedimento) {
-        procedimentos.add(procedimento);
-
-        // Serializar a lista de usuários em um arquivo
+public class ProcedimentoDAO {
+    
+    public void create(Procedimento p){
+        
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = con.prepareStatement("INSERT INTO procedimento(nome, id, funcionario, valor) VALUES (?, ?, ?, ?)");
+            stmt.setString(1, p.getNome());
+            stmt.setInt(2, p.getId());
+            stmt.setString(3, p.getFuncionario());
+            stmt.setDouble(4, p.getValor());
+            
+            stmt.executeUpdate();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Salvar Procedimento: " + ex); 
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
+    public void delete(Procedimento p){
+        
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = con.prepareStatement("DELETE FROM procedimento WHERE id = ?");
+            stmt.setInt(1, p.getId());
+          
+            
+            stmt.executeUpdate();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Erro ao Excluir um Procedimento" +ex); 
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
+    
+    public List<Procedimento> read(){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Procedimento> procedimentos = new ArrayList<>();
+        
         try{
-            FileOutputStream outFile = new FileOutputStream("procedimentos_lista.txt");
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outFile);
-            objectOutputStream.writeObject(ProcedimentoDAO.procedimentos);
-            objectOutputStream.flush();
-            objectOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+            stmt = con.prepareStatement("SELECT * FROM procedimento");
+            rs = stmt.executeQuery();
 
-    public void carregarProcedimento() {
-        try {
-            FileInputStream inFile = new FileInputStream("procedimentos_lista.txt");
-            ObjectInputStream objectInputStream = new ObjectInputStream(inFile);
-            ArrayList<Procedimento> procedimentosCarregados = (ArrayList<Procedimento>) objectInputStream.readObject();
-            objectInputStream.close();
-            procedimentos.clear(); // Limpe a lista estática existente
-            procedimentos.addAll(procedimentosCarregados); // Adicione os procedimentos carregados à lista estática
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
+            while (rs.next()) {
+                Procedimento procedimento = new Procedimento(
+                    rs.getString("nome"),
+                    rs.getInt("id"),
+                    rs.getString("funcionario"),
+                    rs.getDouble("valor")
+                );
 
-    public ArrayList<Procedimento> obterProcedimentos() {
-        return procedimentos;
-    }
-    
-    public void removerProcedimento(String procedimentoId) {
-        // Encontrar o índice do procedimento pelo ID
-        int indexToRemove = -1;
-        for (int i = 0; i < procedimentos.size(); i++) {
-            Procedimento procedimento = procedimentos.get(i);
-            if (procedimento.getId().equals(procedimentoId)) {
-                indexToRemove = i;
-                break;
+                procedimentos.add(procedimento);
             }
+        } catch (SQLException ex) {
+            System.out.println("Erro ao tentar ler Procedimentos "+ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
         }
-
-        // Se o produto foi encontrado, remova-o
-        if (indexToRemove != -1) {
-            procedimentos.remove(indexToRemove);
-
-            // Atualize o arquivo serializado
-            salvarProcedimentos();
-        }
-    }
-    
-    private void salvarProcedimentos() {
-        try {
-            FileOutputStream outFile = new FileOutputStream("procedimentos_lista.txt");
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outFile);
-            objectOutputStream.writeObject(ProcedimentoDAO.procedimentos);
-            objectOutputStream.flush();
-            objectOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return procedimentos;   
     }
 }

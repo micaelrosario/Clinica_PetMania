@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  *
  * @author Usuário
  */
-public class ProcedimentoController implements Serializable{
+public class ProcedimentoController {
     private final CadastroServiço view;
     private final ProcedimentoHelper helper;
 
@@ -32,7 +32,7 @@ public class ProcedimentoController implements Serializable{
         
         if(procedimento != null){
             ProcedimentoDAO procedimentoDAO = new ProcedimentoDAO();
-            procedimentoDAO.cadastrarProcedimento(procedimento);
+            procedimentoDAO.create(procedimento);
             ImageIcon icon = new ImageIcon("C:\\Users\\Usuário\\OneDrive\\Documentos\\MeusProjetos-Github\\Clinica_PetMania\\ProjetoMVC\\src\\Imagens/sucess.png");
             ImageIcon resizedIcon = new ImageIcon(icon.getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH));
             JOptionPane.showMessageDialog(null, "Procedimento Cadastrado com Sucesso","Info",JOptionPane.PLAIN_MESSAGE, resizedIcon);
@@ -48,17 +48,7 @@ public class ProcedimentoController implements Serializable{
     
     
     public void atualizaTabela() {
-        // Buscar Lista com produtos do banco de dados
-        ProcedimentoDAO procedimentoDAO = new ProcedimentoDAO();
-        //ArrayList<Produto> produtos = produtoDAO.carregarProdutos();
-        ArrayList<Procedimento> procedimentos = procedimentoDAO.obterProcedimentos();
-        //Condição 
-        if (procedimentos != null) {
-            helper.preencherTabela(procedimentos);
-        } else {
-            // Lidar com o caso em que a leitura falhou (pode ser um arquivo ausente, erro de formato, etc.)
-            JOptionPane.showMessageDialog(null, "Erro ao carregar procedimentos do arquivo.");
-        }
+        helper.preencherTabela();
         
     }
     

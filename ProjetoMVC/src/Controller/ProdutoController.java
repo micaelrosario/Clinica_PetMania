@@ -9,11 +9,10 @@ import Model.DAO.ProdutoDAO;
 import Model.Produto;
 import View.CadastroProduto;
 import View.SubMenuCadastro;
-import java.io.Serializable;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 
-public class ProdutoController implements Serializable{
+public class ProdutoController {
     private final CadastroProduto view;
     private final ProdutoHelper helper;
 
