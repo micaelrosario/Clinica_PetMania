@@ -6,15 +6,15 @@ import java.io.Serializable;
 
 public class Pet extends Animal {
     //Atributos do Pet
-    private int dono;
+    private String id_dono;
 
-    public Pet(int dono) {
-        this.dono = dono;
+    public Pet(String dono) {
+        this.id_dono = dono;
     }
 
-    public Pet(String nome, String raca, int idade, int id_dono) {
+    public Pet(String nome, String raca, int idade, String id_dono) {
         super(nome, raca, idade);
-        this.dono = dono;
+        this.id_dono = id_dono;
     }
     
      @Override
@@ -23,11 +23,11 @@ public class Pet extends Animal {
 
     }
 
-    public int getIdDono() {
-        return dono;
+    public String getIdDono() {
+        return id_dono;
     }
 
-    public void setIdDono(int dono) {
-        this.dono = dono;
+    public void setIdDono(String dono) {
+        this.id_dono = dono;
     }
 }

@@ -26,7 +26,7 @@ public class PetDAO {
             stmt.setString(1, pet.getNome());
             stmt.setString(2, pet.getRaca());
             stmt.setInt(3, pet.getIdade());
-            stmt.setInt(4, pet.getIdDono());
+            stmt.setString(4, pet.getIdDono());
 
             stmt.executeUpdate();
             System.out.println("Pet cadastrado na tabela");
@@ -78,7 +78,7 @@ public class PetDAO {
                     rs.getString("nome"),
                     rs.getString("raca"),
                     rs.getInt("idade"),
-                    rs.getInt("id_dono")
+                    rs.getString("id_dono")
                 );
 
                 pets.add(pet);

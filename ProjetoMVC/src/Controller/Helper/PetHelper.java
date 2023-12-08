@@ -27,14 +27,14 @@ public class PetHelper {
 
         // Obtém o Dono selecionado no JComboBox
         Dono donoSelecionado = (Dono) view.getCb_Dono().getSelectedItem();
-        int id_dono = Integer.parseInt(donoSelecionado.getCpf());
+        String id_dono = donoSelecionado.getCpf();
         
         // Verificar se algum campo obrigatório está vazio ou nulo
         if (nome.isEmpty() || raca.isEmpty() || idade == 0 || donoSelecionado == null) {
             JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos obrigatórios.");
             return null;  // Retorna null se há campos não preenchidos
         }
-        
+        System.out.println(id_dono);
         // Cria e retorna um objeto Pet com os dados fornecidos
         return new Pet(nome, raca, idade, id_dono);
     }
