@@ -1,5 +1,6 @@
 package ConnectionFactory;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,12 +19,41 @@ public class ConnectionFactory {
     public static Connection getConnection() {
         try {
             Class.forName(DRIVER);
+
+            // Restaura o banco de dados a partir do backup
+            restoreDatabaseFromBackup();
+
             return DriverManager.getConnection(URL, USER, PASS);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger("Erro ao criar Banco de Dados" + ex);
-            return null; // ou lidar com a exceção de alguma forma apropriada ao seu código
+            return null;
         }
     }
+
+    private static void restoreDatabaseFromBackup() {
+        try {
+            // Caminho para o arquivo de backup dentro do seu projeto
+            String backupFilePath = "src/resources/backupPetMania.sql";
+
+            // Comando para restaurar o banco de dados a partir do backup
+            String command = String.format(
+                    "mysql -u %s -p%s %s < %s",
+                    USER, PASS, URL, backupFilePath
+            );
+
+            // Executa o comando no terminal
+            ProcessBuilder processBuilder = new ProcessBuilder(command.split("\\s+"));
+            processBuilder.inheritIO();
+            Process process = processBuilder.start();
+            process.waitFor();
+        } catch (IOException | InterruptedException ex) {
+            Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+
+    
+    
 
     public static void closeConnection(Connection con) {
         if (con != null) {
