@@ -100,6 +100,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().add(MenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 790, 597));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void agendamentoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentoMenuActionPerformed

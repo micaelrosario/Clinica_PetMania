@@ -36,7 +36,7 @@ public class ClienteController  {
             
             ImageIcon icon = new ImageIcon("C:\\Users\\Usuário\\OneDrive\\Documentos\\MeusProjetos-Github\\Clinica_PetMania\\ProjetoMVC\\src\\Imagens/sucess.png");
             ImageIcon resizedIcon = new ImageIcon(icon.getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH));
-            JOptionPane.showMessageDialog(null, "Cliente Cadastrado com Sucesso","Info",JOptionPane.PLAIN_MESSAGE, resizedIcon);
+            JOptionPane.showMessageDialog(null, cliente+" Cadastrado com Sucesso","Info",JOptionPane.PLAIN_MESSAGE, resizedIcon);
             helper.limparTela();
             atualizaTabela();
         }else {

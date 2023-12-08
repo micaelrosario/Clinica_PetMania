@@ -4,58 +4,95 @@
  */
 package Model.DAO;
 
+import ConnectionFactory.ConnectionFactory;
 import Model.Agendamento;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 
-/**
- *
-<<<<<<< HEAD
- * @author Usuário
-=======
- * @author aluno
->>>>>>> 64cf2ecc99e24c0e05695767622aca2570f94679
- */
-public class AgendamentoDAO implements Serializable{
-    private static ArrayList<Agendamento> agendamentos = new ArrayList<>();
-    
-    public void cadastrarAgendamento(Agendamento agendamento) {
-        AgendamentoDAO.agendamentos.add(agendamento);
-
-        // Serializar apenas o novo agendamento em um arquivo
+public class AgendamentoDAO {
+    public void create(Agendamento agenda){
+        
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
         try {
-            FileOutputStream outFile = new FileOutputStream("agendamentos_lista.txt");
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outFile);
-            objectOutputStream.writeObject(agendamento);
-            } catch (IOException e) {
-            e.printStackTrace();
-        }
+            stmt = con.prepareStatement("INSERT INTO agendamento(cliente, pet, data, produto, procedimento) VALUES (?, ?, ?, ?, ?)");
+            stmt.setObject(1, agenda.getDono().getNome());
+            stmt.setObject(2, agenda.getPet().getNome());
+            stmt.setString(3, agenda.getHoraAtend());
+            stmt.setString(4, agenda.getProduto().getNome());
+            stmt.setString(4, agenda.getProcedimento().getNome());
 
-        agendamentos.add(agendamento);
-        System.out.println("Agendamento adicionado no arquivo");
+            stmt.executeUpdate();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Salvar Pet: " + ex); 
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
     }
+
     
-    
-    public ArrayList<Agendamento> obterAgendamentos() {
-        // Desserializa a lista de agendamentos do arquivo
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("agendamentos_lista.txt"))) {
-            Object object = objectInputStream.readObject();
-            if (object instanceof ArrayList) {
-                agendamentos = (ArrayList<Agendamento>) object;
+    public void delete(Agendamento a){
+        
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = con.prepareStatement("DELETE FROM pet WHERE id = ?");
+            stmt.setInt(1, a.getId());
+          
+            
+            stmt.executeUpdate();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Erro ao Excluir Pet" +ex); 
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    // ... outros métodos da classe PetDAO
+
+    public List<Agendamento> read() {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Agendamento> agendamentos = new ArrayList<>();
+        Agendamento a = new Agendamento();
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM pet");
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Agendamento agendamento = new Agendamento(
+                    rs.getInt("id"),
+                    rs.getObject(cliente),
+                    rs.getString("pet"),
+                    rs.getInt("data"),
+                    rs.getString("id_dono"),
+                    rs.getString("id_dono")
+                );
+
+                agendamentos.add(agendamento);
             }
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+
+        } catch (SQLException ex) {
+            System.out.println("Erro ao tentar ler Pets " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
         }
 
-        return agendamentos;
+        return pets;
     }
 }
+
     
-
-
 

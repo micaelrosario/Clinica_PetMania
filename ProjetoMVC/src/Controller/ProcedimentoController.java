@@ -35,8 +35,9 @@ public class ProcedimentoController {
             procedimentoDAO.create(procedimento);
             ImageIcon icon = new ImageIcon("C:\\Users\\Usuário\\OneDrive\\Documentos\\MeusProjetos-Github\\Clinica_PetMania\\ProjetoMVC\\src\\Imagens/sucess.png");
             ImageIcon resizedIcon = new ImageIcon(icon.getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH));
-            JOptionPane.showMessageDialog(null, "Procedimento Cadastrado com Sucesso","Info",JOptionPane.PLAIN_MESSAGE, resizedIcon);
+            JOptionPane.showMessageDialog(null, procedimento+" Cadastrado com Sucesso","Info",JOptionPane.PLAIN_MESSAGE, resizedIcon);
             atualizaTabela();
+            helper.limparTela();
         }else {
             //JOptionPane.showMessageDialog(null, "Erro ao Cadastrar Procedimento: Campos não preenchidos.");
         }

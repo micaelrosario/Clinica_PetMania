@@ -22,7 +22,7 @@ public class PetDAO {
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("INSERT INTO pet(nome, raca, idade, id_dono) VALUES (?, ?, ?, ?)");
+            stmt = con.prepareStatement("INSERT INTO pet(nome, raca, idade, dono) VALUES (?, ?, ?, ?)");
             stmt.setString(1, pet.getNome());
             stmt.setString(2, pet.getRaca());
             stmt.setInt(3, pet.getIdade());
@@ -44,7 +44,7 @@ public class PetDAO {
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("DELETE FROM pet WHERE codBarras = ?");
+            stmt = con.prepareStatement("DELETE FROM pet WHERE nome = ?");
             stmt.setString(1, p.getNome());
           
             

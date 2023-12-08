@@ -35,8 +35,8 @@ public class PetController {
             petDados.create(pet);
             ImageIcon icon = new ImageIcon("C:\\Users\\Usuário\\OneDrive\\Documentos\\MeusProjetos-Github\\Clinica_PetMania\\ProjetoMVC\\src\\Imagens/sucess.png");
             ImageIcon resizedIcon = new ImageIcon(icon.getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH));
-            JOptionPane.showMessageDialog(null, "Pet Cadastrado com Sucesso!","Info",JOptionPane.PLAIN_MESSAGE, resizedIcon);
-            System.out.println(pet+" Foi Cadastrado para "+pet.getIdDono());
+            JOptionPane.showMessageDialog(null, pet+" Cadastrado com Sucesso!","Info",JOptionPane.PLAIN_MESSAGE, resizedIcon);
+            helper.limparTela();
         }else{
             JOptionPane.showMessageDialog(null, "Não foi possivel cadastrar "+pet);
         }

@@ -102,6 +102,7 @@ public class CarrinhoCompra extends javax.swing.JFrame {
         getContentPane().add(FundoCarrinho, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 560));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cb_livroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_livroActionPerformed

@@ -87,6 +87,7 @@ public class SubMenuCadastro extends javax.swing.JFrame {
         getContentPane().add(SubMenuCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 556));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed

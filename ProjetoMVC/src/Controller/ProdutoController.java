@@ -29,7 +29,7 @@ public class ProdutoController {
             produtoDAO.create(produto);
             ImageIcon icon = new ImageIcon("C:\\Users\\Usuário\\OneDrive\\Documentos\\MeusProjetos-Github\\Clinica_PetMania\\ProjetoMVC\\src\\Imagens/sucess.png");
             ImageIcon resizedIcon = new ImageIcon(icon.getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH));
-            JOptionPane.showMessageDialog(null, "Produto Cadastrado com Sucesso","Info",JOptionPane.PLAIN_MESSAGE, resizedIcon);
+            JOptionPane.showMessageDialog(null, produto+" Cadastrado com Sucesso","Info",JOptionPane.PLAIN_MESSAGE, resizedIcon);
             atualizaTabela();
         }else {
             //JOptionPane.showMessageDialog(null, "Erro ao Cadastrar Produto: Campos não preenchidos.");
