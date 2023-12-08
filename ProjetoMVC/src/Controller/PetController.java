@@ -29,6 +29,7 @@ public class PetController {
     public void cadastrarPet(){
         //Pegar Pet da view
         Pet pet = helper.obterModelo();
+        System.out.println("Pet Criado: "+pet);
         if (pet != null) {
             PetDAO petDados = new PetDAO();
             petDados.create(pet);

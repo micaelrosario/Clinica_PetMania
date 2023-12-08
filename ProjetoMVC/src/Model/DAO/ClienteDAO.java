@@ -32,6 +32,7 @@ public class ClienteDAO {
             stmt.setString(4, d.getEndereco());
             
             stmt.executeUpdate();
+            System.out.println("Cliente cadastrado na tabela");
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Erro ao Salvar Cliente" +ex); 

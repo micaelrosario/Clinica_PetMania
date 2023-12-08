@@ -18,7 +18,7 @@ public class Dono extends Pessoa{
     }
     
     // ==================== MÉTODOS DA LISTA DE PETS ===================
-    // < ADICIONAR A LISTA >
+    /* < ADICIONAR A LISTA >
     public void adicionarPet(Pet pet) {
         listaPets.add(pet);
     }
@@ -30,7 +30,7 @@ public class Dono extends Pessoa{
     // < LISTA DE PETS >
     public ArrayList<Pet> getListaPets(){
         return listaPets;
-    }
+    }*/
    
 
     // ================= MÉTODOS ESPECÍFICOS    =========================

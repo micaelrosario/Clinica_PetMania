@@ -20,18 +20,16 @@ public class PetDAO {
         
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
-        System.out.println(pet.getIdDono().getCpf());
+        
         try {
-            stmt = con.prepareStatement("INSERT INTO pet(nome, raca, idade, cliente_id) VALUES (?, ?, ?, ?)");
+            stmt = con.prepareStatement("INSERT INTO pet(nome, raca, idade, id_dono) VALUES (?, ?, ?, ?)");
             stmt.setString(1, pet.getNome());
             stmt.setString(2, pet.getRaca());
             stmt.setInt(3, pet.getIdade());
-
-            // Supondo que idDono seja a chave estrangeira
-            stmt.setInt(4, Integer.parseInt(pet.getIdDono().getCpf()));  // Alteração aqui, use o método getId() ou o equivalente para obter o idDono
+            stmt.setInt(4, pet.getIdDono());
 
             stmt.executeUpdate();
-
+            System.out.println("Pet cadastrado na tabela");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Salvar Pet: " + ex); 
         } finally {
@@ -80,7 +78,7 @@ public class PetDAO {
                     rs.getString("nome"),
                     rs.getString("raca"),
                     rs.getInt("idade"),
-                    dono
+                    rs.getInt("id_dono")
                 );
 
                 pets.add(pet);
