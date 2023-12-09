@@ -6,6 +6,10 @@ package Model.DAO;
 
 import ConnectionFactory.ConnectionFactory;
 import Model.Agendamento;
+import Model.Dono;
+import Model.Pet;
+import Model.Procedimento;
+import Model.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -64,34 +68,52 @@ public class AgendamentoDAO {
         ResultSet rs = null;
 
         List<Agendamento> agendamentos = new ArrayList<>();
-        Agendamento a = new Agendamento();
 
         try {
-            stmt = con.prepareStatement("SELECT * FROM pet");
+            stmt = con.prepareStatement("SELECT * FROM agendamento"); // Correção na tabela para "agendamento"
             rs = stmt.executeQuery();
 
             while (rs.next()) {
+                Agendamento agendamento = new Agendamento();
 
-                Agendamento agendamento = new Agendamento(
-                    rs.getInt("id"),
-                    rs.getObject(cliente),
-                    rs.getString("pet"),
-                    rs.getInt("data"),
-                    rs.getString("id_dono"),
-                    rs.getString("id_dono")
-                );
+                // Aqui assumo que você tenha um método setId() em Agendamento, ajuste conforme necessário
+                agendamento.setId(rs.getInt("id"));
+
+                // Assumindo que "dono", "pet", "produto" e "procedimento" são IDs
+                String donoId = rs.getString("dono");
+                String petId = rs.getString("pet");
+                String produtoId = rs.getString("produto");
+                String procedimentoId = rs.getString("procedimento");
+
+                // Aqui você deve obter os objetos Dono, Pet, Produto e Procedimento pelos seus IDs
+                // Implemente o método getById() ou ajuste conforme sua lógica
+                ClienteDAO c = new ClienteDAO();
+                Dono dono = c.obterDonoPorID(donoId);
+                PetDAO p = new PetDAO();
+                Pet pet = p.obterPetPorID(petId);
+                ProdutoDAO produt = new ProdutoDAO();
+                Produto produto = produt.obterProdutoPorID(produtoId);
+                ProcedimentoDAO proced = new ProcedimentoDAO();
+                Procedimento procedimento = proced.obterProcedimentoPorID(procedimentoId);
+
+                agendamento.setDono(dono);
+                agendamento.setPet(pet);
+                agendamento.setHoraAtend(rs.getString("data"));
+                agendamento.setProduto(produto);
+                agendamento.setProcedimento(procedimento);
 
                 agendamentos.add(agendamento);
             }
 
         } catch (SQLException ex) {
-            System.out.println("Erro ao tentar ler Pets " + ex);
+            System.out.println("Erro ao tentar ler Agendamentos " + ex);
         } finally {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
 
-        return pets;
+        return agendamentos;
     }
+
 }
 
     

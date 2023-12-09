@@ -17,6 +17,10 @@ public class Agendamento implements Serializable{
     private Produto produto;
     private Procedimento procedimento;
 
+    public Agendamento() {
+    }
+    
+    
     // Construtor
     public Agendamento(int id, Dono dono, Pet pet, String horaAtend, Produto produto, Procedimento procedimento) {
         this.id = id;

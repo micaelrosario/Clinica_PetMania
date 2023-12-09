@@ -134,7 +134,7 @@ public class Agendamento extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_produtoActionPerformed
 
     private void cb_petActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_petActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_cb_petActionPerformed
 
     private void btn_agendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agendarActionPerformed

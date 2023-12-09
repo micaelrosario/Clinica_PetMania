@@ -33,7 +33,7 @@ public class AgendamentoController implements Serializable {
         System.out.println(agendamento);
         if(agendamento != null){
             AgendamentoDAO agendamentoDAO = new AgendamentoDAO();
-            agendamentoDAO.cadastrarAgendamento(agendamento);
+            agendamentoDAO.create(agendamento);
             ImageIcon icon = new ImageIcon("C:\\Users\\Usuário\\OneDrive\\Documentos\\MeusProjetos-Github\\Clinica_PetMania\\ProjetoMVC\\src\\Imagens/sucess.png");
             ImageIcon resizedIcon = new ImageIcon(icon.getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH));
             JOptionPane.showMessageDialog(null, "Agendamento feito com Sucesso!","Info",JOptionPane.PLAIN_MESSAGE, resizedIcon);

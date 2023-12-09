@@ -16,6 +16,7 @@ import Model.DAO.ProcedimentoDAO;
 import Model.DAO.PetDAO;
 import Model.DAO.ProdutoDAO;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -52,15 +53,12 @@ public class AgendamentoHelper  {
         DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getCb_cliente().getModel();
 
         ClienteDAO clienteDAO = new ClienteDAO();
-        
-
-        ArrayList<Dono> donos = clienteDAO.carregarListaDeClientes();
+        List<Dono> donos = clienteDAO.read();
 
         // Limpar o combobox antes de adicionar os novos elementos
         comboBoxModel.removeAllElements();
 
         for (Dono dono : donos) {
-            System.out.println(dono);
             comboBoxModel.addElement(dono);
         }
     }
@@ -74,7 +72,7 @@ public class AgendamentoHelper  {
         if (donoSelecionado != null) {
             // Aqui você deve ter algum método em PetDAO que retorna os pets de um dono específico
             PetDAO petDAO = new PetDAO();
-            ArrayList<Pet> pets = petDAO.obterPetsDoDono(donoSelecionado);
+            List<Pet> pets = petDAO.read();
 
             // Limpar o combobox antes de adicionar os novos elementos
             comboBoxModel.removeAllElements();
@@ -84,12 +82,12 @@ public class AgendamentoHelper  {
                 comboBoxModel.addElement(pet);
             }
         }
+        System.out.println("Dono é Null");
     }
 
     
     public String preencherData(){
         String data = view.getTf_data().getText();
-        System.out.println(data.toString());
         return data;
     }
     
@@ -97,15 +95,12 @@ public class AgendamentoHelper  {
         DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getCb_produto().getModel();
 
         ProdutoDAO produtoDAO = new ProdutoDAO();
-        produtoDAO.carregarProdutos();// Certifique-se de carregar os clientes antes de obter a lista
-
-        ArrayList<Produto> produtos = produtoDAO.obterProdutos();
+        List<Produto> produtos = produtoDAO.read();
 
         // Limpar o combobox antes de adicionar os novos elementos
         comboBoxModel.removeAllElements();
 
         for (Produto produto : produtos) {
-            System.out.println(produto);
             comboBoxModel.addElement(produto);
         }
     }
@@ -114,15 +109,12 @@ public class AgendamentoHelper  {
         DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getCb_procedimento().getModel();
 
         ProcedimentoDAO procedimentoDAO = new ProcedimentoDAO();
-        procedimentoDAO.carregarProcedimento(); // Certifique-se de carregar os clientes antes de obter a lista
-
-        ArrayList<Procedimento> procedimentos = procedimentoDAO.obterProcedimentos();
+        List<Procedimento> procedimentos = procedimentoDAO.read();
 
         // Limpar o combobox antes de adicionar os novos elementos
         comboBoxModel.removeAllElements();
 
         for (Procedimento procedimento : procedimentos) {
-            System.out.println(procedimento);
             comboBoxModel.addElement(procedimento);
         }
     }

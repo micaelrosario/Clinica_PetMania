@@ -71,14 +71,14 @@ public class PetDAO {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                String idDono = rs.getString("idDono");
+                String idDono = rs.getString("dono");
                 Dono dono = donoDAO.obterDonoPorID(idDono);
 
                 Pet pet = new Pet(
                     rs.getString("nome"),
                     rs.getString("raca"),
                     rs.getInt("idade"),
-                    rs.getString("id_dono")
+                    rs.getString("dono")
                 );
 
                 pets.add(pet);
@@ -91,6 +91,35 @@ public class PetDAO {
         }
 
         return pets;
+    }
+    
+    public Pet obterPetPorID(String id) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM pet WHERE id = ?");
+            stmt.setString(1, id);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                Pet pet = new Pet(
+                    rs.getString("nome"),
+                    rs.getString("raca"),
+                    rs.getInt("idade"),
+                    rs.getString("dono")
+                );
+                return pet;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Erro ao obter Dono por ID: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return null; // Retorna null se não encontrar um dono com o ID especificado
     }
 }
 

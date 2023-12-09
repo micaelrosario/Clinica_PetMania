@@ -83,4 +83,35 @@ public class ProdutoDAO {
         }
         return produtos;   
     }
+    
+    public Produto obterProdutoPorID(String id) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM pet WHERE id = ?");
+            stmt.setString(1, id);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                Produto produto = new Produto(
+                    rs.getString("nome"),
+                    rs.getInt("codBarras"),
+                    rs.getString("fornecedor"),
+                    rs.getDouble("valor"),
+                    rs.getString("validade")
+                );
+                return produto;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Erro ao obter Dono por ID: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return null; // Retorna null se não encontrar um dono com o ID especificado
+    }
+
 }

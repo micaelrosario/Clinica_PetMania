@@ -2,7 +2,6 @@ package Model.DAO;
 
 import ConnectionFactory.ConnectionFactory;
 import Model.Procedimento;
-import Model.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -81,5 +80,34 @@ public class ProcedimentoDAO {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
         return procedimentos;   
+    }
+    
+    public Procedimento obterProcedimentoPorID(String id) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM pet WHERE id = ?");
+            stmt.setString(1, id);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                Procedimento pet = new Procedimento(
+                    rs.getString("nome"),
+                    rs.getInt("id"),
+                    rs.getString("funcionario"),
+                    rs.getDouble("valor")
+                );
+                return pet;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Erro ao obter Dono por ID: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return null; // Retorna null se não encontrar um dono com o ID especificado
     }
 }

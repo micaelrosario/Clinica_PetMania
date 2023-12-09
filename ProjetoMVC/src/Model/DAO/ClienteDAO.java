@@ -95,7 +95,7 @@ public class ClienteDAO {
         ResultSet rs = null;
 
         try {
-            stmt = con.prepareStatement("SELECT * FROM cliente WHERE id = ?");
+            stmt = con.prepareStatement("SELECT * FROM cliente WHERE cpf = ?");
             stmt.setString(1, id);
             rs = stmt.executeQuery();
 

@@ -28,8 +28,6 @@ public class CadastroProduto extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowOpened(java.awt.event.WindowEvent evt) {
-                
-                System.out.println("Produtos atualizado na tabela");
             }
         });
     }
