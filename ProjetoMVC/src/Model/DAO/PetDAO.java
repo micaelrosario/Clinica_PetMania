@@ -5,7 +5,6 @@
 package Model.DAO;
 
 import ConnectionFactory.ConnectionFactory;
-import Model.Dono;
 import Model.Pet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -58,22 +57,18 @@ public class PetDAO {
     }
     // ... outros métodos da classe PetDAO
 
-    public List<Pet> read() {
+    public List<Pet> read(){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-
+        
         List<Pet> pets = new ArrayList<>();
-        ClienteDAO donoDAO = new ClienteDAO();
-
-        try {
+        
+        try{
             stmt = con.prepareStatement("SELECT * FROM pet");
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                String idDono = rs.getString("dono");
-                Dono dono = donoDAO.obterDonoPorID(idDono);
-
                 Pet pet = new Pet(
                     rs.getString("nome"),
                     rs.getString("raca"),
@@ -83,14 +78,12 @@ public class PetDAO {
 
                 pets.add(pet);
             }
-
         } catch (SQLException ex) {
-            System.out.println("Erro ao tentar ler Pets " + ex);
+            System.out.println("Erro ao tentar ler Pets "+ex);
         } finally {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
-
-        return pets;
+        return pets;   
     }
     
     public Pet obterPetPorID(String id) {

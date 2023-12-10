@@ -6,6 +6,7 @@ import Controller.Helper.LoginHelper;
 import Model.DAO.UsuarioAutenticacao;
 import static Model.DAO.UsuarioAutenticacao.usuarios;
 import Model.Usuario;
+import View.Cadastro;
 import View.MenuPrincipal;
 import View.Login;
 import View.EsqueceuSenha;
@@ -52,14 +53,6 @@ public class LoginController implements Serializable{
                  // Tratar o caso em que obterModelo retornou null
                 JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos.");
             }
-            
-        /*} catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "Usuário não encontrado. Verifique suas credenciais e tente novamente.");
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao fazer login: " + e.getClass().getName() + " - " + e.getMessage());
-            e.printStackTrace(); // Imprimir a pilha de exceção no console para diagnóstico
-        }*/
     }
 
     public void carregarUsuarios() {
@@ -70,7 +63,18 @@ public class LoginController implements Serializable{
     public void esqueciSenha() {
         EsqueceuSenha senha = new EsqueceuSenha();
         senha.setVisible(true);
+        // Feche a janela de login
+        this.view.dispose();
     }
+    
+    public void navegarParaCadastro() {
+         // Ação após clicar no Botão Voltar
+        Cadastro novoFrame = new Cadastro();
+        novoFrame.setVisible(true);
+        // Feche a janela de login
+        this.view.dispose();
+    }
+   
     public void carregarMenuPrincipal(){
         MenuPrincipal menu = new MenuPrincipal();
         menu.setVisible(true);

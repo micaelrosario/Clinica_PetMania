@@ -33,7 +33,7 @@ public class CadastroController {
                 JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!");
                 navegarParaLogin();
             } else {
-                JOptionPane.showMessageDialog(null, "Erro ao Cadastrar Usuário: Campos não preenchidos.");
+                //JOptionPane.showMessageDialog(null, "Erro ao Cadastrar Usuário: Campos não preenchidos.");
             }
 
         } catch (Exception e) {
@@ -46,5 +46,7 @@ public class CadastroController {
     public void navegarParaLogin(){
         Login login = new Login();
         login.setVisible(true);
+        // Feche a janela de login
+        this.view.dispose();
     }
 }

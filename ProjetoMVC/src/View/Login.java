@@ -131,9 +131,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_EntrarActionPerformed
 
     private void btn_Cadastre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Cadastre1ActionPerformed
-         // Ação após clicar no Botão Voltar
-        Cadastro novoFrame = new Cadastro();
-        novoFrame.setVisible(true);
+         this.controller.navegarParaCadastro();
     }//GEN-LAST:event_btn_Cadastre1ActionPerformed
 
     private void text_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_usuarioActionPerformed

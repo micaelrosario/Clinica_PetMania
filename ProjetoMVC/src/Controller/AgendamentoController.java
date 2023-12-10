@@ -18,10 +18,9 @@ import javax.swing.JOptionPane;
  * @author Usuário
  */
 public class AgendamentoController implements Serializable {
-
     private final View_Agendamento view;
     private AgendamentoHelper helper;
-
+    
     public AgendamentoController(View_Agendamento view) {
         this.view = view;
         this.helper = new AgendamentoHelper(view);
@@ -40,12 +39,12 @@ public class AgendamentoController implements Serializable {
         }
     }
     
+    
     public void atualizaDono(){
         // Buscar Clientes do Banco de Dados
         helper.preencherDonos();
     }
     public void atualizaPet(){
-        // Buscar Clientes do Banco de Dados
         helper.preencherPet();
     }
     public void atualizaData(){

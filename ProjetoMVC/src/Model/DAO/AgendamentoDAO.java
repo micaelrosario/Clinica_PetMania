@@ -30,12 +30,12 @@ public class AgendamentoDAO {
             stmt.setObject(2, agenda.getPet().getNome());
             stmt.setString(3, agenda.getHoraAtend());
             stmt.setString(4, agenda.getProduto().getNome());
-            stmt.setString(4, agenda.getProcedimento().getNome());
+            stmt.setString(5, agenda.getProcedimento().getNome());
 
             stmt.executeUpdate();
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Salvar Pet: " + ex); 
+            JOptionPane.showMessageDialog(null, "Erro ao fazer agendamento: " + ex); 
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }

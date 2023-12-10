@@ -4,6 +4,7 @@
  */
 package View;
 
+import Controller.EsqueceuSenhaController;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,7 +12,9 @@ import javax.swing.JOptionPane;
  * @author pawpa
  */
 public class EsqueceuSenha extends javax.swing.JFrame {
-
+    
+    private EsqueceuSenhaController controller;
+    
     /**
      * Creates new form EsqueceuSenha
      */
@@ -85,13 +88,12 @@ public class EsqueceuSenha extends javax.swing.JFrame {
             "Email Enviado", 
             JOptionPane.INFORMATION_MESSAGE
         );
-        Login novoFrame = new Login();
-        novoFrame.setVisible(true);
+        this.controller.navegarParaLogin();
     }//GEN-LAST:event_enviarActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
-        Login novoFrame = new Login();
-        novoFrame.setVisible(true);
+        this.controller.navegarParaLogin();
+        
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void text_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_emailActionPerformed
@@ -139,4 +141,5 @@ public class EsqueceuSenha extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField text_email;
     // End of variables declaration//GEN-END:variables
+
 }

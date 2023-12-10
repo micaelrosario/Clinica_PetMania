@@ -5,6 +5,9 @@
 package View;
 
 import Controller.AgendamentoController;
+import Model.Dono;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
@@ -15,6 +18,7 @@ import javax.swing.JTextField;
 public class Agendamento extends javax.swing.JFrame {
     
     private final AgendamentoController controller;
+    private final View_Agendamento view = null;
 
     public Agendamento(AgendamentoController controller) {
         this.controller = controller;
@@ -23,6 +27,20 @@ public class Agendamento extends javax.swing.JFrame {
         this.controller.atualizaData();
         this.controller.atualizaProduto();
         this.controller.atualizaProcedimento();
+        // Adicione um ouvinte ao JComboBox de clientes
+        view.getCb_cliente().addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent event) {
+                if (event.getStateChange() == ItemEvent.SELECTED) {
+                    // Obtém o cliente selecionado
+                    Dono donoSelecionado = (Dono) view.getCb_cliente().getSelectedItem();
+                    AgendamentoController controller = null;
+                    // Recarrega a lista de pets com base no novo cliente
+                    controller.atualizaPet();
+                }
+            }
+        });
+        
     }
     
 
@@ -75,7 +93,7 @@ public class Agendamento extends javax.swing.JFrame {
                 cb_clienteActionPerformed(evt);
             }
         });
-        getContentPane().add(cb_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 500, 40));
+        getContentPane().add(cb_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 520, 50));
 
         cb_procedimento.setForeground(new java.awt.Color(0, 0, 0,0));
         cb_procedimento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -85,7 +103,7 @@ public class Agendamento extends javax.swing.JFrame {
                 cb_procedimentoActionPerformed(evt);
             }
         });
-        getContentPane().add(cb_procedimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 440, 40));
+        getContentPane().add(cb_procedimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 450, 50));
 
         cb_produto.setForeground(new java.awt.Color(0, 0, 0,0));
         cb_produto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -95,7 +113,7 @@ public class Agendamento extends javax.swing.JFrame {
                 cb_produtoActionPerformed(evt);
             }
         });
-        getContentPane().add(cb_produto, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 220, 40));
+        getContentPane().add(cb_produto, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 230, 50));
 
         cb_pet.setForeground(new java.awt.Color(0, 0, 0,0));
         cb_pet.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -105,10 +123,10 @@ public class Agendamento extends javax.swing.JFrame {
                 cb_petActionPerformed(evt);
             }
         });
-        getContentPane().add(cb_pet, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 500, 40));
+        getContentPane().add(cb_pet, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 530, 50));
 
         tf_data.setBorder(null);
-        getContentPane().add(tf_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 302, 160, 40));
+        getContentPane().add(tf_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 170, 50));
 
         Agendamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Agendamento.png"))); // NOI18N
         getContentPane().add(Agendamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 850, 650));
@@ -122,7 +140,7 @@ public class Agendamento extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
     private void cb_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_clienteActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_cb_clienteActionPerformed
 
     private void cb_procedimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_procedimentoActionPerformed

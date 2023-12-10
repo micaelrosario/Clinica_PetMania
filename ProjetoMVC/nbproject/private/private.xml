@@ -3,17 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Controller/Helper/PetHelper.java</file>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Model/DAO/AgendamentoDAO.java</file>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Model/Agendamento.java</file>
+            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/View/CadastroProduto.java</file>
             <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Model/DAO/PetDAO.java</file>
+            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Controller/ProdutoController.java</file>
             <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Controller/PetController.java</file>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Controller/ClienteController.java</file>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/View/Agendamento.java</file>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Controller/Helper/AgendamentoHelper.java</file>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Controller/AgendamentoController.java</file>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/Model/Pet.java</file>
-            <file>file:/C:/Users/Usuário/OneDrive/Documentos/MeusProjetos-Github/Clinica_PetMania/ProjetoMVC/src/ConnectionFactory/ConnectionFactory.java</file>
         </group>
     </open-files>
 </project-private>

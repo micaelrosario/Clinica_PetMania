@@ -31,13 +31,13 @@ public class Agendamento implements Serializable{
         this.procedimento = procedimento;
     }
     
-    public String ToString(){
+    public String toString(){
         return "Id: "+id+
                 "\nDono: "+dono+
-                "Pet: "+pet+
-                "Hora do Atendimento: "+horaAtend+
-                "Produto: "+produto+
-                "Procedimento: "+procedimento;
+                "\nPet: "+pet+
+                "\nHora do Atendimento: "+horaAtend+
+                "\nProduto: "+produto+
+                "\nProcedimento: "+procedimento;
     }
     // Métodos Getters e Setters
 

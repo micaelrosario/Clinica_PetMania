@@ -15,7 +15,6 @@ import Model.DAO.ClienteDAO;
 import Model.DAO.ProcedimentoDAO;
 import Model.DAO.PetDAO;
 import Model.DAO.ProdutoDAO;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 
@@ -63,28 +62,41 @@ public class AgendamentoHelper  {
         }
     }
     
-    public void preencherPet() {
+    
+    
+    public void listaPet() {
         DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getCb_pet().getModel();
+        
+        DefaultComboBoxModel cbDono = (DefaultComboBoxModel) view.getCb_cliente().getModel();
+        Dono dono = (Dono) cbDono.getSelectedItem();
+        PetDAO petDAO = new PetDAO();
+        List<Pet> pets = petDAO.read();
 
-        // Obtém o Dono selecionado no JComboBox
-        Dono donoSelecionado = (Dono) view.getCb_cliente().getSelectedItem();
+        // Limpar o combobox antes de adicionar os novos elementos
+        comboBoxModel.removeAllElements();
 
-        if (donoSelecionado != null) {
-            // Aqui você deve ter algum método em PetDAO que retorna os pets de um dono específico
-            PetDAO petDAO = new PetDAO();
-            List<Pet> pets = petDAO.read();
-
-            // Limpar o combobox antes de adicionar os novos elementos
-            comboBoxModel.removeAllElements();
-
-            for (Pet pet : pets) {
-                System.out.println(pet);
+        for (Pet pet : pets) {
+            if(pet.getIdDono().equals(dono.getNome())){
                 comboBoxModel.addElement(pet);
             }
+            
         }
-        System.out.println("Dono é Null");
     }
+    
+    /*public List<Pet> obterPetDono(Dono donoSelecionado) {
+        PetDAO petDAO = new PetDAO();
+        List<Pet> pets = petDAO.read();
 
+        for (Pet pet : pets) {
+            if(pet.getIdDono().equals(donoSelecionado.getNome())){
+                pets.add(pet);
+            }
+        }
+        return pets;
+    }*/
+    public void preencherPet(){
+        listaPet();
+    }
     
     public String preencherData(){
         String data = view.getTf_data().getText();
