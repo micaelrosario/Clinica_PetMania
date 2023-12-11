@@ -130,6 +130,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         getContentPane().add(Fundo_CadastroProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 740, 560));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed

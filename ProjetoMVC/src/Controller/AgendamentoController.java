@@ -60,10 +60,10 @@ public class AgendamentoController implements Serializable {
         helper.preencherProcedimento();
     }
     
-    //Navegar para o Cadastro
-    public void navegarParaMenuPrincipal(){
-        MenuPrincipal menu = new MenuPrincipal();
-        menu.setVisible(true);
+    public void voltarMenuPrincipal(){
+        // Ação após clicar no Botão Voltar
+        MenuPrincipal novoFrame = new MenuPrincipal();
+        novoFrame.setVisible(true);
         // Feche a janela de login
         this.view.dispose();
     }
